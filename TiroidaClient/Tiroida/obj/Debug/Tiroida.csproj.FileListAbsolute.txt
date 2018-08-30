@@ -1,0 +1,14 @@
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Tiroida.exe.config
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Tiroida.exe
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Tiroida.pdb
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.dll
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.Fonts.dll
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csprojResolveAssemblyReference.cache
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Tiroida.resources
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Properties.Resources.resources
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csproj.GenerateResource.Cache
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.exe
+c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.pdb
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Newtonsoft.Json.dll
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Newtonsoft.Json.xml
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.PersoanlDataForm.resources
