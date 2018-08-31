@@ -24,6 +24,8 @@ namespace Tiroida
         private void Form1_Load(object sender, EventArgs e)
         {
             conn();
+            PersoanlDataForm dataform = new PersoanlDataForm();
+            this.flowLayoutPanel1.Controls.Add(dataform);
         }
 
         private void SetConnectionState(string text)
@@ -80,6 +82,7 @@ namespace Tiroida
             Thread th = new Thread(new ParameterizedThreadStart(ReapetUntilConnected));
             th.Start(sender);
             SetConnectionState("Connecting...");
+            ConnectionClass.ClientTCP = null;
         }
 
         private void ReapetUntilConnected(object client)
@@ -92,35 +95,8 @@ namespace Tiroida
                 if (response == ClientTCP.CONECTIONSUCCESS)
                 {
                     this.SetConnectionState("Connected");
+                    ConnectionClass.ClientTCP = tcpclient;
 
-                    PersonalData data = new PersonalData();
-                    data.Age = "72";
-                    data.Sex = "M";
-                    data.on_thyroxine = "f";
-                    data.query_on_thyroxine = "f";
-                    data.on_antithyroid_medication = "f";
-                    data.thyroid_surgery = "f";
-                    data.query_hypothyroid = "f";
-                    data.query_hyperthyroid = "f";
-                    data.pregnant = "f";
-                    data.sick = "f";
-                    data.tumor = "f";
-                    data.lithium = "f";
-                    data.goitre = "f";
-                    data.TSH_measured = "t";
-                    data.TSH = "30";
-                    data.T3_measured = "t";
-                    data.T3 = "0.60";
-                    data.TT4_measured = "t";
-                    data.TT4 = "15";
-                    data.FTI_measured = "t";
-                    data.FTI = "10";
-                    data.TBG_measured = "f";
-                    data.TBG = "?";
-
-                    string datatosend = JsonConvert.SerializeObject(data);
-                    Console.WriteLine("date trimise: " + datatosend);
-                    tcpclient.SendContent(datatosend);
 
                     break;
                 }
@@ -138,10 +114,9 @@ namespace Tiroida
              */
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-            PersoanlDataForm dataform = new PersoanlDataForm();
-            this.panel1.Controls.Add(dataform);
+
         }
     }
 }
