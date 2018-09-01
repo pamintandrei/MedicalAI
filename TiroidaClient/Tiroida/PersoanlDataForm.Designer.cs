@@ -88,6 +88,9 @@
             // 
             // metroComboBox1
             // 
+            this.metroComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 23;
             this.metroComboBox1.Items.AddRange(new object[] {
@@ -102,6 +105,9 @@
             // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(13, 9);
             this.metroLabel1.Name = "metroLabel1";
@@ -111,6 +117,9 @@
             // 
             // metroLabel2
             // 
+            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(13, 85);
             this.metroLabel2.Name = "metroLabel2";
@@ -120,6 +129,9 @@
             // 
             // metroLabel3
             // 
+            this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.Location = new System.Drawing.Point(13, 158);
             this.metroLabel3.Name = "metroLabel3";
@@ -129,6 +141,9 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown1.Location = new System.Drawing.Point(14, 119);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
@@ -136,6 +151,9 @@
             // 
             // metroComboBox2
             // 
+            this.metroComboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox2.FormattingEnabled = true;
             this.metroComboBox2.ItemHeight = 23;
             this.metroComboBox2.Items.AddRange(new object[] {
@@ -148,6 +166,9 @@
             // 
             // metroLabel4
             // 
+            this.metroLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.Location = new System.Drawing.Point(13, 239);
             this.metroLabel4.Name = "metroLabel4";
@@ -157,6 +178,9 @@
             // 
             // metroComboBox3
             // 
+            this.metroComboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox3.FormattingEnabled = true;
             this.metroComboBox3.ItemHeight = 23;
             this.metroComboBox3.Items.AddRange(new object[] {
@@ -169,6 +193,9 @@
             // 
             // metroLabel5
             // 
+            this.metroLabel5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(13, 327);
             this.metroLabel5.Name = "metroLabel5";
@@ -178,6 +205,9 @@
             // 
             // metroComboBox4
             // 
+            this.metroComboBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox4.FormattingEnabled = true;
             this.metroComboBox4.ItemHeight = 23;
             this.metroComboBox4.Items.AddRange(new object[] {
@@ -190,6 +220,9 @@
             // 
             // metroLabel6
             // 
+            this.metroLabel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(398, 9);
             this.metroLabel6.Name = "metroLabel6";
@@ -199,6 +232,9 @@
             // 
             // metroComboBox5
             // 
+            this.metroComboBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox5.FormattingEnabled = true;
             this.metroComboBox5.ItemHeight = 23;
             this.metroComboBox5.Items.AddRange(new object[] {
@@ -206,11 +242,14 @@
             "Nu"});
             this.metroComboBox5.Location = new System.Drawing.Point(398, 36);
             this.metroComboBox5.Name = "metroComboBox5";
-            this.metroComboBox5.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox5.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox5.TabIndex = 13;
             // 
             // metroLabel7
             // 
+            this.metroLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(398, 159);
             this.metroLabel7.Name = "metroLabel7";
@@ -220,6 +259,9 @@
             // 
             // metroLabel8
             // 
+            this.metroLabel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel8.AutoSize = true;
             this.metroLabel8.Location = new System.Drawing.Point(398, 85);
             this.metroLabel8.Name = "metroLabel8";
@@ -229,6 +271,9 @@
             // 
             // metroComboBox6
             // 
+            this.metroComboBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox6.FormattingEnabled = true;
             this.metroComboBox6.ItemHeight = 23;
             this.metroComboBox6.Items.AddRange(new object[] {
@@ -236,11 +281,14 @@
             "Nu"});
             this.metroComboBox6.Location = new System.Drawing.Point(398, 119);
             this.metroComboBox6.Name = "metroComboBox6";
-            this.metroComboBox6.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox6.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox6.TabIndex = 16;
             // 
             // metroComboBox7
             // 
+            this.metroComboBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox7.FormattingEnabled = true;
             this.metroComboBox7.ItemHeight = 23;
             this.metroComboBox7.Items.AddRange(new object[] {
@@ -248,11 +296,14 @@
             "Nu"});
             this.metroComboBox7.Location = new System.Drawing.Point(398, 191);
             this.metroComboBox7.Name = "metroComboBox7";
-            this.metroComboBox7.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox7.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox7.TabIndex = 17;
             // 
             // metroLabel9
             // 
+            this.metroLabel9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel9.AutoSize = true;
             this.metroLabel9.Location = new System.Drawing.Point(398, 239);
             this.metroLabel9.Name = "metroLabel9";
@@ -262,6 +313,9 @@
             // 
             // metroComboBox8
             // 
+            this.metroComboBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox8.FormattingEnabled = true;
             this.metroComboBox8.ItemHeight = 23;
             this.metroComboBox8.Items.AddRange(new object[] {
@@ -269,11 +323,14 @@
             "Nu"});
             this.metroComboBox8.Location = new System.Drawing.Point(398, 280);
             this.metroComboBox8.Name = "metroComboBox8";
-            this.metroComboBox8.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox8.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox8.TabIndex = 19;
             // 
             // metroLabel10
             // 
+            this.metroLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel10.AutoSize = true;
             this.metroLabel10.Location = new System.Drawing.Point(399, 327);
             this.metroLabel10.Name = "metroLabel10";
@@ -283,6 +340,9 @@
             // 
             // metroComboBox9
             // 
+            this.metroComboBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox9.FormattingEnabled = true;
             this.metroComboBox9.ItemHeight = 23;
             this.metroComboBox9.Items.AddRange(new object[] {
@@ -290,11 +350,14 @@
             "Nu"});
             this.metroComboBox9.Location = new System.Drawing.Point(399, 354);
             this.metroComboBox9.Name = "metroComboBox9";
-            this.metroComboBox9.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox9.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox9.TabIndex = 21;
             // 
             // metroComboBox10
             // 
+            this.metroComboBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox10.FormattingEnabled = true;
             this.metroComboBox10.ItemHeight = 23;
             this.metroComboBox10.Items.AddRange(new object[] {
@@ -307,6 +370,9 @@
             // 
             // metroLabel11
             // 
+            this.metroLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(13, 398);
             this.metroLabel11.Name = "metroLabel11";
@@ -316,6 +382,9 @@
             // 
             // metroComboBox11
             // 
+            this.metroComboBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox11.FormattingEnabled = true;
             this.metroComboBox11.ItemHeight = 23;
             this.metroComboBox11.Items.AddRange(new object[] {
@@ -323,11 +392,14 @@
             "Nu"});
             this.metroComboBox11.Location = new System.Drawing.Point(398, 428);
             this.metroComboBox11.Name = "metroComboBox11";
-            this.metroComboBox11.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox11.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox11.TabIndex = 24;
             // 
             // metroLabel12
             // 
+            this.metroLabel12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel12.AutoSize = true;
             this.metroLabel12.Location = new System.Drawing.Point(398, 398);
             this.metroLabel12.Name = "metroLabel12";
@@ -337,8 +409,11 @@
             // 
             // metroLabel13
             // 
+            this.metroLabel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(703, 9);
+            this.metroLabel13.Location = new System.Drawing.Point(826, 31);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(155, 19);
             this.metroLabel13.TabIndex = 27;
@@ -346,20 +421,26 @@
             // 
             // metroComboBox12
             // 
+            this.metroComboBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox12.FormattingEnabled = true;
             this.metroComboBox12.ItemHeight = 23;
             this.metroComboBox12.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox12.Location = new System.Drawing.Point(703, 36);
+            this.metroComboBox12.Location = new System.Drawing.Point(826, 58);
             this.metroComboBox12.Name = "metroComboBox12";
             this.metroComboBox12.Size = new System.Drawing.Size(121, 29);
             this.metroComboBox12.TabIndex = 26;
             // 
             // metroLabel14
             // 
+            this.metroLabel14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(703, 85);
+            this.metroLabel14.Location = new System.Drawing.Point(826, 107);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(197, 19);
             this.metroLabel14.TabIndex = 28;
@@ -367,13 +448,16 @@
             // 
             // metroComboBox13
             // 
+            this.metroComboBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox13.FormattingEnabled = true;
             this.metroComboBox13.ItemHeight = 23;
             this.metroComboBox13.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox13.Location = new System.Drawing.Point(703, 118);
+            this.metroComboBox13.Location = new System.Drawing.Point(826, 140);
             this.metroComboBox13.Name = "metroComboBox13";
             this.metroComboBox13.Size = new System.Drawing.Size(121, 29);
             this.metroComboBox13.TabIndex = 29;
@@ -381,15 +465,21 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(704, 192);
+            this.numericUpDown2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown2.Location = new System.Drawing.Point(827, 214);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown2.TabIndex = 30;
             // 
             // metroLabel15
             // 
+            this.metroLabel15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(704, 159);
+            this.metroLabel15.Location = new System.Drawing.Point(827, 181);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(79, 19);
             this.metroLabel15.TabIndex = 31;
@@ -397,8 +487,11 @@
             // 
             // metroLabel16
             // 
+            this.metroLabel16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(703, 239);
+            this.metroLabel16.Location = new System.Drawing.Point(826, 261);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(192, 19);
             this.metroLabel16.TabIndex = 32;
@@ -406,13 +499,16 @@
             // 
             // metroComboBox14
             // 
+            this.metroComboBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox14.FormattingEnabled = true;
             this.metroComboBox14.ItemHeight = 23;
             this.metroComboBox14.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox14.Location = new System.Drawing.Point(703, 280);
+            this.metroComboBox14.Location = new System.Drawing.Point(826, 302);
             this.metroComboBox14.Name = "metroComboBox14";
             this.metroComboBox14.Size = new System.Drawing.Size(121, 29);
             this.metroComboBox14.TabIndex = 33;
@@ -420,8 +516,11 @@
             // 
             // metroLabel17
             // 
+            this.metroLabel17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(703, 327);
+            this.metroLabel17.Location = new System.Drawing.Point(826, 349);
             this.metroLabel17.Name = "metroLabel17";
             this.metroLabel17.Size = new System.Drawing.Size(70, 19);
             this.metroLabel17.TabIndex = 34;
@@ -429,15 +528,21 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(703, 363);
+            this.numericUpDown3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown3.Location = new System.Drawing.Point(826, 385);
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown3.TabIndex = 35;
             // 
             // metroLabel18
             // 
+            this.metroLabel18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(703, 398);
+            this.metroLabel18.Location = new System.Drawing.Point(826, 420);
             this.metroLabel18.Name = "metroLabel18";
             this.metroLabel18.Size = new System.Drawing.Size(195, 19);
             this.metroLabel18.TabIndex = 36;
@@ -445,13 +550,16 @@
             // 
             // metroComboBox15
             // 
+            this.metroComboBox15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox15.FormattingEnabled = true;
             this.metroComboBox15.ItemHeight = 23;
             this.metroComboBox15.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox15.Location = new System.Drawing.Point(702, 428);
+            this.metroComboBox15.Location = new System.Drawing.Point(825, 450);
             this.metroComboBox15.Name = "metroComboBox15";
             this.metroComboBox15.Size = new System.Drawing.Size(121, 29);
             this.metroComboBox15.TabIndex = 37;
@@ -459,15 +567,21 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(703, 496);
+            this.numericUpDown4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown4.Location = new System.Drawing.Point(826, 518);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown4.TabIndex = 38;
             // 
             // metroLabel19
             // 
+            this.metroLabel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel19.AutoSize = true;
-            this.metroLabel19.Location = new System.Drawing.Point(703, 466);
+            this.metroLabel19.Location = new System.Drawing.Point(826, 488);
             this.metroLabel19.Name = "metroLabel19";
             this.metroLabel19.Size = new System.Drawing.Size(77, 19);
             this.metroLabel19.TabIndex = 39;
@@ -475,6 +589,9 @@
             // 
             // metroLabel20
             // 
+            this.metroLabel20.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel20.AutoSize = true;
             this.metroLabel20.Location = new System.Drawing.Point(13, 475);
             this.metroLabel20.Name = "metroLabel20";
@@ -484,6 +601,9 @@
             // 
             // metroComboBox16
             // 
+            this.metroComboBox16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox16.FormattingEnabled = true;
             this.metroComboBox16.ItemHeight = 23;
             this.metroComboBox16.Items.AddRange(new object[] {
@@ -498,6 +618,9 @@
             // 
             // metroLabel21
             // 
+            this.metroLabel21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel21.AutoSize = true;
             this.metroLabel21.Location = new System.Drawing.Point(14, 554);
             this.metroLabel21.Name = "metroLabel21";
@@ -507,6 +630,9 @@
             // 
             // numericUpDown5
             // 
+            this.numericUpDown5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown5.Location = new System.Drawing.Point(14, 584);
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(120, 20);
@@ -514,6 +640,9 @@
             // 
             // metroLabel22
             // 
+            this.metroLabel22.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel22.AutoSize = true;
             this.metroLabel22.Location = new System.Drawing.Point(398, 475);
             this.metroLabel22.Name = "metroLabel22";
@@ -523,6 +652,9 @@
             // 
             // metroComboBox17
             // 
+            this.metroComboBox17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroComboBox17.FormattingEnabled = true;
             this.metroComboBox17.ItemHeight = 23;
             this.metroComboBox17.Items.AddRange(new object[] {
@@ -531,12 +663,15 @@
             "Necunoscut"});
             this.metroComboBox17.Location = new System.Drawing.Point(398, 505);
             this.metroComboBox17.Name = "metroComboBox17";
-            this.metroComboBox17.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox17.Size = new System.Drawing.Size(152, 29);
             this.metroComboBox17.TabIndex = 44;
             this.metroComboBox17.SelectedIndexChanged += new System.EventHandler(this.metroComboBox17_SelectedIndexChanged);
             // 
             // metroLabel23
             // 
+            this.metroLabel23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel23.AutoSize = true;
             this.metroLabel23.Location = new System.Drawing.Point(398, 554);
             this.metroLabel23.Name = "metroLabel23";
@@ -546,14 +681,20 @@
             // 
             // numericUpDown6
             // 
+            this.numericUpDown6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.numericUpDown6.Location = new System.Drawing.Point(398, 584);
             this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown6.Size = new System.Drawing.Size(151, 20);
             this.numericUpDown6.TabIndex = 48;
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(702, 554);
+            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton1.Location = new System.Drawing.Point(825, 576);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(121, 50);
             this.metroButton1.TabIndex = 49;
@@ -562,8 +703,11 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(829, 559);
+            this.pictureBox1.Location = new System.Drawing.Point(952, 581);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(40, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -624,7 +768,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroComboBox1);
             this.Name = "PersoanlDataForm";
-            this.Size = new System.Drawing.Size(904, 623);
+            this.Size = new System.Drawing.Size(1027, 645);
             this.Load += new System.EventHandler(this.PersoanlDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

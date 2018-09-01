@@ -15,9 +15,23 @@ namespace Tiroida
 {
     public partial class PersoanlDataForm : UserControl
     {
-        delegate void SetGitCallBack(bool value);
+        delegate void SetGitAndEnableStatusCallBack(bool gifstatus, bool enablestatus);
         delegate void SetInterfaceCallBack(UserControl usercontrol);
+        delegate string GetInfoCallBack(MetroComboBox combobox);
 
+
+        private string GetInfoText(MetroComboBox combobox)
+        {
+            if (combobox.InvokeRequired)
+            {
+                GetInfoCallBack callback = new GetInfoCallBack(GetInfoText);
+                return (string)this.Invoke(callback, new object[] { combobox });
+            }
+            else
+            {
+                return combobox.Text;
+            }
+        }
 
         private void SetInterface(UserControl usercontrol)
         {
@@ -34,16 +48,17 @@ namespace Tiroida
             }
         }
 
-        private void SetGif(bool value)
+        private void SetGif(bool gifstatus, bool enablestatus)
         {
-            if (this.pictureBox1.InvokeRequired)
+            if (this.pictureBox1.InvokeRequired || this.metroButton1.InvokeRequired)
             {
-                SetGitCallBack callback = new SetGitCallBack(SetGif);
-                this.Invoke(callback, new object[] { value });
+                SetGitAndEnableStatusCallBack callback = new SetGitAndEnableStatusCallBack(SetGif);
+                this.Invoke(callback, new object[] { gifstatus, enablestatus });
             }
             else
             {
-                this.pictureBox1.Visible = value;
+                this.pictureBox1.Visible = gifstatus;
+                this.metroButton1.Enabled = enablestatus;
             }
         }
 
@@ -64,15 +79,18 @@ namespace Tiroida
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            //Thread th = new Thread(SendPersonalData);
-            //th.Start();
-            SendPersonalData();
             this.pictureBox1.Visible = true;
+            this.metroButton1.Enabled = false;
+            Thread th = new Thread(SendPersonalData);
+            th.Start();
+            //SendPersonalData();
+            
         }
 
         private string GetSex()
         {
-            switch (metroComboBox1.Text)
+            string sex = GetInfoText(this.metroComboBox1);
+            switch (sex)
             {
                 case "Masculin":
                     return "M";
@@ -88,7 +106,7 @@ namespace Tiroida
 
         private string GetOption(MetroComboBox combobox)
         {
-            string selectedvalue = combobox.Text;
+            string selectedvalue = GetInfoText(combobox);
             switch (selectedvalue)
             {
                 case "Da":
@@ -141,14 +159,15 @@ namespace Tiroida
 
         private void SendPersonalData()
         {
-            /*
+            
             if (ConnectionClass.ClientTCP == null)
             {
-                SetGif(false);
+                SetGif(false, true);
                 MessageBox.Show("Sunte-ti momentan offline","Tiroida");
                 return;
             }
-            */
+            
+            
 
             PersonalData data = new PersonalData();
 
@@ -181,7 +200,7 @@ namespace Tiroida
 
             string datatosend = JsonConvert.SerializeObject(data);
             Console.WriteLine("date trimise: " + datatosend);
-
+            return;
             if (ConnectionClass.ClientTCP != null)
             {
                 ConnectionClass.ClientTCP.SendContent(datatosend);
@@ -192,11 +211,12 @@ namespace Tiroida
         private void ClientTCP_OnResponse(object sender, OnReceiveMessageClientEventArgs e)
         {
             
-            SetGif(false);
+            SetGif(false, true);
             ResponseUserControl usercontrol = new ResponseUserControl();
             usercontrol.SetCancer(e.Medical.Chanse_To_Have.ToString());
             usercontrol.SetNonCancer(e.Medical.Chanse_To_Have_Nothing.ToString());
             SetInterface(usercontrol);
+            ConnectionClass.ClientTCP.OnResponse -= ClientTCP_OnResponse;
         }
 
         private void ChangeValueEvent(MetroComboBox combobox, NumericUpDown numeric)
