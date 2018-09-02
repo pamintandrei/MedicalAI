@@ -45,6 +45,7 @@ namespace Tiroida
             {
                 this.ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse(this.ServerIP), this.ServerPort);
+                Console.WriteLine(this.ServerIP);
                 this.ClientSocket.Connect(endpoint);
 
                 Thread receive = new Thread(Response);
@@ -106,9 +107,12 @@ namespace Tiroida
                         case "response":
                             MedicalProblems problem = new MedicalProblems();
                             Console.WriteLine("yes");
-                            problem.Chanse_To_Have = (double)obj["rezulatat"][0][0];
-                            problem.Chanse_To_Have_Nothing = (double)obj["rezulatat"][0][1];
+                            Console.WriteLine(obj["rezultat"][0][0].GetType());
+                            Console.WriteLine(obj["rezultat"][1][1]);
+                            problem.Chanse_To_Have = obj["rezultat"][0][0].ToObject<double>();
+                            problem.Chanse_To_Have_Nothing = obj["rezultat"][1][1].ToObject<double>();
 
+                            Console.WriteLine("Problem with invoke shit");
                             OnResponse?.Invoke(this, new OnReceiveMessageClientEventArgs { Medical = problem });
 
 
@@ -126,7 +130,7 @@ namespace Tiroida
                 catch (Exception ex)
                 {
                     OnConnectionLost?.Invoke(this, EventArgs.Empty);
-                    Console.WriteLine("Wrong format");
+                    Console.WriteLine("Wrong format " + ex.Message);
                     break;
                 }
             }

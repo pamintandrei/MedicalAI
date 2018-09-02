@@ -62,7 +62,7 @@
             // 
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(26, 560);
+            this.metroLabel2.Location = new System.Drawing.Point(26, 473);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(163, 25);
             this.metroLabel2.TabIndex = 2;
@@ -71,7 +71,9 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(419, 402);
+            this.metroLabel3.CustomForeColor = true;
+            this.metroLabel3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.metroLabel3.Location = new System.Drawing.Point(438, 473);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(83, 19);
             this.metroLabel3.TabIndex = 3;
@@ -80,7 +82,9 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(419, 566);
+            this.metroLabel4.CustomForeColor = true;
+            this.metroLabel4.ForeColor = System.Drawing.Color.Red;
+            this.metroLabel4.Location = new System.Drawing.Point(438, 402);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(83, 19);
             this.metroLabel4.TabIndex = 4;
@@ -88,7 +92,7 @@
             // 
             // metroButton2
             // 
-            this.metroButton2.Location = new System.Drawing.Point(806, 577);
+            this.metroButton2.Location = new System.Drawing.Point(26, 31);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(95, 43);
             this.metroButton2.TabIndex = 6;
@@ -106,7 +110,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ResponseUserControl";
-            this.Size = new System.Drawing.Size(904, 623);
+            this.Size = new System.Drawing.Size(904, 511);
             this.Load += new System.EventHandler(this.ResponseUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

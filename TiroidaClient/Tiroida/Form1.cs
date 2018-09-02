@@ -24,8 +24,21 @@ namespace Tiroida
         private void Form1_Load(object sender, EventArgs e)
         {
             conn();
+
+            
             PersoanlDataForm dataform = new PersoanlDataForm();
+            //dataform.Anchor = AnchorStyles.Right;
             this.flowLayoutPanel1.Controls.Add(dataform);
+            
+            
+
+            /*
+            ResponseUserControl control = new ResponseUserControl();
+            this.flowLayoutPanel1.Controls.Add(control);
+            */
+            
+            
+
         }
 
         private void SetConnectionState(string text)

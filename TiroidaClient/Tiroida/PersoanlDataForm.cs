@@ -16,7 +16,7 @@ namespace Tiroida
     public partial class PersoanlDataForm : UserControl
     {
         delegate void SetGitAndEnableStatusCallBack(bool gifstatus, bool enablestatus);
-        delegate void SetInterfaceCallBack(UserControl usercontrol);
+        delegate void SetInterfaceCallBack(string chanse, string chanse_to_have_nothing);
         delegate string GetInfoCallBack(MetroComboBox combobox);
 
 
@@ -33,16 +33,21 @@ namespace Tiroida
             }
         }
 
-        private void SetInterface(UserControl usercontrol)
+        private void SetResponseInterface(string chanse, string chanse_to_have_nothing)
         {
-            FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
-            if (panel.InvokeRequired)
+
+            if (this.InvokeRequired)
             {
-                SetInterfaceCallBack callback = new SetInterfaceCallBack(SetInterface);
-                this.Invoke(callback, new object[] { usercontrol });
+                SetInterfaceCallBack callback = new SetInterfaceCallBack(SetResponseInterface);
+                this.Invoke(callback, new object[] { chanse, chanse_to_have_nothing });
             }
             else
             {
+                ResponseUserControl usercontrol = new ResponseUserControl();
+                usercontrol.SetCancer(chanse);
+                usercontrol.SetNonCancer(chanse_to_have_nothing);
+
+                FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
                 panel.Controls.Clear();
                 panel.Controls.Add(usercontrol);
             }
@@ -116,7 +121,7 @@ namespace Tiroida
                     return "f";
                     break;
                 default:
-                    return "?";
+                    return "f";
                     break;
             }
         }
@@ -199,8 +204,7 @@ namespace Tiroida
             
 
             string datatosend = JsonConvert.SerializeObject(data);
-            Console.WriteLine("date trimise: " + datatosend);
-            return;
+            
             if (ConnectionClass.ClientTCP != null)
             {
                 ConnectionClass.ClientTCP.SendContent(datatosend);
@@ -212,10 +216,7 @@ namespace Tiroida
         {
             
             SetGif(false, true);
-            ResponseUserControl usercontrol = new ResponseUserControl();
-            usercontrol.SetCancer(e.Medical.Chanse_To_Have.ToString());
-            usercontrol.SetNonCancer(e.Medical.Chanse_To_Have_Nothing.ToString());
-            SetInterface(usercontrol);
+            SetResponseInterface((e.Medical.Chanse_To_Have*100).ToString(), (e.Medical.Chanse_To_Have_Nothing*100).ToString());
             ConnectionClass.ClientTCP.OnResponse -= ClientTCP_OnResponse;
         }
 
