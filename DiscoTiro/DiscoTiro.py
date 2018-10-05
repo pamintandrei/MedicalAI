@@ -8,7 +8,7 @@ import analizemedicale
 import json
 from discord.ext import commands
 
-token = "NDkwNTI3MjQ0MjY4MDc3MDU2.Dn6m3A.90szlTFeuNU7dqK-GCnOj8wRuts"
+token = "NDk3Mzk5MzEzMzc5NDkxODgw.Dpem7A.UdQ36gwW4XoNEPNwwDG-A_Ow85Y"
 
 bot = commands.Bot(command_prefix="~")
 
