@@ -20,8 +20,13 @@ namespace Tiroida
         private Socket ClientSocket { get; set; }
         private int buffersize { get; set; }
 
+        public string Username;
+        public string Cookie;
 
         public event EventHandler<OnReceiveMessageClientEventArgs> OnResponse;
+        public event EventHandler<OnReceiveRegisterMessageArgs> OnRegisterResponse;
+        public event EventHandler<OnReceiveLoginMessageArgs> OnLoginResponse;
+        public event EventHandler<OnCodeVerifyResponseArgs> OnCodeVerifyResponse;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -97,7 +102,7 @@ namespace Tiroida
                          * 
                          * 
                          */
-
+                        Console.WriteLine("No action has been sent!");
 
                         return;
                     }
@@ -114,6 +119,35 @@ namespace Tiroida
 
                             Console.WriteLine("Problem with invoke shit");
                             OnResponse?.Invoke(this, new OnReceiveMessageClientEventArgs { Medical = problem });
+
+                            break;
+
+                        case "regresponse":
+                            Console.WriteLine("Receiving register response");
+                            OnRegisterResponse?.Invoke(this, new OnReceiveRegisterMessageArgs { errorcode = (int)obj["errorcode"], errormessage = (string)obj["errormessage"] });
+                            
+                            break;
+
+                        case "loginresponse":
+                            //Console.WriteLine("Receiving login response");
+                            Console.WriteLine("Code..... \n");
+                            string errorcodeestring = (string)obj["error"];
+                            Console.WriteLine(errorcodeestring);
+                            int errorcodee = Int32.Parse(errorcodeestring);
+                            Console.WriteLine("Cod de eroare: " + errorcodee);
+                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"] });
+
+                            if (errorcodee == 0)
+                            {
+                                this.Cookie = (string)obj["cookie"];
+                            }
+
+
+                            break;
+
+                        case "code_verify_response":
+                            Console.WriteLine("Receiving code_verify response");
+                            OnCodeVerifyResponse?.Invoke(this, new OnCodeVerifyResponseArgs { errorcode = (int)obj["errorcode"], errormessage = (string)obj["errormessage"]});
 
 
                             break;

@@ -26,7 +26,7 @@ namespace Tiroida
             conn();
 
             
-            PersoanlDataForm dataform = new PersoanlDataForm();
+            Login dataform = new Login();
             //dataform.Anchor = AnchorStyles.Right;
             this.flowLayoutPanel1.Controls.Add(dataform);
             

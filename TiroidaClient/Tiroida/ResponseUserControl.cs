@@ -53,7 +53,7 @@ namespace Tiroida
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            PersoanlDataForm form = new PersoanlDataForm();
+            PersonalDataForm form = new PersonalDataForm();
             SetInterface(form);
         }
     }

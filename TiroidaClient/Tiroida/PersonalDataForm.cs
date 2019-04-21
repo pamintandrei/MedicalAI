@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace Tiroida
 {
-    public partial class PersoanlDataForm : UserControl
+    public partial class PersonalDataForm : UserControl
     {
         delegate void SetGitAndEnableStatusCallBack(bool gifstatus, bool enablestatus);
         delegate void SetInterfaceCallBack(string chanse, string chanse_to_have_nothing);
@@ -67,7 +67,7 @@ namespace Tiroida
             }
         }
 
-        public PersoanlDataForm()
+        public PersonalDataForm()
         {
             InitializeComponent();
         }
@@ -168,7 +168,7 @@ namespace Tiroida
             if (ConnectionClass.ClientTCP == null)
             {
                 SetGif(false, true);
-                MessageBox.Show("Sunte-ti momentan offline","Tiroida");
+                MessageBox.Show("Sunteti momentan offline","Tiroida");
                 return;
             }
             
@@ -176,7 +176,7 @@ namespace Tiroida
 
             PersonalData data = new PersonalData();
 
-
+            data.action = "analize";
             data.Age = GetAge();
             data.Sex = GetSex();
             data.on_thyroxine = GetOption(this.metroComboBox2);

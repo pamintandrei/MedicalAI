@@ -13,7 +13,7 @@ namespace Tiroida
         {
         
         }
-
+        public string action { get; set; }
         public string Sex { get; set; }
         public string Age { get; set; }
         public string on_thyroxine { get; set; }

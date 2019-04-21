@@ -11,5 +11,8 @@ c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debu
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.pdb
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Newtonsoft.Json.dll
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Newtonsoft.Json.xml
-C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.PersoanlDataForm.resources
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.ResponseUserControl.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Login.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.PersonalDataForm.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.RegisterUserControl.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Codeinput.resources
