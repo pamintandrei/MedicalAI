@@ -16,3 +16,5 @@ C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debu
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.PersonalDataForm.resources
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.RegisterUserControl.resources
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Codeinput.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Viewtests.resources
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.Design.dll

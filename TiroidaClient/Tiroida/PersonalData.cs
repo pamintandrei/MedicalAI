@@ -39,5 +39,9 @@ namespace Tiroida
         public string FTI { get; set; }
         public string TBG_measured { get; set; }
         public string TBG { get; set; }
+        public string patient_name { get; set; }
+        public string cookie { get; set; }
+
+
     }
 }

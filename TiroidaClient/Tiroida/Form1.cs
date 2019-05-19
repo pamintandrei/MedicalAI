@@ -23,21 +23,25 @@ namespace Tiroida
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            conn();
+            
 
             
             Login dataform = new Login();
-            //dataform.Anchor = AnchorStyles.Right;
-            this.flowLayoutPanel1.Controls.Add(dataform);
+
+            //Console.WriteLine("Compiled");
             
-            
+            this.panel1.Controls.Add(dataform);
+
+            conn();
+
+
 
             /*
             ResponseUserControl control = new ResponseUserControl();
             this.flowLayoutPanel1.Controls.Add(control);
             */
-            
-            
+
+
 
         }
 

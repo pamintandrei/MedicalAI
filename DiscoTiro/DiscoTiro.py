@@ -8,7 +8,12 @@ import analizemedicale
 import json
 from discord.ext import commands
 
-token = "NDk3Mzk5MzEzMzc5NDkxODgw.Dpem7A.UdQ36gwW4XoNEPNwwDG-A_Ow85Y"
+
+with open("auth.json") as json_file:
+	config = json.load(json_file)
+	token = config["bot_token"]
+	webhook = config["bot_webhook_url"]
+
 
 bot = commands.Bot(command_prefix="~")
 
@@ -21,7 +26,7 @@ async def on_ready():
 async def analize(ctx):
 
     if(client.get_service_status() == False):
-        await bot.say("Service unavailable")
+        await ctx.send("Service unavailable")
         return
 
     entirecommand = ctx.message.content
@@ -59,7 +64,7 @@ async def analize(ctx):
 
     # sending data
     response = await client.SendData(jsonstring)
-    await bot.say('Medical response: ' + str(response.get_chanse()) + ' ' + str(response.get_rest()))
+    await ctx.send('Medical response: ' + str(response.get_chanse()) + ' ' + str(response.get_rest()))
 
 
 def on_server_connected(sender, eargs):

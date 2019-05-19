@@ -26,18 +26,18 @@ namespace Tiroida
         private void metroButton3_Click(object sender, EventArgs e)
         {
             PersonalDataForm persdata = new PersonalDataForm();
-            FlowLayoutPanel flowpanel = (FlowLayoutPanel)this.Parent;
-            flowpanel.Controls.Clear();
-            flowpanel.Controls.Add(persdata);
+            Panel Panel1 = (Panel)this.Parent;
+            Panel1.Controls.Clear();
+            Panel1.Controls.Add(persdata);
 
         }
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
             RegisterUserControl registercontrol = new RegisterUserControl();
-            FlowLayoutPanel flowpanel = (FlowLayoutPanel)this.Parent;
-            flowpanel.Controls.Clear();
-            flowpanel.Controls.Add(registercontrol);
+            Panel Panel1 = (Panel)this.Parent;
+            Panel1.Controls.Clear();
+            Panel1.Controls.Add(registercontrol);
         }
 
 
@@ -77,6 +77,7 @@ namespace Tiroida
 
         private void ClientTCP_OnLoginResponse(object sender, OnReceiveLoginMessageArgs e)
         {
+            Console.WriteLine("Login Response received: " + e.errorcode.ToString());
             if (e.errorcode == 2)
             {
                 OpenConfirmationCode(e.username);
@@ -93,6 +94,17 @@ namespace Tiroida
             LoginContent lg = new LoginContent(this.metroTextBox1.Text, this.metroTextBox2.Text);
             Thread th1 = new Thread(() => SendLoginMessage(lg));
             th1.Start();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+           // Console.WriteLine("Compiled");
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

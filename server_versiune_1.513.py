@@ -16,7 +16,7 @@ server.connect('smtp.gmail.com', 587)
 server.ehlo()
 server.starttls()
 server.ehlo()
-server.login('infoeducatietiroida','cartofel')
+server.login('infoeducatietiroida@gmail.com','cartofel')
 
 
 socklistener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -283,9 +283,18 @@ def registerfunction(recvdata):
 	
     return json_data
 
-	
-	
-	
+
+def doctoranalize(medic_id):
+
+    medic_id=([medic_id])
+    conn = sqlite3.connect('bazadedate.db')
+    conn.row_factory=sqlite3.Row
+    cur=conn.cursor()
+    cur.execute("SELECT * FROM analyzes_patient WHERE medic_id=?",medic_id)
+    data=[dict(row) for row in cur.fetchall()]
+    jsons=json.dumps(data)
+    return jsons
+doctoranalize(1)
 def confirm_code(recvdata):
     data = {}
     data['action'] = "code_verify_response"

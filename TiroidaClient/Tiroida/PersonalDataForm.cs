@@ -47,9 +47,9 @@ namespace Tiroida
                 usercontrol.SetCancer(chanse);
                 usercontrol.SetNonCancer(chanse_to_have_nothing);
 
-                FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
-                panel.Controls.Clear();
-                panel.Controls.Add(usercontrol);
+                Panel panel1 = (Panel)this.Parent;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(usercontrol);
             }
         }
 
@@ -74,7 +74,7 @@ namespace Tiroida
 
         private void PersoanlDataForm_Load(object sender, EventArgs e)
         {
-            
+            this.Dock = DockStyle.Fill;
         }
 
         private void metroTextBox1_Click(object sender, EventArgs e)
@@ -200,6 +200,8 @@ namespace Tiroida
             data.FTI = GetValue(this.numericUpDown5);
             data.TBG_measured = GetOption(this.metroComboBox17);
             data.TBG = GetValue(this.numericUpDown6);
+            data.patient_name = this.metroTextBox1.Text;
+            data.cookie = ConnectionClass.ClientTCP.Cookie;
 
             
 
@@ -266,6 +268,14 @@ namespace Tiroida
                 metroComboBox8.Enabled = false;
             else
                 metroComboBox8.Enabled = true;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Login lg = new Login();
+            Panel panel1 = (Panel)this.Parent;
+            panel1.Controls.Clear();
+            panel1.Controls.Add(lg);
         }
     }
 }

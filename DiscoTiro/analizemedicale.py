@@ -24,3 +24,6 @@ class personaldata:
         self.FTI = FTI
         self.TBG_measured = TBG_measured
         self.TBG = TBG
+        self.action = "analize"
+        self.cookie = ""
+        self.patinet_name = ""

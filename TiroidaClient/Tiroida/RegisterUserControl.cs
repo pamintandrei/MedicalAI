@@ -34,7 +34,7 @@ namespace Tiroida
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             Login logform = new Login();
-            FlowLayoutPanel f1 = (FlowLayoutPanel)this.Parent;
+            Panel f1 = (Panel)this.Parent;
             f1.Controls.Clear();
             f1.Controls.Add(logform);
 
@@ -115,6 +115,16 @@ namespace Tiroida
             {
                 MessageBox.Show("Parola nu coincide!", "Tiroida");
             }
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void RegisterUserControl_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
         }
     }
 }

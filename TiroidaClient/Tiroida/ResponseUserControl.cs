@@ -37,7 +37,7 @@ namespace Tiroida
 
         private void ResponseUserControl_Load(object sender, EventArgs e)
         {
-
+            this.Dock = DockStyle.Fill;
         }
 
         internal void SetCancer(string s)
