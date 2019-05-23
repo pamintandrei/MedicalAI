@@ -17,7 +17,7 @@ namespace Tiroida
 
         private void SetInterface(UserControl usercontrol)
         {
-            FlowLayoutPanel panel = (FlowLayoutPanel)this.Parent;
+            Panel panel = (Panel)this.Parent;
             if (panel.InvokeRequired)
             {
                 SetInterfaceCallBack callback = new SetInterfaceCallBack(SetInterface);
@@ -53,7 +53,7 @@ namespace Tiroida
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            PersonalDataForm form = new PersonalDataForm();
+            PersonalDataForm form = new PersonalDataForm(ConnectionClass.ClientTCP.isloged);
             SetInterface(form);
         }
     }

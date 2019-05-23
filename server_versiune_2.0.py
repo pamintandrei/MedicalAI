@@ -7,26 +7,25 @@ import sqlite3
 from datetime import datetime
 import secrets
 import smtplib
+import ssl
 datedeintrare=np.array([[]])
 datedeintrare.resize((2,23))
 
+context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+context.load_cert_chain('medicalai.cert', 'medicalai.key')
 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.connect('smtp.gmail.com', 587)
-server.ehlo()
-server.starttls()
-server.ehlo()
-server.login('infoeducatietiroida@gmail.com','cartofel')
-
-
-socklistener = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-socklistener.bind(('0.0.0.0', 5554))
-intrari=0
-socklistener.listen(1)
 
 
 allconnection = []
+
+
+def recvall(sock):
+	data = b''
+	while True:
+		data += sock.recv(4096)
+		if data.decode('UTF-8')[-5:] == "<EOF>":
+			return data
+
 
 
 def pusinbaza(utilizator,cur,conn):
@@ -90,13 +89,13 @@ def id_cookie(cookie):
 		
 
 		
-def inset_medical_tests(medic_id,data):
+def inset_medical_tests(medic_id, data, rezultat):
 	conn = sqlite3.connect('bazadedate.db')
 	cur = conn.cursor()
 	now=datetime.now()
 	timestamp=datetime.timestamp(now)
-	inser_data = ([None,data['patinet_name'], data['Sex'], data['Age'], data['on_thyroxine'], data['query_on_thyroxine'], data['on_antithyroid_medication'], data['thyroid_surgery'], data['query_hypothyroid'], data['query_hyperthyroid'], data['pregnant'], data['sick'], data['tumor'], data['lithium'], data['goitre'], data['TSH_measured'], data['TSH'], data['T3_measured'], data['T3'], data['TT4_measured'], data['TT4'], data['FTI_measured'], data['FTI'], data['TBG_measured'], data['TBG'], medic_id, timestamp ])
-	cur.execute("INSERT INTO analyzes_patient VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", inser_data)
+	inser_data = ([None,data['patient_name'], data['Sex'], data['Age'], data['on_thyroxine'], data['query_on_thyroxine'], data['on_antithyroid_medication'], data['thyroid_surgery'], data['query_hypothyroid'], data['query_hyperthyroid'], data['pregnant'], data['sick'], data['tumor'], data['lithium'], data['goitre'], data['TSH_measured'], data['TSH'], data['T3_measured'], data['T3'], data['TT4_measured'], data['TT4'], data['FTI_measured'], data['FTI'], data['TBG_measured'], data['TBG'], medic_id, timestamp, rezultat[0][0],rezultat[1][1] ])
+	cur.execute("INSERT INTO analyzes_patient VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", inser_data)
 	conn.commit()
 	
 	
@@ -202,11 +201,11 @@ def pamantfunction(recvdata):
     data['rezultat'] = rezultat
     json_data = json.dumps(data)
     tf.keras.backend.clear_session()
-    data['patinet_name']=recvdata['patinet_name']
+    data['patient_name']=recvdata['patient_name']
 	
     id_medic = id_cookie(recvdata['cookie'])
     if id_medic != -1:
-        inset_medical_tests(id_medic, recvdata)
+        inset_medical_tests(id_medic, recvdata, rezultat)
         print('ceva')	
     print(id_medic)
     print(rezultat)
@@ -291,10 +290,33 @@ def doctoranalize(medic_id):
     conn.row_factory=sqlite3.Row
     cur=conn.cursor()
     cur.execute("SELECT * FROM analyzes_patient WHERE medic_id=?",medic_id)
-    data=[dict(row) for row in cur.fetchall()]
+    data = {}
+    data['results'] = [dict(row) for row in cur.fetchall()]
+    data['action'] = 'results'
+    data['error'] = 0
     jsons=json.dumps(data)
     return jsons
-doctoranalize(1)
+print(doctoranalize(1))
+
+
+def getanalyze(recvdata):
+	
+	medic_id = id_cookie(recvdata['cookie'])
+	if medic_id != -1:
+		results = doctoranalize(medic_id)
+	else:
+		results['action'] = 'results'
+		results['error'] = 1
+		results['errormsg'] = 'Nu sunteti logat'
+		results = json.dumps(results)
+		
+	return results
+		
+		
+		
+	
+	
+
 def confirm_code(recvdata):
     data = {}
     data['action'] = "code_verify_response"
@@ -315,15 +337,14 @@ def confirm_code(recvdata):
     return json_data
 
 def handler(c, a):
-
-
     while True:
-        data = c.recv(4096)
+        data = recvall(c)
         if not data:
             break
-
-        stringjson = data.decode('utf-8')
-
+			
+        stringjsonEOF = data.decode('UTF-8')
+        stringjson  = stringjsonEOF[:-5]
+		
         loadedjson = json.loads(stringjson)
 		
 		
@@ -336,19 +357,40 @@ def handler(c, a):
             response = login(loadedjson)
         if(loadedjson['action'] == "code_verify"):
             response = confirm_code(loadedjson)
+        if(loadedjson['action'] == "getresult"):
+            response = getanalyze(loadedjson)
+		
+		
+		
+        response += "<EOF>"
 		
         c.send(response.encode())
 
     
     print("Lost connection: " + str(a))
 
-print("am online")
-while True:
-    c, a = socklistener.accept()
-    allconnection.append(c)
 
-    newthread = threading.Thread(target=handler, args=(c, a))
-    newthread.daemon = True
-    newthread.start()
+	
+def recvall(sock):
+	data = b''
+	while True:
+		data += sock.recv(4096)
+		if data.decode('UTF-8')[-5:] == "<EOF>":
+			return data
+	
 
-    print("New connection available: " + str(a))
+
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0) as sock:
+	sock.bind(('0.0.0.0', 5554))
+	sock.listen(5)
+	print("===Server Online===")
+	while True:
+		c, a = sock.accept()
+		encryptionconn = context.wrap_socket(c, server_side = True)
+		newthread = threading.Thread(target=handler, args=(encryptionconn, a))
+		newthread.daemon = True
+		newthread.start()
+		allconnection.append(encryptionconn)
+		print("New connection available: " + str(a))
+		

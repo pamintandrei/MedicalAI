@@ -91,6 +91,7 @@
     <Compile Include="OnReceiveLoginMessageArgs.cs" />
     <Compile Include="OnReceiveMessageClientEventArgs.cs" />
     <Compile Include="OnReceiveRegisterMessageArgs.cs" />
+    <Compile Include="OnReceiveResultArgs.cs" />
     <Compile Include="PersonalDataForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +115,8 @@
     <Compile Include="ResponseUserControl.Designer.cs">
       <DependentUpon>ResponseUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResultPatient.cs" />
+    <Compile Include="ResultReqContent.cs" />
     <Compile Include="Viewtests.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,6 +143,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RegisterUserControl.resx">
       <DependentUpon>RegisterUserControl.cs</DependentUpon>
@@ -150,6 +154,7 @@
     <EmbeddedResource Include="Viewtests.resx">
       <DependentUpon>Viewtests.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="config.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,6 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\78-782366_transparent-logout-button-icon-clipart.jpg" />
+    <None Include="Resources\Logout.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

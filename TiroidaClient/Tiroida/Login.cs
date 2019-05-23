@@ -15,7 +15,7 @@ namespace Tiroida
     public partial class Login : UserControl
     {
         delegate void OpenFormCallBack(string username);
-
+        delegate void OpenPersonalDataCallback(bool isloged);
 
 
         public Login()
@@ -25,7 +25,7 @@ namespace Tiroida
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            PersonalDataForm persdata = new PersonalDataForm();
+            PersonalDataForm persdata = new PersonalDataForm(false);
             Panel Panel1 = (Panel)this.Parent;
             Panel1.Controls.Clear();
             Panel1.Controls.Add(persdata);
@@ -75,6 +75,23 @@ namespace Tiroida
         }
 
 
+        private void OpenPersonalData(bool isloged)
+        {
+            if (this.InvokeRequired)
+            {
+                OpenPersonalDataCallback ofcb = new OpenPersonalDataCallback(OpenPersonalData);
+                this.Invoke(ofcb, new object[] { isloged });
+            }
+            else
+            {
+                PersonalDataForm form = new PersonalDataForm(isloged);
+                Panel p1 =  (Panel)this.Parent;
+                p1.Controls.Clear();
+                p1.Controls.Add(form);
+            }
+        }
+
+
         private void ClientTCP_OnLoginResponse(object sender, OnReceiveLoginMessageArgs e)
         {
             Console.WriteLine("Login Response received: " + e.errorcode.ToString());
@@ -84,7 +101,10 @@ namespace Tiroida
             }
             else
             {
-                MessageBox.Show(e.errormessage, "Tiroida");
+                if (e.errorcode == 0)
+                {
+                    OpenPersonalData(true);
+                }
             }
             ConnectionClass.ClientTCP.OnLoginResponse -= ClientTCP_OnLoginResponse;
         }

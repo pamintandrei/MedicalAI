@@ -43,6 +43,7 @@ namespace Tiroida
             }
             else
             {
+                Application.UseWaitCursor = false;
                 ResponseUserControl usercontrol = new ResponseUserControl();
                 usercontrol.SetCancer(chanse);
                 usercontrol.SetNonCancer(chanse_to_have_nothing);
@@ -55,26 +56,37 @@ namespace Tiroida
 
         private void SetGif(bool gifstatus, bool enablestatus)
         {
-            if (this.pictureBox1.InvokeRequired || this.metroButton1.InvokeRequired)
+            if (this.metroButton1.InvokeRequired)
             {
                 SetGitAndEnableStatusCallBack callback = new SetGitAndEnableStatusCallBack(SetGif);
                 this.Invoke(callback, new object[] { gifstatus, enablestatus });
             }
             else
             {
-                this.pictureBox1.Visible = gifstatus;
+                
                 this.metroButton1.Enabled = enablestatus;
             }
         }
 
-        public PersonalDataForm()
+        public PersonalDataForm(bool loged)
         {
             InitializeComponent();
+
+            if (loged)
+            {
+                pictureBox2.Image = new Bitmap(Properties.Resources.logout);
+            }
+            else
+            {
+                this.metroButton2.Enabled = false;
+            }
+
         }
 
         private void PersoanlDataForm_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
+            //pictureBox2.Image = new Bitmap(Properties.Resources.logout);
         }
 
         private void metroTextBox1_Click(object sender, EventArgs e)
@@ -84,8 +96,11 @@ namespace Tiroida
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            this.pictureBox1.Visible = true;
+            
             this.metroButton1.Enabled = false;
+            this.metroButton2.Enabled = false;
+            this.pictureBox2.Enabled = false;
+            Application.UseWaitCursor = true;
             Thread th = new Thread(SendPersonalData);
             th.Start();
             //SendPersonalData();
@@ -276,6 +291,30 @@ namespace Tiroida
             Panel panel1 = (Panel)this.Parent;
             panel1.Controls.Clear();
             panel1.Controls.Add(lg);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            if (ConnectionClass.ClientTCP == null)
+            {
+                //SetGif(false, true);
+                MessageBox.Show("Sunteti momentan offline", "Tiroida");
+                return;
+            }
+
+
+            Viewtests vt = new Viewtests();
+            Panel pan1 =  (Panel)this.Parent;
+            pan1.Controls.Clear();
+            pan1.Controls.Add(vt);
+
+
+
         }
     }
 }
