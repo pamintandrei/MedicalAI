@@ -77,9 +77,14 @@ Acesta are aceasi structura ca și pagina de analize a aplicatiei de pe Windows.
 ![Image](images/webprev.png) 
 
 # Utilitate
-Din această prezentare se poate observă asistență dată de softul creat. Folosind aceast program un client poate verifică necesitatea planificării unui control medical, astfel reducând procentul de pacienți ce necesită verificare. 
-Un alt avantaj adus de acest soft este prezența pe o multitudine de platforme, necesitând doar o conectiune la internet. Clientul este disponibil pe sistemul de operare Windows.
+Din această prezentare se poate observă asistență dată de softul creat. Folosind aceast program un client poate verifică necesitatea planificării unui control medical, astfel reducând procentul de pacienți ce necesită verificare.
+
+Un alt avantaj adus de acest soft este prezența pe o multitudine de platforme, necesitând doar o conectiune la internet.
+
+Clientul este disponibil pe sistemul de operare Windows.
+
 Bot-ul este disponibil pe discord care are ca și platforme susținute:MAC,iOS,Windows,Linux,Android.
+
 Site-ul web este disponibil pe orice aplicație browser. 
 
 ![Image](images/windows.jpg) 
