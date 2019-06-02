@@ -90,7 +90,11 @@ Site-ul web este disponibil pe orice aplicație browser.
 
 # Oportunitati de dezvoltare
 Primul pas pe care vrem sa il facem e sa introducem funcționalitatea doctorilor de a vedea si interacționa cu analizele pacienților.
+
 O alta funcție ar fi cea de a putea planifica programările direct in aplicație. 
+
 Dupa finalizarea bazei programului o sa adăugăm mai mulți algoritmi de detectare a afecțiunilor bazate pe analize. 
+
 Grafica clientului de windows trebuie imbunatațita. 
+
 Trebuie sa adăugăm funcționalitațile aplicației windows si pe site-ul web. 
