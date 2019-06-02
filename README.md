@@ -41,7 +41,9 @@ Dupa ce a fost invitat, pentru a trimite analize spre interpretare se va folosi 
 
 ` \~analize -age? -sex? -on\_thyroxine? -query\_on\_thyroxin? -on\_antythyroid\_medication? -thyroid\_surgery? -query\_hypothyroid? -query\_hyperthyroid? -pregnant? -sick? -tumor? -lithium? -goitre? -TSH\_measured? -T3\_measured? -TT4\_measured? -FTI\_measured? -TBG\_measured? -TSH? -T3? -TT4? -FTI? -TBG? `
 
-Toate semnele de întrebare trebuie înlocuite cu valori corespunzătoare,prezentate în descrierea bot-ului ![Image](images/discordprev.png) 
+Toate semnele de întrebare trebuie înlocuite cu valori corespunzătoare,prezentate în descrierea bot-ului 
+
+![Image](images/discordprev.png) 
 
 ## Clientul de Windows
 Pentru a folosi clientul de windows trebuie descărcat proiectul de pe următorul github: https://github.com/pamintandrei/Tiroidaptinfoed/tree/master/TiroidaClient
@@ -72,11 +74,23 @@ Pagina de vizualizare a analizelor.Aceasta se activeaza doar cand utilizatorul e
 ## Site-ul web 
 Acesta are aceasi structura ca și pagina de analize a aplicatiei de pe Windows. 
 
+![Image](images/webprev.png) 
+
 # Utilitate
-Din această prezentare se poate observă asistență dată de softul creat. Folosind aceast program un client poate verifică necesitatea planificării unui control medical, astfel reducând procentul de pacienți ce necesită verificare. Un alt avantaj adus de acest soft este prezența pe o multitudine de platforme, necesitând doar o conectiune la internet. Clientul este disponibil pe sistemul de operare Windows.Bot-ul este disponibil pe discord care are ca și platforme susținute:MAC,iOS,Windows,Linux,Android.Site-ul web este disponibil pe orice aplicație browser. ![Image](C:\xampp\htdocs\docx2md-master\images\image9.jpeg) ![Image](C:\xampp\htdocs\docx2md-master\images\image10.jpeg) ![Image](C:\xampp\htdocs\docx2md-master\images\image11.png) 
+Din această prezentare se poate observă asistență dată de softul creat. Folosind aceast program un client poate verifică necesitatea planificării unui control medical, astfel reducând procentul de pacienți ce necesită verificare. 
+Un alt avantaj adus de acest soft este prezența pe o multitudine de platforme, necesitând doar o conectiune la internet. Clientul este disponibil pe sistemul de operare Windows.
+Bot-ul este disponibil pe discord care are ca și platforme susținute:MAC,iOS,Windows,Linux,Android.
+Site-ul web este disponibil pe orice aplicație browser. 
+
+![Image](images/windows.jpg) 
+
+![Image](images/discord.jpg) 
+
+![Image](images/platform.png) 
+
 # Oportunitati de dezvoltare
 Primul pas pe care vrem sa il facem e sa introducem funcționalitatea doctorilor de a vedea si interacționa cu analizele pacienților.
 O alta funcție ar fi cea de a putea planifica programările direct in aplicație. 
 Dupa finalizarea bazei programului o sa adăugăm mai mulți algoritmi de detectare a afecțiunilor bazate pe analize. 
 Grafica clientului de windows trebuie imbunatațita. 
-Trebuie sa adăugăm funcționalitațile aplicației windows si pe site-ul web. [1]: https://discordapp.com/oauth2/authorize?client_id=497399313379491880&scope=bot&permissions=0 [2]: https://github.com/pamintandrei/Tiroidaptinfoed/tree/master/TiroidaClient
+Trebuie sa adăugăm funcționalitațile aplicației windows si pe site-ul web. 
