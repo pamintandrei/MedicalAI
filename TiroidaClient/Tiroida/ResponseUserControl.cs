@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Tiroida
@@ -13,7 +14,7 @@ namespace Tiroida
     public partial class ResponseUserControl : UserControl
     {
         delegate void SetInterfaceCallBack(UserControl usercontrol);
-
+        private int cancervalue;
 
         private void SetInterface(UserControl usercontrol)
         {
@@ -33,16 +34,28 @@ namespace Tiroida
         public ResponseUserControl()
         {
             InitializeComponent();
+            this.cancervalue = 100;
+            this.circularProgressBar1.Minimum = 0;
+            this.circularProgressBar1.Maximum = 100;
+            //this.circularProgressBar1.Value = 100;
         }
 
         private void ResponseUserControl_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
+
         }
+
+        internal void SetAnimateCancer(int cancervalue)
+        {
+            this.cancervalue = cancervalue;
+            this.circularProgressBar1.Value = cancervalue;
+        }
+
 
         internal void SetCancer(string s)
         {
-            this.metroLabel3.Text = s;
+           // this.metroLabel3.Text = s;
         }
 
 
@@ -55,6 +68,11 @@ namespace Tiroida
         {
             PersonalDataForm form = new PersonalDataForm(ConnectionClass.ClientTCP.isloged);
             SetInterface(form);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

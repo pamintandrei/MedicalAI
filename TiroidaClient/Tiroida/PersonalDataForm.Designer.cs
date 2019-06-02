@@ -581,9 +581,9 @@
             this.metroLabel20.AutoSize = true;
             this.metroLabel20.Location = new System.Drawing.Point(3, 480);
             this.metroLabel20.Name = "metroLabel20";
-            this.metroLabel20.Size = new System.Drawing.Size(181, 19);
+            this.metroLabel20.Size = new System.Drawing.Size(191, 19);
             this.metroLabel20.TabIndex = 41;
-            this.metroLabel20.Text = "Pacientul i s-a verificat FTI-ul?";
+            this.metroLabel20.Text = "Pacientului i s-a verificat FTI-ul?";
             // 
             // metroComboBox16
             // 

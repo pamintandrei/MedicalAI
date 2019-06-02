@@ -47,6 +47,8 @@ namespace Tiroida
                 ResponseUserControl usercontrol = new ResponseUserControl();
                 usercontrol.SetCancer(chanse);
                 usercontrol.SetNonCancer(chanse_to_have_nothing);
+                usercontrol.SetAnimateCancer((int)double.Parse(chanse_to_have_nothing));
+
 
                 Panel panel1 = (Panel)this.Parent;
                 panel1.Controls.Clear();
@@ -287,6 +289,10 @@ namespace Tiroida
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+
+
+
+
             Login lg = new Login();
             Panel panel1 = (Panel)this.Parent;
             panel1.Controls.Clear();

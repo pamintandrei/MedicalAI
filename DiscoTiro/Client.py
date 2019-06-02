@@ -5,6 +5,7 @@ import json
 import response
 import errno
 import time
+import ssl
 
 class TcpClient:
     def __init__(self, ip, port, buffersize = 10000):
@@ -14,14 +15,17 @@ class TcpClient:
         self.ip = ip
         self.port = port
         self.buffersize = buffersize
+		self.sslcontext = ssl.SSLContext(cert_reqs=ssl.CERT_OPTIONAL)
         self.mainsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = False
+		
 
     def DoConnectionUntilConnected(self):
         self.mainsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         while True:
             try:
                 self.mainsocket.connect((self.ip, self.port))
+				self.encryptionconn = self.sslcontext.wrap_socket(self.mainsocket, server_hostname="MedicalAI")
                 self.connected = True
                 self.on_connected(self)
                 break
@@ -38,14 +42,17 @@ class TcpClient:
 
     async def SendData(self, data):
         try:
-            self.mainsocket.send(data.encode())
-            recvdata = self.mainsocket.recv(self.buffersize)
-
+			data += "<EOF>"
+            self.encryptionconn.send(data.encode())
+            recvdata = await self.RecvData()
+			recvdata = recvdata.decode('UTF-8')
             if not recvdata:
                 self.connected = False
                 return 1
-
-            jsonobj = json.loads(recvdata.decode('utf-8'))
+			
+			
+			recvdata = recvdata[:-5]
+            jsonobj = json.loads(recvdata)
             if jsonobj['action'] == 'response':
                 return response.response(jsonobj["rezultat"][0][0], jsonobj["rezultat"][1][1])
 
@@ -55,6 +62,14 @@ class TcpClient:
             self.mainsocket.close()
             self.on_connection_lost(self)
             return 1
+			
+			
+	async def RecvData(self):
+		data = b''
+		while True:
+			data += self.encryptionconn.recv(4096)
+			if data.decode('UTF-8')[-5:] == "<EOF>":
+				return data
 
 """
     def Receiver(self):

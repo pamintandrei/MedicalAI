@@ -248,13 +248,14 @@ namespace Tiroida
                             Console.WriteLine(errorcodeestring);
                             int errorcodee = Int32.Parse(errorcodeestring);
                             Console.WriteLine("Cod de eroare: " + errorcodee);
-                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"] });
-
+                            
                             if (errorcodee == 0)
                             {
                                 this.Cookie = (string)obj["cookie"];
+                                this.isloged = true;
                             }
 
+                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"] });
 
                             break;
 
@@ -271,7 +272,9 @@ namespace Tiroida
 
                             if (errorcode == 0)
                             {
+                                
                                 OnReceiveResultArgs args = JsonConvert.DeserializeObject<OnReceiveResultArgs>(response);
+                                
                                 OnReceiveResults?.Invoke(this, args);
                             }
                             else
@@ -297,6 +300,7 @@ namespace Tiroida
                 {
                     OnConnectionLost?.Invoke(this, EventArgs.Empty);
                     Console.WriteLine("Wrong format " + ex.Message);
+                    this.isloged = false;
                     break;
                 }
             }

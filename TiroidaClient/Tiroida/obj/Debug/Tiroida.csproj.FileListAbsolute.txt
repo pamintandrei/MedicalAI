@@ -3,7 +3,6 @@ c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debu
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\Tiroida.pdb
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.dll
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.Fonts.dll
-c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csprojResolveAssemblyReference.cache
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Tiroida.resources
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Properties.Resources.resources
 c:\users\foxblood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csproj.GenerateResource.Cache
@@ -18,3 +17,8 @@ C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debu
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Codeinput.resources
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.Viewtests.resources
 C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\MetroFramework.Design.dll
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\CircularProgressBar.dll
+C:\Users\FoxBlood\documents\visual studio 2015\Projects\Tiroida\Tiroida\bin\Debug\WinFormAnimation.dll
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csproj.CoreCompileInputs.cache
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csproj.CopyComplete
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Debug\Tiroida.csprojAssemblyReference.cache

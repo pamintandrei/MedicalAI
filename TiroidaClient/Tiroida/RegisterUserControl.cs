@@ -54,15 +54,21 @@ namespace Tiroida
             string jsonstring = JsonConvert.SerializeObject(content);
             if (ConnectionClass.ClientTCP != null)
             {
-                ConnectionClass.ClientTCP.SendContent(jsonstring);
                 ConnectionClass.ClientTCP.OnRegisterResponse += ClientTCP_OnRegisterResponse;
+                ConnectionClass.ClientTCP.SendContent(jsonstring);
+                
             }
         }
-
+        private bool responseget = false;
         private void ClientTCP_OnRegisterResponse(object sender, OnReceiveRegisterMessageArgs e)
         {
-            MessageBox.Show(e.errormessage, "Tiroida");
+            if (!this.responseget)
+            {
+                MessageBox.Show(e.errormessage, "Tiroida");
+                this.responseget = true;
+            }
             ConnectionClass.ClientTCP.OnRegisterResponse -= ClientTCP_OnRegisterResponse;
+            this.responseget = false;
         }
 
         private bool ValidEmail(string email)

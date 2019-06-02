@@ -91,21 +91,33 @@ namespace Tiroida
             }
         }
 
-
+        private bool isgot = false;
         private void ClientTCP_OnLoginResponse(object sender, OnReceiveLoginMessageArgs e)
         {
             Console.WriteLine("Login Response received: " + e.errorcode.ToString());
-            if (e.errorcode == 2)
+            if (!isgot)
             {
-                OpenConfirmationCode(e.username);
-            }
-            else
-            {
-                if (e.errorcode == 0)
+                Console.WriteLine("Yeah, here we go");
+                isgot = true;
+                if (e.errorcode == 2)
                 {
-                    OpenPersonalData(true);
+                    OpenConfirmationCode(e.username);
                 }
+                else
+                {
+                    if (e.errorcode == 0)
+                    {
+                        
+                        OpenPersonalData(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nume de utilizator sau parola incorecta", "Tiroida");
+                    }
+                }
+                
             }
+            this.isgot = false;
             ConnectionClass.ClientTCP.OnLoginResponse -= ClientTCP_OnLoginResponse;
         }
 

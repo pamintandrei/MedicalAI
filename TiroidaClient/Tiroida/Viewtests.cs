@@ -14,6 +14,7 @@ namespace Tiroida
 {
     public partial class Viewtests : UserControl
     {
+        delegate void SetDisplayCallBack(OnReceiveResultArgs e);
         public Viewtests()
         {
             InitializeComponent();
@@ -22,7 +23,7 @@ namespace Tiroida
         private void Viewtests_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            
+            this.SendGetResultData();
         }
 
 
@@ -36,12 +37,28 @@ namespace Tiroida
 
         }
 
+
+        private void DisplayResult(OnReceiveResultArgs e)
+        {
+            if (this.InvokeRequired)
+            {
+                SetDisplayCallBack callback = new SetDisplayCallBack(DisplayResult);
+                this.Invoke(callback, new object[] { e });
+            }
+            else
+            {
+                foreach (ResultPatient result in e.results)
+                {
+                    this.metroGrid1.Rows.Add(result.name_patient, result.Sex, result.Age, result.on_thyroxine, result.query_on_thyroxine, result.on_antithyroid_medication, result.tumor, result.FTI_measured, result.FTI, result.thyroid_surgery, result.query_hypothyroid, result.query_hyperthyroid, result.pregnant, result.sick, result.lithium, result.TBG_measured, result.TBG, result.goitre, result.TSH_measured, result.TSH, result.T3_measured, result.T3, result.TT4_measured, result.TT4, result.positive, result.negative);
+                }
+            }
+
+        }
+
+
         private void ClientTCP_OnReceiveResults(object sender, OnReceiveResultArgs e)
         {
-            foreach (ResultPatient result in e.results)
-            {
-                this.metroGrid1.Rows.Add(result.name_patient,result.Sex, result.Age, result.on_thyroxine, result.query_on_thyroxine, result.on_antithyroid_medication, result.tumor, result.FTI_measured, result.FTI, result.thyroid_surgery,result.query_hypothyroid,result.query_hyperthyroid,result.pregnant, result.sick,result.lithium, result.TBG_measured, result.TBG, result.goitre, result.TSH_measured, result.TSH, result.T3_measured, result.T3, result.TT4_measured, result.TT4);
-            }
+            DisplayResult(e);
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)

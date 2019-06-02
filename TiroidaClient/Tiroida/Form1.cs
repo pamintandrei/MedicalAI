@@ -21,6 +21,26 @@ namespace Tiroida
             InitializeComponent();
         }
 
+
+        private void setcookie()
+        {
+            string cookiejson = System.IO.File.ReadAllText(@"cookie.json");
+            JObject config = JObject.Parse(cookiejson);
+
+            if (string.IsNullOrEmpty((string)config["cookie"]))
+            {
+                ConnectionClass.ClientTCP.isloged = false;
+            }
+            else
+            {
+                ConnectionClass.ClientTCP.isloged = true;
+                ConnectionClass.ClientTCP.Cookie = (string)config["cookie"];
+            }
+
+
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -31,9 +51,9 @@ namespace Tiroida
             //Console.WriteLine("Compiled");
             
             this.panel1.Controls.Add(dataform);
-
+            //dataform.SetAnimateCancer(76);
             conn();
-
+            
 
 
             /*
@@ -113,6 +133,7 @@ namespace Tiroida
                 {
                     this.SetConnectionState("Connected");
                     ConnectionClass.ClientTCP = tcpclient;
+                    setcookie();
 
 
                     break;
