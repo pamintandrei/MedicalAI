@@ -7,6 +7,8 @@
 - Horovei Iulian-Valentin 
 # Motivația lucrării 
 Una din problemele actuale în domeniul sănătății este presiunea adusă organelor responsabile atât de influxul mare de pacienți cât și de numărul redus de personal. Rezultatul principal este creșterea timpului de așteptare pentru pacienți. Rolul principal al acestei lucrări a fost introducerea unei methode de fluidizare și reducere a timpului petrecut de către pacienți prin asistarea procedeului de procesare al analizelor endocrinologice. Putem exemplifica acesta folosind următorul scenariu. În momentul actual este estimat că aproximativ 83000 de pacienți au fost diagnosticați cu diverse boli ale tiroidei. Un alt element cunoscut este faptul că aprox. 40% din populația lumii este expusă deficitului de iod, un factor cu influență negativă asupra tiroidei. În cazul unui eveniment ce ar necesită un control obligatoriu, cum a fost cazul exploziei de la Cernobîl, putem specula stresul adăugat sistemelor de procesare.
+
+
 ![alt text](images/medai.jpg) 
 # Tehnologii folosite 
 ## Pentru intelgienta arficiala au fost folosite:
