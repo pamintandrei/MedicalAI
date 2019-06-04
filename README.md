@@ -23,8 +23,8 @@ Una din problemele actuale în domeniul sănătății este presiunea adusă orga
 - SSL 
 ## Pentru bot-ul de discord au fost folosite:
 - Python3
--discord
--SSl
+- discord
+- SSl
 ## Pentru site au fost folosite: 
 - HTML
 - PHP
