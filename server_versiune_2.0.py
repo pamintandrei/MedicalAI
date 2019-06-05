@@ -13,7 +13,12 @@ datedeintrare.resize((2,23))
 
 context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
 context.load_cert_chain('medicalai.cert', 'medicalai.key')
-
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.connect('smtp.gmail.com', 587)
+server.ehlo()
+server.starttls()
+server.ehlo()
+server.login('','')
 
 
 allconnection = []
@@ -155,7 +160,7 @@ def pamantfunction(recvdata):
     neural_net=tf.keras.models.load_model('tester_versiune2.0.h5')
     intrari=1
 
-
+    print(1)
         
     datesauintrebare(recvdata['Age'],0)   
         
@@ -209,6 +214,7 @@ def pamantfunction(recvdata):
         print('ceva')	
     print(id_medic)
     print(rezultat)
+    print(2)
     return json_data
         
     '''
@@ -344,7 +350,7 @@ def handler(c, a):
 			
         stringjsonEOF = data.decode('UTF-8')
         stringjson  = stringjsonEOF[:-5]
-		
+
         loadedjson = json.loads(stringjson)
 		
 		
