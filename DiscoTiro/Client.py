@@ -15,7 +15,7 @@ class TcpClient:
         self.ip = ip
         self.port = port
         self.buffersize = buffersize
-		self.sslcontext = ssl.SSLContext(cert_reqs=ssl.CERT_OPTIONAL)
+        self.sslcontext = ssl.SSLContext(cert_reqs=ssl.CERT_OPTIONAL)
         self.mainsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = False
 		
@@ -25,7 +25,7 @@ class TcpClient:
         while True:
             try:
                 self.mainsocket.connect((self.ip, self.port))
-				self.encryptionconn = self.sslcontext.wrap_socket(self.mainsocket, server_hostname="MedicalAI")
+                self.encryptionconn = self.sslcontext.wrap_socket(self.mainsocket, server_hostname="MedicalAI")
                 self.connected = True
                 self.on_connected(self)
                 break
@@ -42,16 +42,16 @@ class TcpClient:
 
     async def SendData(self, data):
         try:
-			data += "<EOF>"
+            data += "<EOF>"
             self.encryptionconn.send(data.encode())
             recvdata = await self.RecvData()
-			recvdata = recvdata.decode('UTF-8')
+            recvdata = recvdata.decode('UTF-8')
             if not recvdata:
                 self.connected = False
                 return 1
 			
 			
-			recvdata = recvdata[:-5]
+            recvdata = recvdata[:-5]
             jsonobj = json.loads(recvdata)
             if jsonobj['action'] == 'response':
                 return response.response(jsonobj["rezultat"][0][0], jsonobj["rezultat"][1][1])
@@ -64,12 +64,12 @@ class TcpClient:
             return 1
 			
 			
-	async def RecvData(self):
-		data = b''
-		while True:
-			data += self.encryptionconn.recv(4096)
-			if data.decode('UTF-8')[-5:] == "<EOF>":
-				return data
+    async def RecvData(self):
+        data = b''
+        while True:
+            data += self.encryptionconn.recv(4096)
+            if data.decode('UTF-8')[-5:] == "<EOF>":
+                return data
 
 """
     def Receiver(self):

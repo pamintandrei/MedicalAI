@@ -26,4 +26,4 @@ class personaldata:
         self.TBG = TBG
         self.action = "analize"
         self.cookie = ""
-        self.patien_name = ""
+        self.patient_name = ""

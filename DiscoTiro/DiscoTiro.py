@@ -64,7 +64,8 @@ async def analize(ctx):
 
     # sending data
     response = await client.SendData(jsonstring)
-    await ctx.send('Medical response: \n ' + str(response.get_chanse()) + ' \n ' + str(response.get_rest()))
+    print(response)
+    await ctx.send('Sansa de hypotiroida: ' + str(response.get_rest()))
 
 
 def on_server_connected(sender, eargs):
