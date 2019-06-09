@@ -32,6 +32,7 @@ namespace Tiroida
         private int buffersize { get; set; }
         private Hashtable certificateErrors = new Hashtable();
         private SslStream sslStream;
+        private bool rememberme;
         
 
 
@@ -62,6 +63,16 @@ namespace Tiroida
             this.buffersize = buffersize;
             this.isloged = false;
             this.SERVERNAME = "MedicalAI";
+        }
+
+        public ClientTCP(string ServerIP, int ServerPort, int buffersize, bool rememberme)
+        {
+            this.ServerIP = ServerIP;
+            this.ServerPort = ServerPort;
+            this.buffersize = buffersize;
+            this.isloged = false;
+            this.SERVERNAME = "MedicalAI";
+            this.rememberme = rememberme;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize, string SERVERNAME)

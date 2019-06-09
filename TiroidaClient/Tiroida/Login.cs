@@ -75,6 +75,16 @@ namespace Tiroida
         }
 
 
+        private void SaveCookie()
+        {
+            cookieobj cookie = new cookieobj(ConnectionClass.ClientTCP.Cookie);
+            string cookiesave = JsonConvert.SerializeObject(cookie);
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"cookie.json", false);
+            writer.Write(cookiesave);
+            writer.Close();
+        }
+
+
         private void OpenPersonalData(bool isloged)
         {
             if (this.InvokeRequired)
@@ -84,6 +94,12 @@ namespace Tiroida
             }
             else
             {
+                if (this.checkBox1.Checked)
+                {
+                    SaveCookie();
+                }
+
+
                 PersonalDataForm form = new PersonalDataForm(isloged);
                 Panel p1 =  (Panel)this.Parent;
                 p1.Controls.Clear();
@@ -109,6 +125,7 @@ namespace Tiroida
                     {
                         
                         OpenPersonalData(true);
+
                     }
                     else
                     {

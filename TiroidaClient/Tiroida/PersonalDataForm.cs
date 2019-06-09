@@ -287,9 +287,21 @@ namespace Tiroida
                 metroComboBox8.Enabled = true;
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void RemoveCookie()
         {
 
+            cookieobj cookie = new cookieobj("");
+            string cookiesave = JsonConvert.SerializeObject(cookie);
+            Console.WriteLine(cookiesave);
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"cookie.json",false);
+            writer.Write(cookiesave);
+            writer.Close();
+        }
+
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            RemoveCookie();
 
 
 

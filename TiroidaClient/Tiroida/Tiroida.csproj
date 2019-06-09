@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="CodeInputContent.cs" />
     <Compile Include="ConnectionClass.cs" />
+    <Compile Include="cookieobj.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

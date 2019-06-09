@@ -8,7 +8,6 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\bin\Rele
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\bin\Release\Newtonsoft.Json.dll
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\bin\Release\WinFormAnimation.dll
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\bin\Release\Newtonsoft.Json.xml
-C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.csprojAssemblyReference.cache
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.Codeinput.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.Tiroida.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.Login.resources
@@ -18,7 +17,5 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Rele
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.ResponseUserControl.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.Viewtests.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.csproj.GenerateResource.cache
-C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.csproj.CoreCompileInputs.cache
-C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.csproj.CopyComplete
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.exe
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\Tiroida\Tiroida\obj\Release\Tiroida.pdb

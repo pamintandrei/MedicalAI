@@ -16,9 +16,27 @@ namespace Tiroida
     public partial class Tiroida : MetroFramework.Forms.MetroForm
     {
         delegate void SetConnectioncallback(string text);
+        delegate void SetInterfaceCallBack();
         public Tiroida()
         {
             InitializeComponent();
+        }
+
+
+        private void SetInterface()
+        {
+            if (this.InvokeRequired)
+            {
+                SetInterfaceCallBack callback = new SetInterfaceCallBack(SetInterface);
+                this.Invoke(callback, new object[] {  });
+            }
+            else
+            {
+                PersonalDataForm dataform = new PersonalDataForm(ConnectionClass.ClientTCP.isloged);
+                this.panel1.Controls.Clear();
+                this.panel1.Controls.Add(dataform);
+            }
+
         }
 
 
@@ -35,6 +53,10 @@ namespace Tiroida
             {
                 ConnectionClass.ClientTCP.isloged = true;
                 ConnectionClass.ClientTCP.Cookie = (string)config["cookie"];
+
+                
+                SetInterface();
+
             }
 
 
