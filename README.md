@@ -1,6 +1,7 @@
 # MedicalAI 
 [Romanian language](https://github.com/pamintandrei/Tiroidaptinfoed#profesori-coordonatori)
-[English language]
+
+[English language](https://github.com/pamintandrei/Tiroidaptinfoed#coordinated-by)
 ## Profesori coordonatori:
 - Bibicu Dorin 
 - Tudor Veronica
