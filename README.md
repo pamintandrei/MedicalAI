@@ -1,4 +1,6 @@
 # MedicalAI 
+[Romanian language](https://github.com/pamintandrei/Tiroidaptinfoed#profesori-coordonatori)
+[English language]
 ## Profesori coordonatori:
 - Bibicu Dorin 
 - Tudor Veronica
@@ -103,3 +105,93 @@ Dupa finalizarea bazei programului o sa adăugăm mai mulți algoritmi de detect
 Grafica clientului de windows trebuie imbunatațita. 
 
 Trebuie sa adăugăm funcționalitațile aplicației windows si pe site-ul web. 
+
+## Coordinated by:
+- Bibicu Dorin 
+- Tudor Veronica
+## Made by:
+- Pamint Andrei-Florin  
+- Horovei Iulian-Valentin 
+
+## The motivation behind the application
+One of the problems in the Romanian medical system is the pressure put on the doctors on one hand by the massive influx of patients and on the other the low number of doctors. The result of this being the long waits when making an appointment. The primary role of this application is the introduction of a way to make the whole system smoother and to reduce the time spent in queues with a way to process endocrinological data.We can exemplify this using the following scenario. Currently it’s estimated that 83.000 patients have been diagnosticated with different thyroid diseases. Another known fact is that around 40% of the population is exposed to iodine deficit, a factor that plays a big part in the thyroid diseases. In case of obligatory check-up, for example in case of a nuclear disaster like the one at Chernobyl.
+
+
+![alt text](images/medai.jpg) 
+
+# Technologies used
+## For the neural network:
+- Python3 
+- Tensorflow 
+- Keras 
+- Numpy 
+## For the server:
+- Python3 
+- SQLlite 
+- secrets 
+- SSL 
+## For the discord bot:
+- Python3
+- discord
+- SSl
+## For the website: 
+- HTML
+- PHP
+- JavaScript
+## For the windows app:
+- C#
+- MetroFramework
+- CircularProgressBar
+- Newtonsoft.Json
+
+# Structure 
+## The discord bot.
+To use the discord bot you need to invite him to a server with the following link:  https://discordapp.com/oauth2/authorize?client_id=497399313379491880&scope=bot&permissions=0
+After he was invited, to send the data you need to use the following command: 
+
+` \~analize -age? -sex? -on\_thyroxine? -query\_on\_thyroxin? -on\_antythyroid\_medication? -thyroid\_surgery? -query\_hypothyroid? -query\_hyperthyroid? -pregnant? -sick? -tumor? -lithium? -goitre? -TSH\_measured? -T3\_measured? -TT4\_measured? -FTI\_measured? -TBG\_measured? -TSH? -T3? -TT4? -FTI? -TBG? `
+
+All the question marks need to switched to data like in the bot description. 
+
+![Image](images/discordprev.png) 
+
+
+## The windows app.
+You can find the windows app right in this folder:  https://github.com/pamintandrei/Tiroidaptinfoed/tree/master/TiroidaClient
+
+![Image](images/client1.png) 
+
+![Image](images/client2.png) 
+
+![Image](images/client3.png)
+
+![Image](images/client4.png)
+
+![Image](images/client5.png)
+
+## The webpage.
+![Image](images/webprev.png) 
+
+
+
+# Utility
+From this presentation it can be seen the assistance provided by the app. Using this app you can check if you need a check-up, this way we reduce the number of patients in the queue. 
+Another advantage is the cross-platform nature of the app, only needing a stable connection to the internet.
+The app is available on Windows. The Discord bot is available on all the Discord supported devices: MAC; iOS; Windows; Linux; Android. Our website is available to all the browsers.
+
+
+![Image](images/windows.jpg) 
+
+![Image](images/discord.jpg) 
+
+![Image](images/platform.png) 
+
+
+# Development roadmap
+What we presented is the base function of our app. Our future plans are:
+•	Adding more neural networks to analyse more dieses
+•	Improving the user interface
+•	Adding a way for the user to plan a medical check-up
+
+
+
