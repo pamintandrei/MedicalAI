@@ -190,9 +190,13 @@ The app is available on Windows. The Discord bot is available on all the Discord
 
 # Development roadmap
 What we presented is the base function of our app. Our future plans are:
+
 •	Adding more neural networks to analyse more dieses
+
 •	Improving the user interface
+
 •	Adding a way for the user to plan a medical check-up
+
 
 
 
