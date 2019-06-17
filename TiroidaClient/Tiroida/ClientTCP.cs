@@ -38,6 +38,7 @@ namespace Tiroida
 
         public string Username;
         public string Cookie;
+        public bool isconnected;
         public bool isloged;
 
         public event EventHandler<OnReceiveMessageClientEventArgs> OnResponse;
@@ -54,6 +55,7 @@ namespace Tiroida
             this.buffersize = 50000;
             this.isloged = false;
             this.SERVERNAME = DEFAULTSERVERNAME;
+            this.isconnected = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize)
@@ -63,6 +65,7 @@ namespace Tiroida
             this.buffersize = buffersize;
             this.isloged = false;
             this.SERVERNAME = "MedicalAI";
+            this.isconnected = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize, bool rememberme)
@@ -73,6 +76,7 @@ namespace Tiroida
             this.isloged = false;
             this.SERVERNAME = "MedicalAI";
             this.rememberme = rememberme;
+            this.isconnected = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize, string SERVERNAME)
@@ -82,7 +86,19 @@ namespace Tiroida
             this.buffersize = buffersize;
             this.isloged = false;
             this.SERVERNAME = SERVERNAME;
+            this.isconnected = false;
         }
+
+        public void SetIp(string ServerIP)
+        {
+            this.ServerIP = ServerIP;
+        }
+
+        public void SetPort(int ServerPort)
+        {
+            this.ServerPort = ServerPort;
+        }
+
 
 
         private bool ValidateServerCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslErrors)

@@ -73,7 +73,7 @@ namespace Tiroida
         public PersonalDataForm(bool loged)
         {
             InitializeComponent();
-
+            SetPanelLanguage();
             if (loged)
             {
                 pictureBox2.Image = new Bitmap(Properties.Resources.logout);
@@ -84,6 +84,52 @@ namespace Tiroida
             }
 
         }
+
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroLabel1.Text = ls.sex;
+            this.metroLabel2.Text = ls.age;
+            this.metroLabel3.Text = ls.on_thyroxine;
+            this.metroLabel4.Text = ls.query_on_thyroxine;
+            this.metroLabel5.Text = ls.on_antithyroid_medication;
+            this.metroLabel11.Text = ls.tumor;
+            this.metroLabel20.Text = ls.FTI_measured;
+            this.metroLabel21.Text = ls.FTI;
+            this.metroLabel6.Text = ls.thyroid_surgery;
+            this.metroLabel8.Text = ls.query_hypothyroid;
+            this.metroLabel7.Text = ls.query_hyperthyroid;
+            this.metroLabel9.Text = ls.pregnant;
+            this.metroLabel10.Text = ls.sick;
+            this.metroLabel12.Text = ls.lithium;
+            this.metroLabel22.Text = ls.TBG_measured;
+            this.metroLabel23.Text = ls.TBG;
+            this.metroLabel13.Text = ls.goitre;
+            this.metroLabel14.Text = ls.TSH_measured;
+            this.metroLabel15.Text = ls.TSH;
+            this.metroLabel16.Text = ls.T3_measured;
+            this.metroLabel17.Text = ls.T3;
+            this.metroLabel18.Text = ls.TT4_measured;
+            this.metroLabel19.Text = ls.TT4;
+            this.metroLabel24.Text = ls.patient_name;
+            this.metroButton2.Text = ls.result;
+            this.metroButton1.Text = ls.send_data;
+        }
+
+
+        private void SetPanelLanguage()
+        {
+            if (ConnectionClass.config.Language != "Romanian")
+            {
+                ReloadLanguage();
+            }
+
+        }
+
+
+
+
 
         private void PersoanlDataForm_Load(object sender, EventArgs e)
         {
@@ -332,6 +378,11 @@ namespace Tiroida
             pan1.Controls.Add(vt);
 
 
+
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -93,15 +93,16 @@
             // 
             // metroComboBox1
             // 
+            this.metroComboBox1.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.ItemHeight = 19;
             this.metroComboBox1.Items.AddRange(new object[] {
             "Masculin",
             "Feminin",
             "Necunoscut"});
-            this.metroComboBox1.Location = new System.Drawing.Point(3, 43);
+            this.metroComboBox1.Location = new System.Drawing.Point(3, 37);
             this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox1.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox1.TabIndex = 0;
             this.metroComboBox1.UseSelectable = true;
             this.metroComboBox1.SelectedIndexChanged += new System.EventHandler(this.metroComboBox1_SelectedIndexChanged);
@@ -114,9 +115,10 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(3, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel1.Size = new System.Drawing.Size(343, 34);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Sex";
+            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // metroLabel2
             // 
@@ -124,9 +126,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(3, 80);
+            this.metroLabel2.Location = new System.Drawing.Point(3, 68);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel2.Size = new System.Drawing.Size(343, 34);
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "Varsta";
             // 
@@ -136,15 +138,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(3, 160);
+            this.metroLabel3.Location = new System.Drawing.Point(3, 136);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel3.Size = new System.Drawing.Size(343, 34);
             this.metroLabel3.TabIndex = 5;
             this.metroLabel3.Text = "Pacientul ia tratament cu thyroxina?";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(3, 123);
+            this.numericUpDown1.Location = new System.Drawing.Point(3, 105);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             300,
             0,
@@ -156,39 +158,39 @@
             // 
             // metroComboBox2
             // 
+            this.metroComboBox2.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 23;
+            this.metroComboBox2.ItemHeight = 19;
             this.metroComboBox2.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox2.Location = new System.Drawing.Point(3, 203);
+            this.metroComboBox2.Location = new System.Drawing.Point(3, 173);
             this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox2.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox2.TabIndex = 7;
             this.metroComboBox2.UseSelectable = true;
             // 
             // metroLabel4
             // 
-            this.metroLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(3, 240);
+            this.metroLabel4.Location = new System.Drawing.Point(3, 204);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel4.Size = new System.Drawing.Size(199, 35);
             this.metroLabel4.TabIndex = 8;
             this.metroLabel4.Text = "Investigatiile s-au facut in timpul \r\ntratarii cu thyroxina?";
             // 
             // metroComboBox3
             // 
+            this.metroComboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.metroComboBox3.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox3.FormattingEnabled = true;
-            this.metroComboBox3.ItemHeight = 23;
+            this.metroComboBox3.ItemHeight = 19;
             this.metroComboBox3.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox3.Location = new System.Drawing.Point(3, 283);
+            this.metroComboBox3.Location = new System.Drawing.Point(3, 242);
             this.metroComboBox3.Name = "metroComboBox3";
-            this.metroComboBox3.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox3.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox3.TabIndex = 9;
             this.metroComboBox3.UseSelectable = true;
             // 
@@ -198,22 +200,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(3, 320);
+            this.metroLabel5.Location = new System.Drawing.Point(3, 270);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel5.Size = new System.Drawing.Size(343, 34);
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Pacientul ia tratament cu antitiroidiene?";
             // 
             // metroComboBox4
             // 
+            this.metroComboBox4.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox4.FormattingEnabled = true;
-            this.metroComboBox4.ItemHeight = 23;
+            this.metroComboBox4.ItemHeight = 19;
             this.metroComboBox4.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox4.Location = new System.Drawing.Point(3, 363);
+            this.metroComboBox4.Location = new System.Drawing.Point(3, 307);
             this.metroComboBox4.Name = "metroComboBox4";
-            this.metroComboBox4.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox4.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox4.TabIndex = 11;
             this.metroComboBox4.UseSelectable = true;
             // 
@@ -225,20 +228,21 @@
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.Location = new System.Drawing.Point(352, 0);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel6.Size = new System.Drawing.Size(343, 34);
             this.metroLabel6.TabIndex = 12;
             this.metroLabel6.Text = "Pacientul a fost operat la tiroida?";
             // 
             // metroComboBox5
             // 
+            this.metroComboBox5.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox5.FormattingEnabled = true;
-            this.metroComboBox5.ItemHeight = 23;
+            this.metroComboBox5.ItemHeight = 19;
             this.metroComboBox5.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox5.Location = new System.Drawing.Point(352, 43);
+            this.metroComboBox5.Location = new System.Drawing.Point(352, 37);
             this.metroComboBox5.Name = "metroComboBox5";
-            this.metroComboBox5.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox5.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox5.TabIndex = 13;
             this.metroComboBox5.UseSelectable = true;
             // 
@@ -248,9 +252,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(352, 160);
+            this.metroLabel7.Location = new System.Drawing.Point(352, 136);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel7.Size = new System.Drawing.Size(343, 34);
             this.metroLabel7.TabIndex = 14;
             this.metroLabel7.Text = "Pacientul este suspect de hypertiroida?";
             // 
@@ -260,35 +264,37 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(352, 80);
+            this.metroLabel8.Location = new System.Drawing.Point(352, 68);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel8.Size = new System.Drawing.Size(343, 34);
             this.metroLabel8.TabIndex = 15;
             this.metroLabel8.Text = "Pacientul este suspect de hipotiroida?";
             // 
             // metroComboBox6
             // 
+            this.metroComboBox6.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox6.FormattingEnabled = true;
-            this.metroComboBox6.ItemHeight = 23;
+            this.metroComboBox6.ItemHeight = 19;
             this.metroComboBox6.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox6.Location = new System.Drawing.Point(352, 123);
+            this.metroComboBox6.Location = new System.Drawing.Point(352, 105);
             this.metroComboBox6.Name = "metroComboBox6";
-            this.metroComboBox6.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox6.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox6.TabIndex = 16;
             this.metroComboBox6.UseSelectable = true;
             // 
             // metroComboBox7
             // 
+            this.metroComboBox7.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox7.FormattingEnabled = true;
-            this.metroComboBox7.ItemHeight = 23;
+            this.metroComboBox7.ItemHeight = 19;
             this.metroComboBox7.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox7.Location = new System.Drawing.Point(352, 203);
+            this.metroComboBox7.Location = new System.Drawing.Point(352, 173);
             this.metroComboBox7.Name = "metroComboBox7";
-            this.metroComboBox7.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox7.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox7.TabIndex = 17;
             this.metroComboBox7.UseSelectable = true;
             // 
@@ -298,22 +304,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(352, 240);
+            this.metroLabel9.Location = new System.Drawing.Point(352, 204);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel9.Size = new System.Drawing.Size(343, 35);
             this.metroLabel9.TabIndex = 18;
             this.metroLabel9.Text = "Pacientul este insarcinat?";
             // 
             // metroComboBox8
             // 
+            this.metroComboBox8.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox8.FormattingEnabled = true;
-            this.metroComboBox8.ItemHeight = 23;
+            this.metroComboBox8.ItemHeight = 19;
             this.metroComboBox8.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox8.Location = new System.Drawing.Point(352, 283);
+            this.metroComboBox8.Location = new System.Drawing.Point(352, 242);
             this.metroComboBox8.Name = "metroComboBox8";
-            this.metroComboBox8.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox8.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox8.TabIndex = 19;
             this.metroComboBox8.UseSelectable = true;
             // 
@@ -323,35 +330,37 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(352, 320);
+            this.metroLabel10.Location = new System.Drawing.Point(352, 270);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel10.Size = new System.Drawing.Size(343, 34);
             this.metroLabel10.TabIndex = 20;
             this.metroLabel10.Text = "Pacientul este racit?";
             // 
             // metroComboBox9
             // 
+            this.metroComboBox9.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox9.FormattingEnabled = true;
-            this.metroComboBox9.ItemHeight = 23;
+            this.metroComboBox9.ItemHeight = 19;
             this.metroComboBox9.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox9.Location = new System.Drawing.Point(352, 363);
+            this.metroComboBox9.Location = new System.Drawing.Point(352, 307);
             this.metroComboBox9.Name = "metroComboBox9";
-            this.metroComboBox9.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox9.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox9.TabIndex = 21;
             this.metroComboBox9.UseSelectable = true;
             // 
             // metroComboBox10
             // 
+            this.metroComboBox10.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox10.FormattingEnabled = true;
-            this.metroComboBox10.ItemHeight = 23;
+            this.metroComboBox10.ItemHeight = 19;
             this.metroComboBox10.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox10.Location = new System.Drawing.Point(3, 443);
+            this.metroComboBox10.Location = new System.Drawing.Point(3, 375);
             this.metroComboBox10.Name = "metroComboBox10";
-            this.metroComboBox10.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox10.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox10.TabIndex = 22;
             this.metroComboBox10.UseSelectable = true;
             // 
@@ -361,22 +370,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(3, 400);
+            this.metroLabel11.Location = new System.Drawing.Point(3, 338);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel11.Size = new System.Drawing.Size(343, 34);
             this.metroLabel11.TabIndex = 23;
             this.metroLabel11.Text = "Pacientul are tumoare?";
             // 
             // metroComboBox11
             // 
+            this.metroComboBox11.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox11.FormattingEnabled = true;
-            this.metroComboBox11.ItemHeight = 23;
+            this.metroComboBox11.ItemHeight = 19;
             this.metroComboBox11.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox11.Location = new System.Drawing.Point(352, 443);
+            this.metroComboBox11.Location = new System.Drawing.Point(352, 375);
             this.metroComboBox11.Name = "metroComboBox11";
-            this.metroComboBox11.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox11.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox11.TabIndex = 24;
             this.metroComboBox11.UseSelectable = true;
             // 
@@ -386,9 +396,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(352, 400);
+            this.metroLabel12.Location = new System.Drawing.Point(352, 338);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel12.Size = new System.Drawing.Size(343, 34);
             this.metroLabel12.TabIndex = 25;
             this.metroLabel12.Text = "Pacientul a fost tratat cu litiu?";
             // 
@@ -400,20 +410,21 @@
             this.metroLabel13.AutoSize = true;
             this.metroLabel13.Location = new System.Drawing.Point(701, 0);
             this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel13.Size = new System.Drawing.Size(344, 34);
             this.metroLabel13.TabIndex = 27;
             this.metroLabel13.Text = "Pacientul are gusa?";
             // 
             // metroComboBox12
             // 
+            this.metroComboBox12.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox12.FormattingEnabled = true;
-            this.metroComboBox12.ItemHeight = 23;
+            this.metroComboBox12.ItemHeight = 19;
             this.metroComboBox12.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox12.Location = new System.Drawing.Point(701, 43);
+            this.metroComboBox12.Location = new System.Drawing.Point(701, 37);
             this.metroComboBox12.Name = "metroComboBox12";
-            this.metroComboBox12.Size = new System.Drawing.Size(156, 29);
+            this.metroComboBox12.Size = new System.Drawing.Size(156, 25);
             this.metroComboBox12.TabIndex = 26;
             this.metroComboBox12.UseSelectable = true;
             // 
@@ -423,23 +434,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(701, 80);
+            this.metroLabel14.Location = new System.Drawing.Point(701, 68);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel14.Size = new System.Drawing.Size(344, 34);
             this.metroLabel14.TabIndex = 28;
             this.metroLabel14.Text = "Pacientului i s-a verificat TSH-ul?";
             // 
             // metroComboBox13
             // 
+            this.metroComboBox13.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox13.FormattingEnabled = true;
-            this.metroComboBox13.ItemHeight = 23;
+            this.metroComboBox13.ItemHeight = 19;
             this.metroComboBox13.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox13.Location = new System.Drawing.Point(701, 123);
+            this.metroComboBox13.Location = new System.Drawing.Point(701, 105);
             this.metroComboBox13.Name = "metroComboBox13";
-            this.metroComboBox13.Size = new System.Drawing.Size(156, 29);
+            this.metroComboBox13.Size = new System.Drawing.Size(156, 25);
             this.metroComboBox13.TabIndex = 29;
             this.metroComboBox13.UseSelectable = true;
             this.metroComboBox13.SelectedIndexChanged += new System.EventHandler(this.metroComboBox13_SelectedIndexChanged);
@@ -448,7 +460,7 @@
             // 
             this.numericUpDown2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown2.DecimalPlaces = 2;
-            this.numericUpDown2.Location = new System.Drawing.Point(701, 210);
+            this.numericUpDown2.Location = new System.Drawing.Point(701, 177);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             300,
             0,
@@ -464,9 +476,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(701, 160);
+            this.metroLabel15.Location = new System.Drawing.Point(701, 136);
             this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel15.Size = new System.Drawing.Size(344, 34);
             this.metroLabel15.TabIndex = 31;
             this.metroLabel15.Text = "Valoare TSH";
             // 
@@ -476,23 +488,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(701, 240);
+            this.metroLabel16.Location = new System.Drawing.Point(701, 204);
             this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel16.Size = new System.Drawing.Size(344, 35);
             this.metroLabel16.TabIndex = 32;
             this.metroLabel16.Text = "Pacientului i s-a verificat T3-ul ?";
             // 
             // metroComboBox14
             // 
+            this.metroComboBox14.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox14.FormattingEnabled = true;
-            this.metroComboBox14.ItemHeight = 23;
+            this.metroComboBox14.ItemHeight = 19;
             this.metroComboBox14.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox14.Location = new System.Drawing.Point(701, 283);
+            this.metroComboBox14.Location = new System.Drawing.Point(701, 242);
             this.metroComboBox14.Name = "metroComboBox14";
-            this.metroComboBox14.Size = new System.Drawing.Size(156, 29);
+            this.metroComboBox14.Size = new System.Drawing.Size(156, 25);
             this.metroComboBox14.TabIndex = 33;
             this.metroComboBox14.UseSelectable = true;
             this.metroComboBox14.SelectedIndexChanged += new System.EventHandler(this.metroComboBox14_SelectedIndexChanged);
@@ -503,9 +516,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(701, 320);
+            this.metroLabel17.Location = new System.Drawing.Point(701, 270);
             this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel17.Size = new System.Drawing.Size(344, 34);
             this.metroLabel17.TabIndex = 34;
             this.metroLabel17.Text = "Valoare T3";
             // 
@@ -513,7 +526,7 @@
             // 
             this.numericUpDown3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown3.DecimalPlaces = 2;
-            this.numericUpDown3.Location = new System.Drawing.Point(701, 370);
+            this.numericUpDown3.Location = new System.Drawing.Point(701, 311);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             300,
             0,
@@ -529,23 +542,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(701, 400);
+            this.metroLabel18.Location = new System.Drawing.Point(701, 338);
             this.metroLabel18.Name = "metroLabel18";
-            this.metroLabel18.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel18.Size = new System.Drawing.Size(344, 34);
             this.metroLabel18.TabIndex = 36;
             this.metroLabel18.Text = "Pacientului i s-a verificat TT4-ul?";
             // 
             // metroComboBox15
             // 
+            this.metroComboBox15.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox15.FormattingEnabled = true;
-            this.metroComboBox15.ItemHeight = 23;
+            this.metroComboBox15.ItemHeight = 19;
             this.metroComboBox15.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox15.Location = new System.Drawing.Point(701, 443);
+            this.metroComboBox15.Location = new System.Drawing.Point(701, 375);
             this.metroComboBox15.Name = "metroComboBox15";
-            this.metroComboBox15.Size = new System.Drawing.Size(156, 29);
+            this.metroComboBox15.Size = new System.Drawing.Size(156, 25);
             this.metroComboBox15.TabIndex = 37;
             this.metroComboBox15.UseSelectable = true;
             this.metroComboBox15.SelectedIndexChanged += new System.EventHandler(this.metroComboBox15_SelectedIndexChanged);
@@ -554,7 +568,7 @@
             // 
             this.numericUpDown4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown4.DecimalPlaces = 2;
-            this.numericUpDown4.Location = new System.Drawing.Point(701, 530);
+            this.numericUpDown4.Location = new System.Drawing.Point(701, 447);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             300,
             0,
@@ -570,16 +584,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel19.AutoSize = true;
-            this.metroLabel19.Location = new System.Drawing.Point(701, 480);
+            this.metroLabel19.Location = new System.Drawing.Point(701, 406);
             this.metroLabel19.Name = "metroLabel19";
-            this.metroLabel19.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel19.Size = new System.Drawing.Size(344, 34);
             this.metroLabel19.TabIndex = 39;
             this.metroLabel19.Text = "Valoare TT4";
             // 
             // metroLabel20
             // 
             this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(3, 480);
+            this.metroLabel20.Location = new System.Drawing.Point(3, 406);
             this.metroLabel20.Name = "metroLabel20";
             this.metroLabel20.Size = new System.Drawing.Size(191, 19);
             this.metroLabel20.TabIndex = 41;
@@ -587,15 +601,16 @@
             // 
             // metroComboBox16
             // 
+            this.metroComboBox16.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox16.FormattingEnabled = true;
-            this.metroComboBox16.ItemHeight = 23;
+            this.metroComboBox16.ItemHeight = 19;
             this.metroComboBox16.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox16.Location = new System.Drawing.Point(3, 523);
+            this.metroComboBox16.Location = new System.Drawing.Point(3, 443);
             this.metroComboBox16.Name = "metroComboBox16";
-            this.metroComboBox16.Size = new System.Drawing.Size(143, 29);
+            this.metroComboBox16.Size = new System.Drawing.Size(143, 25);
             this.metroComboBox16.TabIndex = 40;
             this.metroComboBox16.UseSelectable = true;
             this.metroComboBox16.SelectedIndexChanged += new System.EventHandler(this.metroComboBox16_SelectedIndexChanged);
@@ -606,9 +621,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel21.AutoSize = true;
-            this.metroLabel21.Location = new System.Drawing.Point(3, 560);
+            this.metroLabel21.Location = new System.Drawing.Point(3, 474);
             this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel21.Size = new System.Drawing.Size(343, 34);
             this.metroLabel21.TabIndex = 43;
             this.metroLabel21.Text = "Valoare FTI";
             // 
@@ -616,7 +631,7 @@
             // 
             this.numericUpDown5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown5.DecimalPlaces = 2;
-            this.numericUpDown5.Location = new System.Drawing.Point(3, 610);
+            this.numericUpDown5.Location = new System.Drawing.Point(3, 517);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             300,
             0,
@@ -632,23 +647,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(352, 480);
+            this.metroLabel22.Location = new System.Drawing.Point(352, 406);
             this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel22.Size = new System.Drawing.Size(343, 34);
             this.metroLabel22.TabIndex = 45;
             this.metroLabel22.Text = "Pacientului i s-a verificat TBG-ul?";
             // 
             // metroComboBox17
             // 
+            this.metroComboBox17.FontSize = MetroFramework.MetroComboBoxSize.Small;
             this.metroComboBox17.FormattingEnabled = true;
-            this.metroComboBox17.ItemHeight = 23;
+            this.metroComboBox17.ItemHeight = 19;
             this.metroComboBox17.Items.AddRange(new object[] {
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox17.Location = new System.Drawing.Point(352, 523);
+            this.metroComboBox17.Location = new System.Drawing.Point(352, 443);
             this.metroComboBox17.Name = "metroComboBox17";
-            this.metroComboBox17.Size = new System.Drawing.Size(170, 29);
+            this.metroComboBox17.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox17.TabIndex = 44;
             this.metroComboBox17.UseSelectable = true;
             this.metroComboBox17.SelectedIndexChanged += new System.EventHandler(this.metroComboBox17_SelectedIndexChanged);
@@ -659,9 +675,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(352, 560);
+            this.metroLabel23.Location = new System.Drawing.Point(352, 474);
             this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(343, 40);
+            this.metroLabel23.Size = new System.Drawing.Size(343, 34);
             this.metroLabel23.TabIndex = 47;
             this.metroLabel23.Text = "Valoare TBG";
             // 
@@ -669,7 +685,7 @@
             // 
             this.numericUpDown6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Location = new System.Drawing.Point(352, 610);
+            this.numericUpDown6.Location = new System.Drawing.Point(352, 517);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             300,
             0,
@@ -681,10 +697,11 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton1.Location = new System.Drawing.Point(939, 643);
+            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton1.Location = new System.Drawing.Point(939, 549);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(106, 48);
+            this.metroButton1.Size = new System.Drawing.Size(106, 50);
             this.metroButton1.TabIndex = 49;
             this.metroButton1.Text = "Trimite datele";
             this.metroButton1.UseSelectable = true;
@@ -706,7 +723,7 @@
             this.metroTextBox1.CustomButton.UseSelectable = true;
             this.metroTextBox1.CustomButton.Visible = false;
             this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(701, 608);
+            this.metroTextBox1.Location = new System.Drawing.Point(701, 515);
             this.metroTextBox1.MaxLength = 32767;
             this.metroTextBox1.Name = "metroTextBox1";
             this.metroTextBox1.PasswordChar = '\0';
@@ -727,9 +744,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel24.AutoSize = true;
-            this.metroLabel24.Location = new System.Drawing.Point(701, 560);
+            this.metroLabel24.Location = new System.Drawing.Point(701, 474);
             this.metroLabel24.Name = "metroLabel24";
-            this.metroLabel24.Size = new System.Drawing.Size(344, 40);
+            this.metroLabel24.Size = new System.Drawing.Size(344, 34);
             this.metroLabel24.TabIndex = 52;
             this.metroLabel24.Text = "Nume pacient";
             // 
@@ -754,13 +771,11 @@
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox15, 2, 11);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel23, 1, 14);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel18, 2, 10);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown3, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox17, 1, 13);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel17, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel22, 1, 12);
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox14, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.metroComboBox3, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel16, 2, 6);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel5, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel15, 2, 4);
@@ -790,6 +805,8 @@
             this.tableLayoutPanel1.Controls.Add(this.metroLabel24, 2, 14);
             this.tableLayoutPanel1.Controls.Add(this.numericUpDown2, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.metroButton2, 1, 16);
+            this.tableLayoutPanel1.Controls.Add(this.metroComboBox3, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -800,6 +817,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.146179F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.481728F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
@@ -807,23 +826,22 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.882352F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1048, 694);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.644518F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.970099F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1048, 602);
             this.tableLayoutPanel1.TabIndex = 53;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 647);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 549);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(54, 44);
+            this.pictureBox2.Size = new System.Drawing.Size(54, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 54;
             this.pictureBox2.TabStop = false;
@@ -832,9 +850,9 @@
             // metroButton2
             // 
             this.metroButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.metroButton2.Location = new System.Drawing.Point(470, 643);
+            this.metroButton2.Location = new System.Drawing.Point(470, 549);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(106, 48);
+            this.metroButton2.Size = new System.Drawing.Size(106, 50);
             this.metroButton2.TabIndex = 55;
             this.metroButton2.Text = "Vezi rezultate";
             this.metroButton2.UseSelectable = true;
@@ -846,7 +864,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PersonalDataForm";
-            this.Size = new System.Drawing.Size(1048, 694);
+            this.Size = new System.Drawing.Size(1048, 602);
             this.Load += new System.EventHandler(this.PersoanlDataForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

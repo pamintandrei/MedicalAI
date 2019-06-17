@@ -9,5 +9,7 @@ namespace Tiroida
     class ConnectionClass
     {
         public static ClientTCP ClientTCP;
+        public static configFile config;
+        public static languageSupporter languagesupporter;
     }
 }

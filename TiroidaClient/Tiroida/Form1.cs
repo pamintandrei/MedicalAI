@@ -20,6 +20,15 @@ namespace Tiroida
         public Tiroida()
         {
             InitializeComponent();
+
+
+            conn();
+
+            Login dataform = new Login();
+
+            this.panel1.Controls.Add(dataform);
+
+            this.MinimumSize = new Size(980, 666);
         }
 
 
@@ -67,21 +76,7 @@ namespace Tiroida
         {
             
 
-            
-            Login dataform = new Login();
-
-            //Console.WriteLine("Compiled");
-            
-            this.panel1.Controls.Add(dataform);
-            //dataform.SetAnimateCancer(76);
-            conn();
-            
-
-
-            /*
-            ResponseUserControl control = new ResponseUserControl();
-            this.flowLayoutPanel1.Controls.Add(control);
-            */
+     
 
 
 
@@ -120,12 +115,28 @@ namespace Tiroida
 
         private void conn()
         {
+            
             string configtext = System.IO.File.ReadAllText(@"config.json");
             Console.WriteLine("Content of the file: {0}", configtext);
 
             JObject config = JObject.Parse(configtext);
 
+            string languageoption = (string)config["Language"];
+            ConnectionClass.config = new configFile((string)config["IpAdress"],(int)config["port"], languageoption);
+
+            if (languageoption != "Romanian")
+            {
+                string configlanguagepath = @"languages/" + languageoption + ".json";
+                string jsonlanguageconfig =  System.IO.File.ReadAllText(configlanguagepath);
+
+                languageSupporter supporter = new languageSupporter(jsonlanguageconfig);
+                ConnectionClass.languagesupporter = supporter;
+                
+            }
+
+
             ClientTCP client = new ClientTCP((string)config["IpAdress"], (int)config["port"], 10000);
+            ConnectionClass.ClientTCP = client;
             Console.WriteLine(config["IpAdress"]);
        
             Thread th = new Thread(new ParameterizedThreadStart(ReapetUntilConnected));
@@ -141,7 +152,7 @@ namespace Tiroida
             Thread th = new Thread(new ParameterizedThreadStart(ReapetUntilConnected));
             th.Start(sender);
             SetConnectionState("Connecting...");
-            ConnectionClass.ClientTCP = null;
+            ConnectionClass.ClientTCP.isconnected = false;
         }
 
         private void ReapetUntilConnected(object client)
@@ -154,7 +165,7 @@ namespace Tiroida
                 if (response == ClientTCP.CONECTIONSUCCESS)
                 {
                     this.SetConnectionState("Connected");
-                    ConnectionClass.ClientTCP = tcpclient;
+                    //ConnectionClass.ClientTCP = tcpclient;
                     setcookie();
 
 
@@ -186,6 +197,38 @@ namespace Tiroida
 
         private void panel1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+
+        private void ReloadCurrentFormLanguage()
+        {
+            dynamic c = this.panel1.Controls[0];
+            c.ReloadLanguage();
+
+
+        }
+
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            
+            IpConfigForm config = new IpConfigForm();
+            
+
+            if (config.ShowDialog(this) == DialogResult.Cancel)
+            {
+                
+                
+                if (config.languagechanged)
+                {
+
+                    ReloadCurrentFormLanguage();
+
+                }
+                
+            }
+        
             
         }
     }

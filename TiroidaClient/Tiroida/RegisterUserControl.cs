@@ -29,7 +29,31 @@ namespace Tiroida
         public RegisterUserControl()
         {
             InitializeComponent();
+            SetPanelLanguage();
         }
+
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroLabel1.Text = ls.username;
+            this.metroLabel4.Text = ls.email;
+            this.metroLabel2.Text = ls.password;
+            this.metroLabel3.Text = ls.r_password;
+            this.metroLabel5.Text = ls.email_code;
+        }
+
+
+        private void SetPanelLanguage()
+        {
+            if (ConnectionClass.config.Language != "Romanian")
+            {
+                ReloadLanguage();
+            }
+
+        }
+
+
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -43,7 +67,7 @@ namespace Tiroida
         private void SendRegisterForm(RegisterContent content)
         {
 
-            if (ConnectionClass.ClientTCP == null)
+            if (!ConnectionClass.ClientTCP.isconnected)
             {
                 //SetGif(false, true);
                 MessageBox.Show("Sunteti momentan offline", "Tiroida");
@@ -52,7 +76,7 @@ namespace Tiroida
 
 
             string jsonstring = JsonConvert.SerializeObject(content);
-            if (ConnectionClass.ClientTCP != null)
+            if (!ConnectionClass.ClientTCP.isconnected)
             {
                 ConnectionClass.ClientTCP.OnRegisterResponse += ClientTCP_OnRegisterResponse;
                 ConnectionClass.ClientTCP.SendContent(jsonstring);

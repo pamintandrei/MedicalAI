@@ -273,13 +273,13 @@
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 2, 5);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.metroTextBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel5, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.metroTextBox4, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroTextBox3, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.metroTextBox2, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.metroLabel2, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";

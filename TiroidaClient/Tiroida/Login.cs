@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.Threading;
@@ -21,7 +22,30 @@ namespace Tiroida
         public Login()
         {
             InitializeComponent();
+            SetPanelLanguage();
         }
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroLabel1.Text = ls.username;
+            this.metroLabel2.Text = ls.password;
+            this.checkBox1.Text = ls.rememberme;
+            this.metroButton3.Text = ls.tryapp;
+            this.metroButton2.Text = ls.register;
+            this.metroButton1.Text = ls.login;
+        }
+
+
+        private void SetPanelLanguage()
+        {
+            if (ConnectionClass.config.Language != "Romanian")
+            {
+                ReloadLanguage();
+            }
+            
+        }
+
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
@@ -43,7 +67,7 @@ namespace Tiroida
 
         private void SendLoginMessage(LoginContent lg)
         {
-            if (ConnectionClass.ClientTCP == null)
+            if (!ConnectionClass.ClientTCP.isconnected)
             {
                 //SetGif(false, true);
                 MessageBox.Show("Sunteti momentan offline", "Tiroida");
@@ -52,7 +76,7 @@ namespace Tiroida
 
 
             string datatosend = JsonConvert.SerializeObject(lg);
-            if (ConnectionClass.ClientTCP != null)
+            if (!ConnectionClass.ClientTCP.isconnected)
             {
                 ConnectionClass.ClientTCP.SendContent(datatosend);
                 ConnectionClass.ClientTCP.OnLoginResponse += ClientTCP_OnLoginResponse;
@@ -79,7 +103,7 @@ namespace Tiroida
         {
             cookieobj cookie = new cookieobj(ConnectionClass.ClientTCP.Cookie);
             string cookiesave = JsonConvert.SerializeObject(cookie);
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"cookie.json", false);
+            StreamWriter writer = new StreamWriter(@"cookie.json", false);
             writer.Write(cookiesave);
             writer.Close();
         }
@@ -145,9 +169,19 @@ namespace Tiroida
             th1.Start();
         }
 
+
+        private void SetLanguage()
+        {
+            
+        }
+
+
         private void Login_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
+
+            
+
            // Console.WriteLine("Compiled");
         }
 

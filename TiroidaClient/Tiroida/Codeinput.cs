@@ -21,12 +21,33 @@ namespace Tiroida
         {
             this.username = username;
             InitializeComponent();
+            SetPanelLanguage();
         }
 
         private void Codeinput_Load(object sender, EventArgs e)
         {
 
         }
+
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroLabel1.Text = ls.code_please;
+            this.metroButton1.Text = ls.send_code;
+        }
+
+
+        private void SetPanelLanguage()
+        {
+            if (ConnectionClass.config.Language != "Romanian")
+            {
+                ReloadLanguage();
+            }
+
+        }
+
+
 
         private void SendCondeInputContent(CodeInputContent cic)
         {

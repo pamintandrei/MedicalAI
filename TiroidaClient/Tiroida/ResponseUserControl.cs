@@ -37,8 +37,30 @@ namespace Tiroida
             this.cancervalue = 100;
             this.circularProgressBar1.Minimum = 0;
             this.circularProgressBar1.Maximum = 100;
+            SetPanelLanguage();
             //this.circularProgressBar1.Value = 100;
         }
+
+
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroLabel1.Text = ls.hyperthyroidism_chanse;
+            this.metroButton2.Text = ls.back_panel;
+        }
+
+
+        private void SetPanelLanguage()
+        {
+            if (ConnectionClass.config.Language != "Romanian")
+            {
+                ReloadLanguage();
+            }
+
+        }
+
+
 
         private void ResponseUserControl_Load(object sender, EventArgs e)
         {
