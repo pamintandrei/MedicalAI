@@ -46,6 +46,7 @@ namespace Tiroida
         public event EventHandler<OnReceiveLoginMessageArgs> OnLoginResponse;
         public event EventHandler<OnCodeVerifyResponseArgs> OnCodeVerifyResponse;
         public event EventHandler<OnReceiveResultArgs> OnReceiveResults;
+        public event EventHandler<OnReceivePneumoniaResponseArgs> OnReceivePneumoniaResponse;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -183,7 +184,7 @@ namespace Tiroida
             try
             {
                 stringmessage += "<EOF>";
-                Console.WriteLine(stringmessage);
+                
                 byte[] bytemessage = Encoding.Default.GetBytes(stringmessage);
                 this.sslStream.Write(bytemessage);
                 this.sslStream.Flush();
@@ -251,9 +252,7 @@ namespace Tiroida
                     {
                         case "response":
                             MedicalProblems problem = new MedicalProblems();
-                            Console.WriteLine("yes");
-                            Console.WriteLine(obj["rezultat"][0][0].GetType());
-                            Console.WriteLine(obj["rezultat"][1][1]);
+
                             problem.Chanse_To_Have = obj["rezultat"][0][0].ToObject<double>();
                             problem.Chanse_To_Have_Nothing = obj["rezultat"][1][1].ToObject<double>();
 
@@ -312,6 +311,13 @@ namespace Tiroida
                             
 
 
+                            break;
+
+
+                        case "pneoresult":
+
+                            OnReceivePneumoniaResponseArgs pneoargs = new OnReceivePneumoniaResponseArgs((string)obj["rezultat"][0][1],(string)obj["rezultat"][0][0]);
+                            OnReceivePneumoniaResponse.Invoke(this, pneoargs);
                             break;
                         default:
                             /*

@@ -35,6 +35,8 @@
   "TBG" : "Valoare TBG",
   "FTI_measured" : "Pacientului i s-a verificat FTI-ul?",
   "FTI" : "Valoare FTI",
+  "T3_measured" : "Pacientului i s-a verificat T3-ul?",
+  "T3" : "Valoare T3",
   "result" : "Vezi rezultate",
   "back" : "Inapoi la panou",
   "send_data" : "Trimite datele",
@@ -42,5 +44,9 @@
   "email_code" : "Va vom trimite un\nemail cu codul necesar pentru inregistrare!",
   "config_ip" : "Configureaza conexiunea catre server",
   "hyperthyroidism_chanse" : "Sansa de hypotiroida:",
-  "back_panel" : "Inapoi la panou"
+  "back_panel" : "Inapoi la panou",
+  "send_photo" : "Trimite poza",
+  "update_photo" : "Incarca poza",
+  "verify_pneum" : "Verifica pneumonie",
+  "pneo_chanse" : "Sansa de pneumonie:"
 }

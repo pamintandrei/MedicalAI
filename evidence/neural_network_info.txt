@@ -1,0 +1,9 @@
+6 Layers
+1 input
+1 output
+4 hidden layer
+
+hidden layer- 512 neuroni pe fiecare layer
+	    - activation function = hard_sigmoid
+Optimizer = Nadam
+loss= sparse_categorical_crossentropy

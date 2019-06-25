@@ -115,6 +115,7 @@ namespace Tiroida
             this.metroLabel24.Text = ls.patient_name;
             this.metroButton2.Text = ls.result;
             this.metroButton1.Text = ls.send_data;
+            this.metroButton3.Text = ls.verify_pneum;
         }
 
 
@@ -362,6 +363,20 @@ namespace Tiroida
 
         }
 
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            pneumoniaForm pneumonia = new pneumoniaForm();
+
+            Panel panel = (Panel)this.Parent;
+            panel.Controls.Clear();
+            panel.Controls.Add(pneumonia);
+        }
+
         private void metroButton2_Click(object sender, EventArgs e)
         {
             if (ConnectionClass.ClientTCP == null)
@@ -373,17 +388,9 @@ namespace Tiroida
 
 
             Viewtests vt = new Viewtests();
-            Panel pan1 =  (Panel)this.Parent;
+            Panel pan1 = (Panel)this.Parent;
             pan1.Controls.Clear();
             pan1.Controls.Add(vt);
-
-
-
-        }
-
-        private void metroLabel1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

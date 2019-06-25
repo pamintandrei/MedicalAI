@@ -55,5 +55,9 @@ namespace Tiroida
         public string config_ip { get; set; }
         public string hyperthyroidism_chanse { get; set; }
         public string back_panel { get; set; }
+        public string send_photo { get; set; }
+        public string update_photo { get; set; }
+        public string verify_pneum { get; set; }
+        public string pneo_chanse { get; set; }
     }
 }

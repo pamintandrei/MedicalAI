@@ -44,5 +44,9 @@
   "email_code" : "We will send a verification code through email!",
   "config_ip" : "Configure your connextion for server",
   "hyperthyroidism_chanse" : "Chanse of hyperthyroidism",
-  "back_panel" : "Back to panel"
+  "back_panel" : "Back to panel",
+  "send_photo" : "Send the photography",
+  "update_photo" : "Update photo",
+  "verify_pneum" : "Verify Pneumonia",
+  "pneo_chanse" : "Chanse of Pneumonia:"
 }
