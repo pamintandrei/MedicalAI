@@ -164,6 +164,72 @@ tabela de inregistrari rezultatele analizelor
 
 Alt lucru de implementat ar mai fi sa primim un nume pentru pacient
 '''
+def hyper(recvdata):
+    global intrari
+    neural_net=tf.keras.models.load_model('hyper.h5')
+    intrari=1
+
+    print(1)
+        
+    datesauintrebare(recvdata['Age'],0)   
+        
+    if(recvdata['Sex']=="M"):
+        datedeintrare[0][1]=1
+        datedeintrare[1][1]=1
+    if(recvdata['Sex']=="F"):
+        datedeintrare[0][1]=-1
+        datedeintrare[1][1]=-1
+    if(recvdata['Sex']=="?" or recvdata['Sex']==None):
+        datedeintrare[0][1]=0
+        datedeintrare[1][1]=0
+
+
+    
+
+    truf(recvdata['on_thyroxine'],2)  
+    truf(recvdata['query_on_thyroxine'],3)  
+    truf(recvdata['on_antithyroid_medication'],4)  
+    truf(recvdata['sick'],5)  
+    truf(recvdata['pregnant'],6)  
+    truf(recvdata['thyroid_surgery'],7)
+    truf(recvdata['Il3l_treatment'],8)
+    truf(recvdata['query_hypothyroid'],9)  
+    truf(recvdata['query_hyperthyroid'],10)  
+    truf(recvdata['lithium'],11)    
+    truf(recvdata['goitre'],12)  
+    truf(recvdata['tumor'],13)  
+    truf(recvdata['hypopituitary'],14)
+    truf(recvdata['psych'],15)
+    truf(recvdata['TSH_measured'],16)  
+    datesauintrebare(recvdata['TSH'],17)
+    truf(recvdata['T3_measured'],18)  
+    datesauintrebare(recvdata['T3'],19)
+    truf(recvdata['TT4_measured'],20)  
+    datesauintrebare(recvdata['TT4'],21)
+    truf(recvdata['FTI_measured'],22)  
+    datesauintrebare(recvdata['FTI'],23)
+    truf(recvdata['TBG_measured'],24)  
+    datesauintrebare(recvdata['TBG'],25)
+
+    rezultat = neural_net.predict(datedeintrare)
+    data = {}
+    data['action']='response'
+    rezultat=rezultat.tolist()
+    data['rezultat'] = rezultat
+    json_data = json.dumps(data)
+    tf.keras.backend.clear_session()
+    data['patient_name']=recvdata['patient_name']
+	
+    id_medic = id_cookie(recvdata['cookie'])
+    if id_medic != -1:
+        inset_medical_tests(id_medic, recvdata, rezultat)
+        print('ceva')	
+    print(id_medic)
+    print(rezultat)
+    print(2)
+    return json_data
+
+
 def pamantfunction(recvdata):
     global intrari
     neural_net=tf.keras.models.load_model('tester_versiune2.0.h5')
@@ -474,8 +540,8 @@ def handler(c, a):
             response = getTuberculoza(loadedjson)
         if(loadedjson['action']=="hemoragie"):
             response = getHemoragie(loadedjson)
-        
-
+        if(loadedjson['action']=="hyper"):
+            response = getHemoragie(loadedjson)
 
         response += "<EOF>"
 	
