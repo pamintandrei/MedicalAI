@@ -510,6 +510,20 @@ def getHemoragie(recvdata):
     print(json_data)
     return json_data    
 
+def getcancersan(recvdata):
+    response_data = {}
+    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
+    response_data['action'] = 'cancersanresult'
+    keras_data=keras.preprocessing.image.ImageDataGenerator()
+    tfmodel=keras.models.load_model('cancersan.h5')
+    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (50,50),batch_size=1)
+    predict=tfmodel.predict_generator(verificat,steps=1)
+    predict=predict.tolist()
+    response_data['rezultat'] = predict
+    json_data = json.dumps(response_data)
+    tf.keras.backend.clear_session()
+    print(json_data)
+    return json_data    
 
 def handler(c, a):
     while True:
@@ -541,6 +555,8 @@ def handler(c, a):
         if(loadedjson['action']=="hemoragie"):
             response = getHemoragie(loadedjson)
         if(loadedjson['action']=="hyper"):
+            response = getHemoragie(loadedjson)
+        if(loadedjson['action']=="cancersan"):
             response = getHemoragie(loadedjson)
 
         response += "<EOF>"
