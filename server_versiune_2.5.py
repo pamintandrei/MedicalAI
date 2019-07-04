@@ -164,7 +164,7 @@ tabela de inregistrari rezultatele analizelor
 
 Alt lucru de implementat ar mai fi sa primim un nume pentru pacient
 '''
-def hyper(recvdata):
+def getHyper(recvdata):
     global intrari
     neural_net=tf.keras.models.load_model('hyper.h5')
     intrari=1
@@ -510,7 +510,22 @@ def getHemoragie(recvdata):
     print(json_data)
     return json_data    
 
-def getcancersan(recvdata):
+def getLeucemie(recvdata):
+    response_data = {}
+    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
+    response_data['action'] = 'leuresult'
+    keras_data=keras.preprocessing.image.ImageDataGenerator()
+    tfmodel=keras.models.load_model('leucemie.h5')
+    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (450, 450),batch_size=1)
+    predict=tfmodel.predict_generator(verificat,steps=1)
+    predict=predict.tolist()
+    response_data['rezultat'] = predict
+    json_data = json.dumps(response_data)
+    tf.keras.backend.clear_session()
+    print(json_data)
+    return json_data 
+
+def getCancersan(recvdata):
     response_data = {}
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'cancersanresult'
@@ -555,10 +570,11 @@ def handler(c, a):
         if(loadedjson['action']=="hemoragie"):
             response = getHemoragie(loadedjson)
         if(loadedjson['action']=="hyper"):
-            response = getHemoragie(loadedjson)
+            response = getHyper(loadedjson)
         if(loadedjson['action']=="cancersan"):
-            response = getHemoragie(loadedjson)
-
+            response = getCancersan(loadedjson)
+        if(loadedjson['action']=="leucemie"):
+            response = getLeucemie(loadedjson)
         response += "<EOF>"
 	
 	
