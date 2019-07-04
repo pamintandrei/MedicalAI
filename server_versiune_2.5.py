@@ -37,7 +37,9 @@ server.connect('smtp.gmail.com', 587)
 server.ehlo()
 server.starttls()
 server.ehlo()
-server.login(config['username_gmail'],config['password_gmail'])
+usrn=config['username_gmail']
+pas=config['password_gmail']
+server.login(str(usrn),str(pas))
 
 
 allconnection = []
@@ -167,9 +169,8 @@ tabela de inregistrari rezultatele analizelor
 Alt lucru de implementat ar mai fi sa primim un nume pentru pacient
 '''
 def getHyper(recvdata):
-    global intrari
     neural_net=tf.keras.models.load_model('hyper.h5')
-    intrari=1
+
 
     print(1)
         
@@ -233,9 +234,9 @@ def getHyper(recvdata):
 
 
 def pamantfunction(recvdata):
-    global intrari
+
     neural_net=tf.keras.models.load_model(AI_core_file + '\tester_versiune2.0.h5')
-    intrari=1
+
 
     print(1)
         
