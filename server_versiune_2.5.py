@@ -17,6 +17,8 @@ from shutil import copyfile
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 config_file = open(base_dir + '/server_config.json')
+AI_core_file = base_dir + '/AI_core'
+
 config = json.load(config_file)
 
 
@@ -232,7 +234,7 @@ def getHyper(recvdata):
 
 def pamantfunction(recvdata):
     global intrari
-    neural_net=tf.keras.models.load_model('tester_versiune2.0.h5')
+    neural_net=tf.keras.models.load_model(AI_core_file + '\tester_versiune2.0.h5')
     intrari=1
 
     print(1)
@@ -470,7 +472,7 @@ def getPneumonia(recvdata):
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'pneoresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model('pneumonie.h5')
+    tfmodel=keras.models.load_model(AI_core_file + '\pneumonie.h5')
     verificat=keras_data.flow_from_directory(path_to_photo, target_size = (512, 512),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
@@ -485,7 +487,7 @@ def getTuberculoza(recvdata):
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'tbresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model('tuberculoza.h5')
+    tfmodel=keras.models.load_model(AI_core_file + '\tuberculoza.h5')
     verificat=keras_data.flow_from_directory(path_to_photo, target_size = (512, 512),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
@@ -500,7 +502,7 @@ def getHemoragie(recvdata):
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'hemresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model('best_hemoragie.h5')
+    tfmodel=keras.models.load_model(AI_core_file + '\best_hemoragie.h5')
     verificat=keras_data.flow_from_directory(path_to_photo, target_size = (200, 200),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
@@ -530,7 +532,7 @@ def getCancersan(recvdata):
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'cancersanresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model('cancersan.h5')
+    tfmodel=keras.models.load_model(AI_core_file + '\cancersan.h5')
     verificat=keras_data.flow_from_directory(path_to_photo, target_size = (50,50),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
