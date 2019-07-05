@@ -468,13 +468,14 @@ returneaza la sfarsit rezultatul in format json
 
 '''
 
-def getPneumonia(recvdata):
+
+def getImage(recvdata,boala,rezolutie):
     response_data = {}
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = 'pneoresult'
+    response_data['action'] = boala+'result'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model(AI_core_file + '\pneumonie.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (512, 512),batch_size=1)
+    tfmodel=keras.models.load_model(AI_core_file + '\ ' +boala+'.h5')
+    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (rezolutie, rezolutie),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
     response_data['rezultat'] = predict
@@ -482,66 +483,6 @@ def getPneumonia(recvdata):
     tf.keras.backend.clear_session()
     print(json_data)
     return json_data
-
-def getTuberculoza(recvdata):
-    response_data = {}
-    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = 'tbresult'
-    keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model(AI_core_file + '\tuberculoza.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (512, 512),batch_size=1)
-    predict=tfmodel.predict_generator(verificat,steps=1)
-    predict=predict.tolist()
-    response_data['rezultat'] = predict
-    json_data = json.dumps(response_data)
-    tf.keras.backend.clear_session()
-    print(json_data)
-    return json_data    
-
-def getHemoragie(recvdata):
-    response_data = {}
-    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = 'hemresult'
-    keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model(AI_core_file + '\best_hemoragie.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (200, 200),batch_size=1)
-    predict=tfmodel.predict_generator(verificat,steps=1)
-    predict=predict.tolist()
-    response_data['rezultat'] = predict
-    json_data = json.dumps(response_data)
-    tf.keras.backend.clear_session()
-    print(json_data)
-    return json_data    
-
-def getLeucemie(recvdata):
-    response_data = {}
-    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = 'leuresult'
-    keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model('leucemie.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (450, 450),batch_size=1)
-    predict=tfmodel.predict_generator(verificat,steps=1)
-    predict=predict.tolist()
-    response_data['rezultat'] = predict
-    json_data = json.dumps(response_data)
-    tf.keras.backend.clear_session()
-    print(json_data)
-    return json_data 
-
-def getCancersan(recvdata):
-    response_data = {}
-    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = 'cancersanresult'
-    keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model(AI_core_file + '\cancersan.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (50,50),batch_size=1)
-    predict=tfmodel.predict_generator(verificat,steps=1)
-    predict=predict.tolist()
-    response_data['rezultat'] = predict
-    json_data = json.dumps(response_data)
-    tf.keras.backend.clear_session()
-    print(json_data)
-    return json_data    
 
 def handler(c, a):
     while True:
@@ -567,17 +508,17 @@ def handler(c, a):
         if(loadedjson['action'] == "getresult"):
             response = getanalyze(loadedjson)
         if(loadedjson['action'] == "pneumonia"):
-            response = getPneumonia(loadedjson)
+            response = getImage(loadedjson,'pneumonia',512)
         if(loadedjson['action']=="tuberculoza"):
-            response = getTuberculoza(loadedjson)
+            response = getImage(loadedjson,'tuberculoza',512)
         if(loadedjson['action']=="hemoragie"):
-            response = getHemoragie(loadedjson)
+            response = getImage(loadedjson,'hemoragie',200)
         if(loadedjson['action']=="hyper"):
             response = getHyper(loadedjson)
         if(loadedjson['action']=="cancersan"):
-            response = getCancersan(loadedjson)
+            response = getImage(loadedjson,'cancersan',50)
         if(loadedjson['action']=="leucemie"):
-            response = getLeucemie(loadedjson)
+            response = getImage(loadedjson,'leucemie',400)
         response += "<EOF>"
 	
 	
