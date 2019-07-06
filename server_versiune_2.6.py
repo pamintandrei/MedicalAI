@@ -235,7 +235,7 @@ def getHyper(recvdata):
 
 def pamantfunction(recvdata):
 
-    neural_net=tf.keras.models.load_model(AI_core_file + '\tester_versiune2.0.h5')
+    neural_net=tf.keras.models.load_model(AI_core_file + '\hypothyroid.h5')
 
 
     print(1)
@@ -519,6 +519,8 @@ def handler(c, a):
             response = getImage(loadedjson,'cancersan',50)
         if(loadedjson['action']=="leucemie"):
             response = getImage(loadedjson,'leucemie',400)
+        if(loadedjson['action']=="malarie"):
+            response = getImage(loadedjson,'malarie',50)
         response += "<EOF>"
 	
 	
