@@ -472,7 +472,7 @@ returneaza la sfarsit rezultatul in format json
 def getImage(recvdata,boala,rezolutie):
     response_data = {}
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
-    response_data['action'] = boala+'result'
+    response_data['action'] = 'photoresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
     tfmodel=keras.models.load_model(AI_core_file + '\ ' +boala+'.h5')
     verificat=keras_data.flow_from_directory(path_to_photo, target_size = (rezolutie, rezolutie),batch_size=1)
