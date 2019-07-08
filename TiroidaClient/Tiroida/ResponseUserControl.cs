@@ -70,7 +70,7 @@ namespace Tiroida
                 case THYROID:
 
                     languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
-                    this.metroLabel1.Text = ls.hyperthyroidism_chanse;
+                    this.metroLabel1.Text = ls.hypothyroidism_chanse;
                     this.metroButton2.Text = ls.back_panel;
 
                     break;

@@ -144,9 +144,13 @@ def login(recvdata):
                 data['error'] = '0'
                 data['cookie'] = parolabaza[0][4]
                 data['errormessage'] = "Logare cu succes!"
-            else:
+            elif(config['register_verification']):
                 data['error'] = '2'
                 data['errormessage'] = "Cont neverificat!"
+            else:
+                data['error'] = '0'
+                data['cookie'] = parolabaza[0][4]
+                data['errormessage'] = "Logare cu succes!"
         else:
             data['error'] = '1'
             data['errormessage'] = "Nume de utilizator sau parola incorecta!"

@@ -883,7 +883,7 @@
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(166, 44);
             this.metroButton3.TabIndex = 1;
-            this.metroButton3.Text = "Verifica pneumonie";
+            this.metroButton3.Text = "Verifica poza medicala";
             this.metroButton3.UseSelectable = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
             // 

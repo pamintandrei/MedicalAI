@@ -43,4 +43,4 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\ob
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.ResponseUserControl.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.Viewtests.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.csproj.GenerateResource.Cache
-C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.pneumoniaForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.photoUploader.resources

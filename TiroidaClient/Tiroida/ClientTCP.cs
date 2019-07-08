@@ -46,7 +46,7 @@ namespace Tiroida
         public event EventHandler<OnReceiveLoginMessageArgs> OnLoginResponse;
         public event EventHandler<OnCodeVerifyResponseArgs> OnCodeVerifyResponse;
         public event EventHandler<OnReceiveResultArgs> OnReceiveResults;
-        public event EventHandler<OnReceivePneumoniaResponseArgs> OnReceivePneumoniaResponse;
+        public event EventHandler<OnReceivePhotoResult> OnReceivePneumoniaResponse;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -314,9 +314,9 @@ namespace Tiroida
                             break;
 
 
-                        case "pneoresult":
+                        case "photoresult":
 
-                            OnReceivePneumoniaResponseArgs pneoargs = new OnReceivePneumoniaResponseArgs((string)obj["rezultat"][0][1],(string)obj["rezultat"][0][0]);
+                            OnReceivePhotoResult pneoargs = new OnReceivePhotoResult((string)obj["rezultat"][0][1],(string)obj["rezultat"][0][0]);
                             OnReceivePneumoniaResponse.Invoke(this, pneoargs);
                             break;
                         default:

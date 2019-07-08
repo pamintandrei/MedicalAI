@@ -27,6 +27,14 @@ namespace Tiroida
         }
 
 
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroGrid1.Columns.Clear();
+            
+        }
+
+
         private void SendGetResultData()
         {
             ResultReqContent datacontent = new ResultReqContent();

@@ -18,7 +18,7 @@ namespace Tiroida
         delegate void SetGitAndEnableStatusCallBack(bool gifstatus, bool enablestatus);
         delegate void SetInterfaceCallBack(string chanse, string chanse_to_have_nothing);
         delegate string GetInfoCallBack(MetroComboBox combobox);
-
+        private List<string> unknownbox;
 
         private string GetInfoText(MetroComboBox combobox)
         {
@@ -83,6 +83,61 @@ namespace Tiroida
                 this.metroButton2.Enabled = false;
             }
 
+            // AddToList("metroComboBox16", "metroComboBox17", "metroComboBox15", "metroComboBox14", "metroComboBox13");
+            
+        }
+
+
+        private void AddToList(params string[] list)
+        {
+            for (int i = 0; i < list.Length; i++)
+            {
+                unknownbox.Add(list[i]);
+            }
+        }
+
+        private void changeLanguageCombobox(MetroComboBox box, string yes, string no, string unknown, bool isunknown)
+        {
+            box.Items.Clear();
+            box.Items.Add(yes);
+            box.Items.Add(no);
+            if (isunknown)
+            {
+                box.Items.Add(unknown);
+            }
+
+        }
+
+
+
+        private void changeComboBoxlang(Control control)
+        {
+
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            if (control is MetroComboBox)
+            {
+                MetroComboBox box = (MetroComboBox)control;
+
+                if (box != null)
+                {
+                    this.unknownbox = new List<string> { "metroComboBox16", "metroComboBox17", "metroComboBox15", "metroComboBox14", "metroComboBox13" };
+
+                    if (unknownbox.Contains(box.Name))
+                    {
+                        changeLanguageCombobox(box, ls.yes_answer, ls.no_answer, ls.unknown_answer, true);
+                    }
+                    else
+                    {
+                        changeLanguageCombobox(box, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+                    }
+                }
+
+            }
+            else
+                foreach (Control child in control.Controls)
+                {
+                    changeComboBoxlang(child);
+                }
         }
 
 
@@ -115,7 +170,40 @@ namespace Tiroida
             this.metroLabel24.Text = ls.patient_name;
             this.metroButton2.Text = ls.result;
             this.metroButton1.Text = ls.send_data;
-            this.metroButton3.Text = ls.verify_pneum;
+            this.metroButton3.Text = ls.verify_photo;
+
+            changeComboBoxlang(this);
+            /*
+            foreach (MetroComboBox box in this.Controls.OfType<MetroComboBox>())
+            {
+                Console.WriteLine("yes");
+                if (unknownbox.Contains(box.Name))
+                {
+                    changeLanguageCombobox(box, ls.yes_answer, ls.no_answer, ls.unknown_answer, true);
+                }
+                else
+                {
+                    changeLanguageCombobox(box,ls.yes_answer,ls.no_answer,ls.unknown_answer,false);
+                }
+            }
+
+            
+            changeLanguageCombobox(this.metroComboBox2,ls.yes_answer,ls.no_answer,ls.unknown_answer,false);
+            changeLanguageCombobox(this.metroComboBox3, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox10, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox16, ls.yes_answer, ls.no_answer, ls.unknown_answer, true);
+            changeLanguageCombobox(this.metroComboBox5, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox6, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox7, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox8, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
+            */
         }
 
 
@@ -363,6 +451,9 @@ namespace Tiroida
 
         }
 
+
+
+
         private void metroLabel1_Click(object sender, EventArgs e)
         {
 
@@ -370,7 +461,7 @@ namespace Tiroida
 
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            pneumoniaForm pneumonia = new pneumoniaForm();
+            photoUploader pneumonia = new photoUploader();
 
             Panel panel = (Panel)this.Parent;
             panel.Controls.Clear();

@@ -112,7 +112,7 @@
     <Compile Include="OnCodeVerifyResponseArgs.cs" />
     <Compile Include="OnReceiveLoginMessageArgs.cs" />
     <Compile Include="OnReceiveMessageClientEventArgs.cs" />
-    <Compile Include="OnReceivePneumoniaResponseArgs.cs" />
+    <Compile Include="OnReceivePhotoResult.cs" />
     <Compile Include="OnReceiveRegisterMessageArgs.cs" />
     <Compile Include="OnReceiveResultArgs.cs" />
     <Compile Include="PersonalDataForm.cs">
@@ -122,12 +122,12 @@
       <DependentUpon>PersonalDataForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonalData.cs" />
-    <Compile Include="pneumoniaContent.cs" />
-    <Compile Include="pneumoniaForm.cs">
+    <Compile Include="photoContent.cs" />
+    <Compile Include="photoUploader.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="pneumoniaForm.Designer.cs">
-      <DependentUpon>pneumoniaForm.cs</DependentUpon>
+    <Compile Include="photoUploader.Designer.cs">
+      <DependentUpon>photoUploader.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,8 +168,8 @@
     <EmbeddedResource Include="PersonalDataForm.resx">
       <DependentUpon>PersonalDataForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pneumoniaForm.resx">
-      <DependentUpon>pneumoniaForm.cs</DependentUpon>
+    <EmbeddedResource Include="photoUploader.resx">
+      <DependentUpon>photoUploader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

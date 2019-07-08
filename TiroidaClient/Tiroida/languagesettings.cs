@@ -53,11 +53,42 @@ namespace Tiroida
         public string patient_name { get; set; }
         public string email_code { get; set; }
         public string config_ip { get; set; }
-        public string hyperthyroidism_chanse { get; set; }
+        public string hypothyroidism_chanse { get; set; }
         public string back_panel { get; set; }
         public string send_photo { get; set; }
         public string update_photo { get; set; }
         public string verify_pneum { get; set; }
         public string pneo_chanse { get; set; }
+        public string yes_answer { get; set; }
+        public string no_answer { get; set; }
+        public string breast_cancer { get; set; }
+        public string internal_bleeding { get; set; }
+        public string leukemia { get; set; }
+        public string malaria { get; set; }
+        public string pneumonia { get; set; }
+        public string tuberculosis { get; set; }
+        public string verify_photo { get; set; }
+        public string thyroxina_table { get; set; }
+        public string thyroxina_query_table { get; set; }
+        public string on_antithyroid_medication_table { get; set; }
+        public string tumor_table { get; set; }
+        public string FTI_table { get; set; }
+        public string FTI_value_table { get; set; }
+        public string thyroid_surgery_table { get; set; }
+        public string query_hypothyroid_table { get; set; }
+        public string query_hyperthyroid_table { get; set; }
+        public string pregnant_table { get; set; }
+        public string sick_table { get; set; }
+        public string lithium_table { get; set; }
+        public string TBG_measured_table { get; set; }
+        public string TBG_value_table { get; set; }
+        public string goitre_table { get; set; }
+        public string TSH_measured_table { get; set; }
+        public string TSH_value_table { get; set; }
+        public string TT4_measured_table { get; set; }
+        public string TT4_value_table { get; set; }
+        public string hypothyroidism_chanse_table { get; set; }
+        public string healthy_chanse_table { get; set; }
+        public string unknown_answer { get; set; }
     }
 }
