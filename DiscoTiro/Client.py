@@ -6,6 +6,9 @@ import response
 import errno
 import time
 import ssl
+import base64
+import json
+import asyncio
 
 class TcpClient:
     def __init__(self, ip, port, buffersize = 10000):
@@ -18,6 +21,7 @@ class TcpClient:
         self.sslcontext = ssl.SSLContext(cert_reqs=ssl.CERT_OPTIONAL)
         self.mainsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connected = False
+        
 		
 
     def DoConnectionUntilConnected(self):
@@ -53,7 +57,7 @@ class TcpClient:
 			
             recvdata = recvdata[:-5]
             jsonobj = json.loads(recvdata)
-            if jsonobj['action'] == 'response':
+            if jsonobj['action'] == 'response' or jsonobj['action'] == 'photoresult':
                 return response.response(jsonobj["rezultat"][0][0], jsonobj["rezultat"][1][1])
 
         except socket.error as e:
@@ -63,7 +67,19 @@ class TcpClient:
             self.on_connection_lost(self)
             return 1
 			
-			
+	
+    async def SendPhoto(self, diseas, photo_path):
+        data = {}
+        data['action'] = diseas
+        f = open(photo_path,'rb')
+        file_data = f.read()
+        f.close()
+        encoded = base64.b64encode(file_data)
+        data['imageContent'] = encoded
+        photo_result = self.SendData(json.dumps(data))
+        return photo_result
+        
+        
     async def RecvData(self):
         data = b''
         while True:

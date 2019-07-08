@@ -6,6 +6,11 @@ import response
 import threading
 import analizemedicale
 import json
+import requests
+import hashlib
+import imghdr
+import asyncio
+from multiprocessing import Process
 from discord.ext import commands
 
 
@@ -68,12 +73,41 @@ async def analize(ctx):
     await ctx.send('Sansa de hypotiroida: ' + str(response.get_rest()))
 
 
+
+@bot.command(pass_context = True)
+async def pneumonia(ctx):
+    
+    if(client.get_service_status() == False):
+        await ctx.send("Service unavailable")
+        return
+        
+    try:
+        photo_url = ctx.message.attachments[0].url
+    
+        photo_content = requests.get(photo_url).content
+        file_name_hash = hashlib.md5(photo_content)
+    
+    
+        f = open('photos\\' + file_name_hash.hexdigest(),'wb')
+        f.write(photo_content)
+        f.close()
+        if(imghdr.what('photos\\' + file_name_hash.hexdigest()) != None):
+            response = await client.SendPhoto('pneumonia', 'photos\\' + file_name_hash.hexdigest())
+            await ctx.send('pneumonia result: ' + str(response.get_rest()))
+            
+        else:
+            await ctx.send('Invalid photo')
+    
+    except:
+        await ctx.send('No photo has been sent')
+
+
 def on_server_connected(sender, eargs):
     print("Connected to the medical service")
 
 def on_server_connection_lost(sender, eargs):
     print("Connection to the medical service lost.. retying to connect..")
-    newthread = threading.Thread(target=sender.DoConnectionUntilConnected())
+    newthread = threading.Thread(target=sender.DoConnectionUntilConnected)
     newthread.daemon = True
     newthread.start()
 
@@ -84,9 +118,8 @@ print("Trying to connect the bot")
 client = Client.TcpClient('127.0.0.1', 5554)
 client.on_connected += on_server_connected
 client.on_connection_lost += on_server_connection_lost
-newthread = threading.Thread(target = client.DoConnectionUntilConnected())
-newthread.daemon = True
-newthread.start()
+p1 = threading.Thread(target=client.DoConnectionUntilConnected)
+p1.start()
 
 bot.run(token)
 
