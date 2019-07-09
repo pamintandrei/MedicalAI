@@ -69,21 +69,44 @@ async def analize(ctx):
 
     # sending data
     response = await client.SendData(jsonstring)
-    print(response)
     await ctx.send('Sansa de hypotiroida: ' + str(response.get_rest()))
 
 
 
 @bot.command(pass_context = True)
 async def pneumonia(ctx):
+    errcode = await send_and_receive_response('pneumonia', ctx)
+
+@bot.command(pass_context = True)
+async def tuberculoza(ctx):
+    errcode = await send_and_receive_response('tuberculoza', ctx)
+
+@bot.command(pass_context = True)
+async def bleeding(ctx):
+    errcode = await send_and_receive_response('hemoragie', ctx)
+
+@bot.command(pass_context = True)
+async def breast(ctx):
+    errcode = await send_and_receive_response('cancersan', ctx)
     
+@bot.command(pass_context = True)
+async def leukemia(ctx):
+    errcode = await send_and_receive_response('leucemie', ctx)
+
+@bot.command(pass_context = True)
+async def malaria(ctx):
+    errcode = await send_and_receive_response('malarie', ctx)
+
+
+
+
+async def send_and_receive_response(disease, ctx):
     if(client.get_service_status() == False):
         await ctx.send("Service unavailable")
-        return
+        return 2
         
     try:
         photo_url = ctx.message.attachments[0].url
-    
         photo_content = requests.get(photo_url).content
         file_name_hash = hashlib.md5(photo_content)
     
@@ -91,15 +114,20 @@ async def pneumonia(ctx):
         f = open('photos\\' + file_name_hash.hexdigest(),'wb')
         f.write(photo_content)
         f.close()
+        
+        
         if(imghdr.what('photos\\' + file_name_hash.hexdigest()) != None):
             response = await client.SendPhoto('pneumonia', 'photos\\' + file_name_hash.hexdigest())
             await ctx.send('pneumonia result: ' + str(response.get_rest()))
+            return 0
             
         else:
             await ctx.send('Invalid photo')
+            return 1
     
     except:
         await ctx.send('No photo has been sent')
+        return -1
 
 
 def on_server_connected(sender, eargs):

@@ -79,5 +79,7 @@
   "TT4_measured_table" : "TT4 verificat",
   "TT4_value_table" : "Valoare TT4",
   "hypothyroidism_chanse_table" : "Sansa de hypotiroida",
-  "healthy_chanse_table" : "Sansa de sanatate"
+  "healthy_chanse_table" : "Sansa de sanatate",
+  "male" : "Masculin",
+  "female" : "Feminin"
 }

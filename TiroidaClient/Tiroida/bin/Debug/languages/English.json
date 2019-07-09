@@ -79,5 +79,7 @@
   "TT4_measured_table" : "TT4 verified",
   "TT4_value_table" : "TT4 value",
   "hypothyroidism_chanse_table" : "Hypothiroian chanse",
-  "healthy_chanse_table" : "Healthy chanse"
+  "healthy_chanse_table" : "Healthy chanse",
+  "male" : "Male",
+  "female" : "Female"
 }
