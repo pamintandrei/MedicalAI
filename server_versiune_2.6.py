@@ -525,6 +525,8 @@ def handler(c, a):
             response = getImage(loadedjson,'leucemie',400)
         if(loadedjson['action']=="malarie"):
             response = getImage(loadedjson,'malarie',50)
+        if(loadedjson['action']=="cancerpiele"):
+            response = getImage(loadedjson,'cancerpiele',64)
         response += "<EOF>"
 	
 	
