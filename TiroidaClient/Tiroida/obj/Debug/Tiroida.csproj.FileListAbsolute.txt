@@ -44,3 +44,27 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\ob
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.Viewtests.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.csproj.GenerateResource.Cache
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.photoUploader.resources
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\Tiroida.exe.config
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.exe
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.pdb
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\Tiroida.exe
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\Tiroida.pdb
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\CircularProgressBar.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\MetroFramework.Design.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\MetroFramework.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\MetroFramework.Fonts.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\Newtonsoft.Json.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\WinFormAnimation.dll
+C:\MedicalAI\TiroidaClient\Tiroida\bin\Debug\Newtonsoft.Json.xml
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.csprojResolveAssemblyReference.cache
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.Codeinput.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.Tiroida.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.IpConfigForm.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.Login.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.PersonalDataForm.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.photoUploader.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.Properties.Resources.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.RegisterUserControl.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.ResponseUserControl.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.Viewtests.resources
+C:\MedicalAI\TiroidaClient\Tiroida\obj\Debug\Tiroida.csproj.GenerateResource.Cache

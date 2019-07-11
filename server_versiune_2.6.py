@@ -17,7 +17,7 @@ from shutil import copyfile
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 config_file = open(base_dir + '/server_config.json')
-AI_core_file = base_dir + '/AI_core'
+AI_core_file = base_dir + '\\AI_core'
 
 config = json.load(config_file)
 
@@ -473,13 +473,21 @@ returneaza la sfarsit rezultatul in format json
 '''
 
 
-def getImage(recvdata,boala,rezolutie):
+def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data = {}
     path_to_photo = save_photo_frombase64(recvdata['imageContent'])
     response_data['action'] = 'photoresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
-    tfmodel=keras.models.load_model(AI_core_file + '\ ' +boala+'.h5')
-    verificat=keras_data.flow_from_directory(path_to_photo, target_size = (rezolutie, rezolutie),batch_size=1)
+    tfmodel=keras.models.load_model(AI_core_file + '\\' +boala+'.h5')
+    if(optiune=='grayscale-pneumo'):
+        keras_data=keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
+        verificat=keras_data.flow_from_directory(path_to_photo,color_mode='grayscale',target_size = (rezolutie, rezolutie),batch_size=1)
+    elif(optiune=='grayscale'):
+        keras_data=keras.preprocessing.image.ImageDataGenerator()
+        verificat=keras_data.flow_from_directory(path_to_photo,color_mode='grayscale',target_size = (rezolutie, rezolutie),batch_size=1)
+    else:
+        keras_data=keras.preprocessing.image.ImageDataGenerator()
+        verificat=keras_data.flow_from_directory(path_to_photo, target_size = (rezolutie, rezolutie),batch_size=1)
     predict=tfmodel.predict_generator(verificat,steps=1)
     predict=predict.tolist()
     response_data['rezultat'] = predict
@@ -512,9 +520,9 @@ def handler(c, a):
         if(loadedjson['action'] == "getresult"):
             response = getanalyze(loadedjson)
         if(loadedjson['action'] == "pneumonia"):
-            response = getImage(loadedjson,'pneumonia',512)
+            response = getImage(loadedjson,'pneumonia',512,'grayscale-pneumo')
         if(loadedjson['action']=="tuberculoza"):
-            response = getImage(loadedjson,'tuberculoza',512)
+            response = getImage(loadedjson,'tuberculoza',512,'grayscale')
         if(loadedjson['action']=="hemoragie"):
             response = getImage(loadedjson,'hemoragie',200)
         if(loadedjson['action']=="hyper"):
