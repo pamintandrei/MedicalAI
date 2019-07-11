@@ -59,7 +59,15 @@ def gasitinbaza(column,fromuser,cur):
         return 1
     else:
         return 0
-		
+        
+def found_in_photo_results(photo,cur):
+    t = (photo, )
+    cur.execute("SELECT * FROM photo_reults WHERE photo = ?",t)
+    columns = cur.fetchall()
+    if(columns):
+        return 1
+    else:
+        return 0
 
 def datesauintrebare(fiecarelinie,dparcurs):
         if(fiecarelinie!="?" and fiecarelinie!=None):
@@ -461,7 +469,7 @@ def save_photo_frombase64(base64content):
     save_path_ext = save_path + '.' + extension
     copyfile(save_path,save_path_ext)
     os.remove(save_path)
-    return return_folder + '\\'
+    return return_folder + '\\', file_name.hexdigest() + '.' + extension
     
     
 
@@ -472,10 +480,39 @@ returneaza la sfarsit rezultatul in format json
 
 '''
 
+def save_result_database(photo_name, result, disease, medic_id = -1):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    inser_data = ([None,medic_id,result,photo_name,disease])
+    cur.execute("INSERT INTO photo_reults VALUES(?,?,?,?,?)", inser_data)
+    conn.commit()
 
+
+def get_photo_reuslt(photo_name):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    
+    if(found_in_photo_results(photo_name,cur)):
+        cur.execute("SELECT * FROM photo_reults WHERE photo=? LIMIT 1",photo_name)
+        info = cur.fetchall()
+        return info[0][2]
+    else:
+        return -1
+    
+
+'''
+Functia trebuie modificata pentru 
+a salva medicul
+'''
 def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data = {}
-    path_to_photo = save_photo_frombase64(recvdata['imageContent'])
+    path_to_photo, photo_name = save_photo_frombase64(recvdata['imageContent'])
+    
+    fetch_data = get_photo_reuslt(photo_name)
+    if(fetch_data != -1):
+        response_data['rezultat'][0][0] = fetch_data
+        return response_data
+    
     response_data['action'] = 'photoresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
     tfmodel=keras.models.load_model(AI_core_file + '\\' +boala+'.h5')
@@ -493,6 +530,9 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data['rezultat'] = predict
     json_data = json.dumps(response_data)
     tf.keras.backend.clear_session()
+    
+    save_result_database(photo_name, predict[0][0],boala)
+    
     print(json_data)
     return json_data
 
