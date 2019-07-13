@@ -63,9 +63,14 @@ def gasitinbaza(column,fromuser,cur):
         
 def found_in_photo_results(photo,cur):
     t = (photo, )
+<<<<<<< HEAD:server_versiune_2.7.py
     cur.execute("SELECT * FROM photo_results WHERE photo = ?",t)
     columns = cur.fetchall()
 
+=======
+    cur.execute("SELECT * FROM photo_reults WHERE photo = ?",t)
+    columns = cur.fetchall()
+>>>>>>> 381dea275df6e444e422a71c5c164bcd8ca0ba4b:server_versiune_2.6.py
     if(columns):
         return 1
     else:
@@ -474,6 +479,7 @@ def save_photo_frombase64(base64content):
     
     return_folder = base_dir + '\\savephoto\\' + file_name.hexdigest()
     print(return_folder)
+<<<<<<< HEAD:server_versiune_2.7.py
 
     if(os.path.exists(return_folder)):
         return -1,file_name.hexdigest()
@@ -503,6 +509,33 @@ def save_photo_frombase64(base64content):
         return return_folder + '\\', file_name.hexdigest()
         
         
+=======
+    os.mkdir(return_folder)
+    
+    return_folder2 = return_folder + '\\' + file_name.hexdigest()
+    os.mkdir(return_folder2)
+    
+    
+    save_path = return_folder2 + '\\' + file_name.hexdigest()
+    
+    
+    decoded = base64.b64decode(base64content)
+    f = open(save_path, "wb")
+    f.write(decoded)
+    f.close()
+    
+    extension = imghdr.what(save_path)
+    
+    
+    
+    
+    save_path_ext = save_path + '.' + extension
+    copyfile(save_path,save_path_ext)
+    os.remove(save_path)
+    return return_folder + '\\', file_name.hexdigest() + '.' + extension
+    
+    
+>>>>>>> 381dea275df6e444e422a71c5c164bcd8ca0ba4b:server_versiune_2.6.py
 
 '''
 
@@ -515,6 +548,7 @@ def save_result_database(photo_name, result, disease, medic_id = -1):
     conn = sqlite3.connect('bazadedate.db')
     cur = conn.cursor()
     inser_data = ([None,medic_id,result,photo_name,disease])
+<<<<<<< HEAD:server_versiune_2.7.py
     cur.execute("INSERT INTO photo_results VALUES(?,?,?,?,?)", inser_data)
     conn.commit()
 
@@ -525,6 +559,18 @@ def get_photo_reuslt(photo_name):
     t = (photo_name, )
     if(found_in_photo_results(photo_name,cur)):
         cur.execute("SELECT * FROM photo_results WHERE photo=? LIMIT 1",t)
+=======
+    cur.execute("INSERT INTO photo_reults VALUES(?,?,?,?,?)", inser_data)
+    conn.commit()
+
+
+def get_photo_reuslt(photo_name):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    
+    if(found_in_photo_results(photo_name,cur)):
+        cur.execute("SELECT * FROM photo_reults WHERE photo=? LIMIT 1",photo_name)
+>>>>>>> 381dea275df6e444e422a71c5c164bcd8ca0ba4b:server_versiune_2.6.py
         info = cur.fetchall()
         return info[0][2]
     else:
@@ -538,6 +584,7 @@ a salva medicul
 def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data = {}
     path_to_photo, photo_name = save_photo_frombase64(recvdata['imageContent'])
+<<<<<<< HEAD:server_versiune_2.7.py
     tf.keras.backend.clear_session()
     print(boala)
     fetch_data = get_photo_reuslt(photo_name)
@@ -556,6 +603,17 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data['action'] = 'photoresult'
     keras_data=keras.preprocessing.image.ImageDataGenerator()
     
+=======
+    
+    fetch_data = get_photo_reuslt(photo_name)
+    if(fetch_data != -1):
+        response_data['rezultat'][0][0] = fetch_data
+        return response_data
+    
+    response_data['action'] = 'photoresult'
+    keras_data=keras.preprocessing.image.ImageDataGenerator()
+    tfmodel=keras.models.load_model(AI_core_file + '\\' +boala+'.h5')
+>>>>>>> 381dea275df6e444e422a71c5c164bcd8ca0ba4b:server_versiune_2.6.py
     if(optiune=='grayscale-pneumo'):
         keras_data=keras.preprocessing.image.ImageDataGenerator(rescale=1./255)
         verificat=keras_data.flow_from_directory(path_to_photo,color_mode='grayscale',target_size = (rezolutie, rezolutie),batch_size=1)
@@ -565,6 +623,7 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     else:
         keras_data=keras.preprocessing.image.ImageDataGenerator()
         verificat=keras_data.flow_from_directory(path_to_photo, target_size = (rezolutie, rezolutie),batch_size=1)
+<<<<<<< HEAD:server_versiune_2.7.py
     with graph.as_default():
         tfmodel=keras.models.load_model(AI_core_file + '\\' +boala+'.h5')
         predict=tfmodel.predict_generator(verificat,steps=1)
@@ -575,6 +634,14 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     del tfmodel
     cuda.select_device(0)
     cuda.close()
+=======
+    predict=tfmodel.predict_generator(verificat,steps=1)
+    predict=predict.tolist()
+    response_data['rezultat'] = predict
+    json_data = json.dumps(response_data)
+    tf.keras.backend.clear_session()
+    
+>>>>>>> 381dea275df6e444e422a71c5c164bcd8ca0ba4b:server_versiune_2.6.py
     save_result_database(photo_name, predict[0][0],boala)
     
     print(json_data)
