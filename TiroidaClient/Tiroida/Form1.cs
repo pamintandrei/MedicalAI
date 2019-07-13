@@ -165,6 +165,7 @@ namespace Tiroida
                 if (response == ClientTCP.CONECTIONSUCCESS)
                 {
                     this.SetConnectionState("Connected");
+                    ConnectionClass.ClientTCP.isconnected = true;
                     //ConnectionClass.ClientTCP = tcpclient;
                     setcookie();
 

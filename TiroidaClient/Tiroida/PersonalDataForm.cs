@@ -17,19 +17,19 @@ namespace Tiroida
     {
         delegate void SetGitAndEnableStatusCallBack(bool gifstatus, bool enablestatus);
         delegate void SetInterfaceCallBack(string chanse, string chanse_to_have_nothing);
-        delegate string GetInfoCallBack(MetroComboBox combobox);
+        delegate int GetInfoCallBack(MetroComboBox combobox);
         private List<string> unknownbox;
 
-        private string GetInfoText(MetroComboBox combobox)
+        private int GetInfoText(MetroComboBox combobox)
         {
             if (combobox.InvokeRequired)
             {
                 GetInfoCallBack callback = new GetInfoCallBack(GetInfoText);
-                return (string)this.Invoke(callback, new object[] { combobox });
+                return (int)this.Invoke(callback, new object[] { combobox });
             }
             else
             {
-                return combobox.Text;
+                return combobox.SelectedIndex;
             }
         }
 
@@ -67,6 +67,8 @@ namespace Tiroida
             {
                 
                 this.metroButton1.Enabled = enablestatus;
+                
+
             }
         }
 
@@ -141,6 +143,15 @@ namespace Tiroida
         }
 
 
+        private void changeSexLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroComboBox1.Items.Clear();
+            this.metroComboBox1.Items.Add(ls.male);
+            this.metroComboBox1.Items.Add(ls.female);
+            this.metroComboBox1.Items.Add(ls.unknown_answer);
+        }
+
         public void ReloadLanguage()
         {
             languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
@@ -173,37 +184,7 @@ namespace Tiroida
             this.metroButton3.Text = ls.verify_photo;
 
             changeComboBoxlang(this);
-            /*
-            foreach (MetroComboBox box in this.Controls.OfType<MetroComboBox>())
-            {
-                Console.WriteLine("yes");
-                if (unknownbox.Contains(box.Name))
-                {
-                    changeLanguageCombobox(box, ls.yes_answer, ls.no_answer, ls.unknown_answer, true);
-                }
-                else
-                {
-                    changeLanguageCombobox(box,ls.yes_answer,ls.no_answer,ls.unknown_answer,false);
-                }
-            }
-
-            
-            changeLanguageCombobox(this.metroComboBox2,ls.yes_answer,ls.no_answer,ls.unknown_answer,false);
-            changeLanguageCombobox(this.metroComboBox3, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox10, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox16, ls.yes_answer, ls.no_answer, ls.unknown_answer, true);
-            changeLanguageCombobox(this.metroComboBox5, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox6, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox7, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox8, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            changeLanguageCombobox(this.metroComboBox9, ls.yes_answer, ls.no_answer, ls.unknown_answer, false);
-            */
+            changeSexLanguage();
         }
 
 
@@ -246,13 +227,13 @@ namespace Tiroida
 
         private string GetSex()
         {
-            string sex = GetInfoText(this.metroComboBox1);
+            int sex = GetInfoText(this.metroComboBox1);
             switch (sex)
             {
-                case "Masculin":
+                case 0:
                     return "M";
                     break;
-                case "Feminin":
+                case 1:
                     return "F";
                     break;
                 default:
@@ -263,19 +244,24 @@ namespace Tiroida
 
         private string GetOption(MetroComboBox combobox)
         {
-            string selectedvalue = GetInfoText(combobox);
-            switch (selectedvalue)
+
+
+            int indexoption = GetInfoText(combobox);
+            switch (indexoption)
             {
-                case "Da":
+                case 0:
                     return "t";
                     break;
-                case "Nu":
+                case 1:
                     return "f";
                     break;
                 default:
                     return "f";
                     break;
             }
+
+
+
         }
 
         private string GetValue(NumericUpDown numeric)
@@ -300,12 +286,12 @@ namespace Tiroida
             if (!this.metroComboBox8.Enabled)
                 return "f";
 
-            switch (this.metroComboBox8.Text)
+            switch (this.metroComboBox8.SelectedIndex)
             {
-                case "Da":
+                case 0:
                     return "t";
                     break;
-                case "Nu":
+                case 1:
                     return "f";
                     break;
                 default:
@@ -317,9 +303,11 @@ namespace Tiroida
         private void SendPersonalData()
         {
             
-            if (ConnectionClass.ClientTCP == null)
+            if (ConnectionClass.ClientTCP == null || !ConnectionClass.ClientTCP.isconnected)
             {
+                Application.UseWaitCursor = false;
                 SetGif(false, true);
+
                 MessageBox.Show("Sunteti momentan offline","Tiroida");
                 return;
             }

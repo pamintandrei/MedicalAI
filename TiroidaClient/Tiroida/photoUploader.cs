@@ -16,6 +16,9 @@ namespace Tiroida
     public partial class photoUploader : UserControl
     {
         private string imagepath;
+        delegate void changeScreenToResultCallBack(string result);
+
+
         public photoUploader()
         {
             InitializeComponent();
@@ -38,6 +41,31 @@ namespace Tiroida
             this.metroComboBox1.Items.Add(ls.pneumonia);
             this.metroComboBox1.Items.Add(ls.tuberculosis);
         }
+
+        private void changeScreenToResult(string result)
+        {
+            if (this.InvokeRequired)
+            {
+                changeScreenToResultCallBack callback = new changeScreenToResultCallBack(changeScreenToResult);
+                this.Invoke(callback, new object[] { result });
+            }
+            else
+            {
+                Application.UseWaitCursor = false;
+
+                ResponseUserControl response = new ResponseUserControl(ResponseUserControl.PHOTO);
+                response.SetCancer(result);
+                response.SetNonCancer(result);
+
+                Console.WriteLine(result);
+
+                Panel p = (Panel)this.Parent;
+                p.Controls.Clear();
+                p.Controls.Add(response);
+            }
+
+        }
+
 
 
         private void SetPanelLanguage()
@@ -104,13 +132,49 @@ namespace Tiroida
 
         }
 
+
+        private string getPhotoType()
+        {
+            int diseaseIndex = this.metroComboBox1.SelectedIndex;
+            switch (diseaseIndex)
+            {
+                case 0:
+                    return "cancersan";
+                    break;
+                case 1:
+                    return "hemoragie";
+                    break;
+                case 2:
+                    return "leucemie";
+                    break;
+                case 3:
+                    return "malarie";
+                    break;
+                case 4:
+                    return "pneumonia";
+                    break;
+                case 5:
+                    return "tuberculoza";
+                    break;
+                default:
+                    MessageBox.Show("Please select a disease");
+                    break;
+                
+            }
+            return "";
+        }
+
+
+
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            if (ConnectionClass.ClientTCP == null)
+            
+            if (ConnectionClass.ClientTCP == null || !ConnectionClass.ClientTCP.isconnected)
             {
                 MessageBox.Show("Sunteti momentan offline", "Tiroida");
                 return;
             }
+            
 
             if (string.IsNullOrWhiteSpace(this.metroComboBox1.Text))
             {
@@ -121,10 +185,13 @@ namespace Tiroida
 
             if (!string.IsNullOrWhiteSpace(this.imagepath))
             {
-                photoContent data = new photoContent(this.imagepath);
+                Application.UseWaitCursor = true;
+                this.metroButton1.Enabled = false;
+                string action = getPhotoType();
+                photoContent data = new photoContent(action,this.imagepath);
                 string datajson = JsonConvert.SerializeObject(data);
                 ConnectionClass.ClientTCP.SendContent(datajson);
-                Cursor.Current = Cursors.WaitCursor;
+                
                 ConnectionClass.ClientTCP.OnReceivePneumoniaResponse += ClientTCP_OnReceivePneumoniaResponse;
 
 
@@ -136,24 +203,11 @@ namespace Tiroida
             }
         }
 
+
         private void ClientTCP_OnReceivePneumoniaResponse(object sender, OnReceivePhotoResult e)
         {
-            Cursor.Current = Cursors.Arrow;
-
-            ResponseUserControl response = new ResponseUserControl(ResponseUserControl.PNEUMONIA);
-            response.SetCancer(e.pneumoniaChanse);
-            response.SetNonCancer(e.nonPneumoniaChanse);
-
-            Console.WriteLine(e.pneumoniaChanse);
-            Console.WriteLine(e.nonPneumoniaChanse);
-
-
-
-            Panel p = (Panel)this.Parent;
-            p.Controls.Clear();
-            p.Controls.Add(response);
-
-            
+            changeScreenToResult(e.pneumoniaChanse);
+            ConnectionClass.ClientTCP.OnReceivePneumoniaResponse -= ClientTCP_OnReceivePneumoniaResponse;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

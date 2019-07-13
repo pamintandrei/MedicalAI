@@ -14,9 +14,19 @@ namespace Tiroida
             this.action = "pneumonia";
         }
 
+
         public photoContent(string imagePath)
         {
             this.action = "pneumonia";
+            byte[] filebytes = File.ReadAllBytes(imagePath);
+            string imagebase64 = Convert.ToBase64String(filebytes);
+            this.imageContent = imagebase64;
+        }
+
+
+        public photoContent(string action, string imagePath)
+        {
+            this.action = action;
             byte[] filebytes = File.ReadAllBytes(imagePath);
             string imagebase64 = Convert.ToBase64String(filebytes);
             this.imageContent = imagebase64;

@@ -41,6 +41,7 @@ namespace Tiroida
             this.metroLabel2.Text = ls.password;
             this.metroLabel3.Text = ls.r_password;
             this.metroLabel5.Text = ls.email_code;
+            this.metroButton2.Text = ls.register;
         }
 
 

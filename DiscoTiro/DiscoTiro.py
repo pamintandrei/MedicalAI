@@ -105,29 +105,25 @@ async def send_and_receive_response(disease, ctx):
         await ctx.send("Service unavailable")
         return 2
         
-    try:
-        photo_url = ctx.message.attachments[0].url
-        photo_content = requests.get(photo_url).content
-        file_name_hash = hashlib.md5(photo_content)
+    
+    photo_url = ctx.message.attachments[0].url
+    photo_content = requests.get(photo_url).content
+    file_name_hash = hashlib.md5(photo_content)
     
     
-        f = open('photos\\' + file_name_hash.hexdigest(),'wb')
-        f.write(photo_content)
-        f.close()
+    f = open('photos\\' + file_name_hash.hexdigest(),'wb')
+    f.write(photo_content)
+    f.close()
         
         
-        if(imghdr.what('photos\\' + file_name_hash.hexdigest()) != None):
-            response = await client.SendPhoto('pneumonia', 'photos\\' + file_name_hash.hexdigest())
-            await ctx.send('pneumonia result: ' + str(response.get_rest()))
-            return 0
+    if(imghdr.what('photos\\' + file_name_hash.hexdigest()) != None):
+        response = await client.SendPhoto(disease, 'photos\\' + file_name_hash.hexdigest())
+        await ctx.send(disease + ' result: ' + str(response.get_rest()))
+        return 0
             
-        else:
-            await ctx.send('Invalid photo')
-            return 1
-    
-    except:
-        await ctx.send('No photo has been sent')
-        return -1
+    else:
+        await ctx.send('Invalid photo')
+        return 1
 
 
 def on_server_connected(sender, eargs):
@@ -143,7 +139,7 @@ def on_server_connection_lost(sender, eargs):
 print("Trying to connect the bot")
 
 
-client = Client.TcpClient('127.0.0.1', 5554)
+client = Client.TcpClient('188.24.230.145', 5554)
 client.on_connected += on_server_connected
 client.on_connection_lost += on_server_connection_lost
 p1 = threading.Thread(target=client.DoConnectionUntilConnected)

@@ -16,7 +16,7 @@ namespace Tiroida
         delegate void SetInterfaceCallBack(UserControl usercontrol);
         private int cancervalue;
 
-        public const int PNEUMONIA = 1;
+        public const int PHOTO = 1;
         public const int THYROID = 2;
 
         private int DISEASE;
@@ -64,20 +64,20 @@ namespace Tiroida
         public void ReloadLanguage()
         {
 
-
+            languagesettings lss = ConnectionClass.languagesupporter.getLanguagesettings();
             switch (this.DISEASE)
             {
                 case THYROID:
 
-                    languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
-                    this.metroLabel1.Text = ls.hypothyroidism_chanse;
-                    this.metroButton2.Text = ls.back_panel;
+                    
+                    this.metroLabel1.Text = lss.hyperthyroidism_chanse;
+                    this.metroButton2.Text = lss.back_panel;
 
                     break;
 
-                case PNEUMONIA:
+                case PHOTO:
 
-                    languagesettings lss = ConnectionClass.languagesupporter.getLanguagesettings();
+                    
                     this.metroLabel1.Text = lss.pneo_chanse;
                     this.metroButton2.Text = lss.back_panel;
 

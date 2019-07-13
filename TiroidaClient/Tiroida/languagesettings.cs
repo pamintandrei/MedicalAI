@@ -53,7 +53,7 @@ namespace Tiroida
         public string patient_name { get; set; }
         public string email_code { get; set; }
         public string config_ip { get; set; }
-        public string hypothyroidism_chanse { get; set; }
+        public string hyperthyroidism_chanse { get; set; }
         public string back_panel { get; set; }
         public string send_photo { get; set; }
         public string update_photo { get; set; }
@@ -61,6 +61,7 @@ namespace Tiroida
         public string pneo_chanse { get; set; }
         public string yes_answer { get; set; }
         public string no_answer { get; set; }
+        public string unknown_answer { get; set; }
         public string breast_cancer { get; set; }
         public string internal_bleeding { get; set; }
         public string leukemia { get; set; }
@@ -89,6 +90,7 @@ namespace Tiroida
         public string TT4_value_table { get; set; }
         public string hypothyroidism_chanse_table { get; set; }
         public string healthy_chanse_table { get; set; }
-        public string unknown_answer { get; set; }
+        public string male { get; set; }
+        public string female { get; set; }
     }
 }

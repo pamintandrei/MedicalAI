@@ -315,8 +315,8 @@ namespace Tiroida
 
 
                         case "photoresult":
-
-                            OnReceivePhotoResult pneoargs = new OnReceivePhotoResult((string)obj["rezultat"][0][1],(string)obj["rezultat"][0][0]);
+                            Console.WriteLine("Rezultat: " + (string)obj["rezultat"][0][0]);
+                            OnReceivePhotoResult pneoargs = new OnReceivePhotoResult((string)obj["rezultat"][0][0],(string)obj["rezultat"][0][0]);
                             OnReceivePneumoniaResponse.Invoke(this, pneoargs);
                             break;
                         default:

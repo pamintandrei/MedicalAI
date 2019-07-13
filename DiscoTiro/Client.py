@@ -57,8 +57,12 @@ class TcpClient:
 			
             recvdata = recvdata[:-5]
             jsonobj = json.loads(recvdata)
-            if jsonobj['action'] == 'response' or jsonobj['action'] == 'photoresult':
+            if jsonobj['action'] == 'response':
                 return response.response(jsonobj["rezultat"][0][0], jsonobj["rezultat"][1][1])
+                
+            if jsonobj['action'] == 'photoresult':
+                print(jsonobj["rezultat"][0][0])
+                return response.response(jsonobj["rezultat"][0][0], jsonobj["rezultat"][0][0])
 
         except socket.error as e:
             print("Error in sending data. " + str(e))
@@ -75,8 +79,8 @@ class TcpClient:
         file_data = f.read()
         f.close()
         encoded = base64.b64encode(file_data)
-        data['imageContent'] = encoded
-        photo_result = self.SendData(json.dumps(data))
+        data['imageContent'] = encoded.decode('utf-8')
+        photo_result = await self.SendData(json.dumps(data))
         return photo_result
         
         
