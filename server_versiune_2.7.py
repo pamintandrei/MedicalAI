@@ -336,7 +336,7 @@ def programare(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
     ID=recvdata['ID']
-    medic=recvdata['cookie']
+    medic=(recvdata['cookie'])
     
     
     
@@ -358,6 +358,11 @@ def programare(recvdata):
 def confirm_programare(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
+    t = (recvdata['medic_id'],recvdata['Date_time'],1 )
+    cur.execute("SELECT * FROM programari WHERE medic_id = ? AND Date_time = ? AND confirmation = ?",t)
+    programari=cur.fetchall()
+    if(programari):
+        return -1
     if(recvdata['raspuns']==1):
         programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
         cur.execute("UPDATE programari SET confirmed = 1 WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
