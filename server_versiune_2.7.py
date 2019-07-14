@@ -355,7 +355,22 @@ def programare(recvdata):
     date=[(ID,medic,programare)]
     cur.execute("INSERT INTO programari (?,?,?)",date)
     cur.commit()
-    
+def confirm_programare(recvdata):
+    conn = sqlite3.connect(base_dir + '/bazadedate.db')
+    cur = conn.cursor()
+    if(recvdata['raspuns']==1):
+        programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
+        cur.execute("UPDATE programari SET confirmed = 1 WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
+        conn.commit()   
+        msg="Programare din data" +recvdata['Date_time']+"a fost confirmata."
+        server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],msg)
+        return 0
+    else:
+        programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
+        cur.execute("UPDATE programari SET confirmed = -1 WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
+        conn.commit() 
+        server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],recvdata['mesaj'])
+        return 0
 def makemedic(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
