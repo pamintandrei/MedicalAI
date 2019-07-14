@@ -346,7 +346,7 @@ def programare(recvdata):
     programari=cur.fetchall()
     programare=recvdata['Date_time']
     for i in programari:
-        if(i[2]==programare):
+        if(i[2]==programare and i[3]==0):
             return -1 
         ''' -1 inseamna ca doctorul are deja programare atunci'''
         if(i[2]==programare and i[0]==ID):
@@ -367,7 +367,7 @@ def confirm_programare(recvdata):
         return 0
     else:
         programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
-        cur.execute("UPDATE programari SET confirmed = -1 WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
+        cur.execute("DELETE FROM programari WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
         conn.commit() 
         server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],recvdata['mesaj'])
         return 0
