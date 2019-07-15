@@ -624,8 +624,9 @@ def changePassword(currentPassword, newPassword, cookie):
         cur.execute("SELECT * FROM baza WHERE password = ? AND ID = ?", t)
         columns = cur.fetchall()
         if columns:
-            t2 = (newPassword, user_id)
-            cur.execute("UPDATE baza SET password = ? WHERE ID = ?", t2)
+            newcookies= secrets.token_hex(16)
+            t2 = (newPassword,newcookies,user_id)
+            cur.execute("UPDATE baza SET password = ?, cookie = ? WHERE ID = ?", t2)
             response['errcode'] = 0
             response['errmessage'] = "Parola a fost schimbata cu succes!"
         else:
@@ -648,7 +649,7 @@ def checkAdminUserDataBase():
         timestamp=datetime.timestamp(now)
         cookies= secrets.token_hex(16)
         secret_code = secrets.token_hex(5)
-        pusinbaza([(None,'admin','admin',timestamp,cookies,1,config["username_gmail"], secret_code,1)],cur,conn)
+        pusinbaza([(None,'admin','admin',timestamp,cookies,1,config["username_gmail"], secret_code,1,1)],cur,conn)
     
 
 
@@ -662,23 +663,68 @@ def checkAdminCookie(cur,cookie):
         return False
 
 
-def getMedics(cookie):
+def getMedics():
     conn = sqlite3.connect('bazadedate.db')
     cur = conn.cursor()
     data = {}
     data['action'] = 'medicsresult'
-    if checkAdminCookie(cur,cookie):
-        cur.execute("SELECT username FROM baza WHERE admin_confirmation=1 AND medic=1")
+    cur.execute("SELECT username FROM baza WHERE admin_confirmation=1 AND medic=1")
+    data['errcode'] = 0
+    data['medics'] = [dict(row) for row in cur.fetchall()]
+    json_data = json.dumps(data)
+    return json_data
+    
+def getNonMedics(cookie):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'nonmedicsresult'
+    if checkAdminCookie(cur, cookie):
+        cur.execute("SELECT username FROM baza WHERE admin_confirmation=0 AND medic=1")
         data['errcode'] = 0
         data['medics'] = [dict(row) for row in cur.fetchall()]
     else:
         data['errcode'] = 1
-    
+        
+        
     json_data = json.dumps(data)
     return json_data
     
     
+def getConfig(cookie):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'configresult'
+    if checkAdminCookie(cur, cookie):
+        data['register_verification'] = config['register_verification']
+        data['medic_registration'] = config['medic_registration']
+        data['errcode'] = 0
+    else:
+        data['errcode'] = 1
+        
+    json_data = json.dumps(data)
+    return json_data
     
+    
+def setConfig(cookie, register_verification, medic_registration):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'setconfigresult'
+    if checkAdminCookie(cur, cookie):
+        config['register_verification'] = register_verification
+        config['medic_registration'] = medic_registration
+        config_data = json.dumps(config)
+        f = open("server_config.json", "w")
+        f.write(config_data)
+        f.close()
+        data['errcode'] = 0
+    else:
+        data['errcode'] = 1
+        
+    json_data = json.dumps(data)
+    return json_data
     
     
 def handler(c, a):
@@ -722,6 +768,17 @@ def handler(c, a):
             response = getImage(loadedjson,'cancerpiele',64)
         if(loadedjson['action'] == "changepassword"):
             response = changePassword(loadedjson["currentpassword"], loadedjson["newpassword"], loadedjson["cookie"])
+        if(loadedjson['action'] == "getconfig"):
+            response = getConfig(data['cookie'])
+        if(loadedjson['action'] == "setconfig"):
+            response = setConfig(loadedjson['cookie'], loadedjson['register_verification'], loadedjson['medic_registration'])
+        if(loadedjson['action'] == "getmedics"):
+            response = getMedics()
+        if(loadedjson['action'] == "getnonmedics"):
+            response = getNonMedics(loadedjson['cookie'])
+        
+        
+         
         response += "<EOF>"
 	
 	
