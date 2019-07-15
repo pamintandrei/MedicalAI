@@ -49,7 +49,7 @@ allconnection = []
 
 def pusinbaza(utilizator,cur,conn):
 
-    cur.executemany("INSERT INTO baza VALUES(?,?,?,?,?,?,?,?)",utilizator)
+    cur.executemany("INSERT INTO baza VALUES(?,?,?,?,?,?,?,?,?)",utilizator)
     conn.commit()
     
 def gasitinbaza(column,fromuser,cur):
@@ -133,6 +133,7 @@ print(id_cookie(''))
 def login(recvdata):
     data = {}
     data['action'] = "loginresponse"
+    data['is_admin'] = False
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
     caut=gasitinbaza('username', recvdata['username'],cur)
@@ -154,6 +155,9 @@ def login(recvdata):
                 data['error'] = '0'
                 data['cookie'] = parolabaza[0][4]
                 data['errormessage'] = "Logare cu succes!"
+                if(recvdata['username'] == 'admin'):
+                    data['is_admin'] = True
+                
             elif(config['register_verification']):
                 data['error'] = '2'
                 data['errormessage'] = "Cont neverificat!"
@@ -605,7 +609,78 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     
     print(json_data)
     return json_data
+    
+    
+    
+def changePassword(currentPassword, newPassword, cookie):
+    response = {}
+    response['action'] = 'changepasswordresult'
+    
+    user_id = id_cookie(cookie)
+    if user_id != -1:
+        conn = sqlite3.connect('bazadedate.db')
+        cur = conn.cursor()
+        t = (currentPassword, user_id, )
+        cur.execute("SELECT * FROM baza WHERE password = ? AND ID = ?", t)
+        columns = cur.fetchall()
+        if columns:
+            t2 = (newPassword, user_id)
+            cur.execute("UPDATE baza SET password = ? WHERE ID = ?", t2)
+            response['errcode'] = 0
+            response['errmessage'] = "Parola a fost schimbata cu succes!"
+        else:
+            response['errcode'] = -1
+            response['errmessage'] = "Parola curenta introdusa gresit"
+        
+    else:
+        response['errcode'] = -2
+        response['errmessage'] = "Not a valid user"
+        
+    stringjson = json.dumps(response)
+    return stringjson
+    
+    
+def checkAdminUserDataBase():
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    if gasitinbaza('username', 'admin', cur) == 0:
+        now=datetime.now()
+        timestamp=datetime.timestamp(now)
+        cookies= secrets.token_hex(16)
+        secret_code = secrets.token_hex(5)
+        pusinbaza([(None,'admin','admin',timestamp,cookies,1,config["username_gmail"], secret_code,1)],cur,conn)
+    
 
+
+def checkAdminCookie(cur,cookie):
+    t = (cookie, )
+    cur.execute("SELECT * FROM baza WHERE cookie = ? LIMIT 1", t)
+    columns = cur.fetchall()
+    if columns[0][1] == "admin":
+        return True
+    else
+        return False
+
+
+def getMedics(cookie):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'medicsresult'
+    if checkAdminCookie(cur,cookie):
+        cur.execute("SELECT username FROM baza WHERE admin_confirmation=1 AND medic=1")
+        data['errcode'] = 0
+        data['medics'] = [dict(row) for row in cur.fetchall()]
+    else:
+        data['errcode'] = 1
+    
+    json_data = json.dumps(data)
+    return json_data
+    
+    
+    
+    
+    
 def handler(c, a):
     while True:
         data = recvall(c)
@@ -645,6 +720,8 @@ def handler(c, a):
             response = getImage(loadedjson,'malarie',50)
         if(loadedjson['action']=="cancerpiele"):
             response = getImage(loadedjson,'cancerpiele',64)
+        if(loadedjson['action'] == "changepassword"):
+            response = changePassword(loadedjson["currentpassword"], loadedjson["newpassword"], loadedjson["cookie"])
         response += "<EOF>"
 	
 	
@@ -664,7 +741,7 @@ def recvall(sock):
 	
 
 
-
+checkAdminUserDataBase()
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM, 0) as sock:
 	sock.bind(('0.0.0.0', 5554))
 	sock.listen(5)
