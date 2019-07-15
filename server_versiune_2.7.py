@@ -49,7 +49,7 @@ allconnection = []
 
 def pusinbaza(utilizator,cur,conn):
 
-    cur.executemany("INSERT INTO baza VALUES(?,?,?,?,?,?,?,?,?)",utilizator)
+    cur.executemany("INSERT INTO baza VALUES(?,?,?,?,?,?,?,?,?,?)",utilizator)
     conn.commit()
     
 def gasitinbaza(column,fromuser,cur):
