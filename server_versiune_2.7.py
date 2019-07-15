@@ -427,7 +427,7 @@ def registerfunction(recvdata):
         timestamp=datetime.timestamp(now)
         cookies= secrets.token_hex(16)
         secret_code = secrets.token_hex(5)
-        pusinbaza([(None,recvdata['username'],recvdata['password'],timestamp,cookies,0,recvdata['email'], secret_code)],cur,conn)
+        pusinbaza([(None,recvdata['username'],recvdata['password'],timestamp,cookies,0,recvdata['email'], secret_code,recvdata['medic'])],cur,conn)
         msg="Codul de confirmare este = "+secret_code
         server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],msg)
 	
