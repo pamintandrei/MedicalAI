@@ -380,6 +380,14 @@ def confirm_programare(recvdata):
         conn.commit() 
         server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],recvdata['mesaj'])
         return 0
+def takemadic(recvdata):
+    conn = sqlite3.connect(base_dir + '/bazadedate.db')
+    cur = conn.cursor()
+    username=([recvdata['username']])
+    cur.execute("UPDATE baza SET admin_confirmation = 0 WHERE username = ?",username)
+    conn.commit()
+    return 0
+
 def makemedic(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
@@ -659,7 +667,7 @@ def checkAdminCookie(cur,cookie):
     columns = cur.fetchall()
     if columns[0][1] == "admin":
         return True
-    else
+    else:
         return False
 
 
