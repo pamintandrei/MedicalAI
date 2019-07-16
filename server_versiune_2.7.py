@@ -395,6 +395,9 @@ def makemedic(recvdata):
     cur.execute("UPDATE baza SET admin_confirmation = 1 WHERE username = ?",username)
     conn.commit()
     return 0
+    
+    
+    
 def confirmation(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
@@ -735,6 +738,39 @@ def setConfig(cookie, register_verification, medic_registration):
     return json_data
     
     
+def addmedicrequest(recvdata):
+    data = {}
+    data['action'] = 'addmedicresponse'
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    if checkAdminCookie(cur, recvdata['cookie']):
+        data['errcode'] = 0
+        data['errmessage'] = "Medicul a fost adaugat cu succes!"
+        makemedic(recvdata)
+    else:
+        data['errcode'] = 1
+        data['errmessage'] = "Invalid cookie"
+          
+    json_data = json.dumps(data)
+    return json_data
+        
+        
+def removemedicrequest(recvdata):
+    data = {}
+    data['action'] = 'removemedicresponse'
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    if checkAdminCookie(cur, recvdata['cookie']):
+        data['errcode'] = 0
+        data['errmessage'] = "Medicul a fost sters cu succes"
+        takemadic(recvdata)
+    else:
+        data['errcode'] = 1
+        data['errmessage'] = "Invalid cookie"
+        
+    json_data = json.dumps(data)
+    return json_data
+    
 def handler(c, a):
     while True:
         data = recvall(c)
@@ -784,6 +820,10 @@ def handler(c, a):
             response = getMedics()
         if(loadedjson['action'] == "getnonmedics"):
             response = getNonMedics(loadedjson['cookie'])
+        if(loadedjson['action'] == "addmedic"):
+            response = addmedicrequest(loadedjson)
+        if(loadedjson['action'] == "removemedic"):
+            response = removemedicrequest(loadedjson)
         
         
          
