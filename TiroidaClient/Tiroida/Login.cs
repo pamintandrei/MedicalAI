@@ -17,7 +17,8 @@ namespace Tiroida
     {
         delegate void OpenFormCallBack(string username);
         delegate void OpenPersonalDataCallback(bool isloged);
-
+        delegate void OpenAdminPanelCallBack();
+        delegate void SaveCookieCallBack();
 
         public Login()
         {
@@ -101,11 +102,24 @@ namespace Tiroida
 
         private void SaveCookie()
         {
-            cookieobj cookie = new cookieobj(ConnectionClass.ClientTCP.Cookie);
-            string cookiesave = JsonConvert.SerializeObject(cookie);
-            StreamWriter writer = new StreamWriter(@"cookie.json", false);
-            writer.Write(cookiesave);
-            writer.Close();
+
+            if (this.InvokeRequired)
+            {
+                SaveCookieCallBack callback = new SaveCookieCallBack(SaveCookie);
+                this.Invoke(callback, new object[] { });
+            }
+            else
+            {
+
+                if (this.checkBox1.Checked)
+                {
+                    cookieobj cookie = new cookieobj(ConnectionClass.ClientTCP.Cookie);
+                    string cookiesave = JsonConvert.SerializeObject(cookie);
+                    StreamWriter writer = new StreamWriter(@"cookie.json", false);
+                    writer.Write(cookiesave);
+                    writer.Close();
+                }
+            }
         }
 
 
@@ -118,12 +132,6 @@ namespace Tiroida
             }
             else
             {
-                if (this.checkBox1.Checked)
-                {
-                    SaveCookie();
-                }
-
-
                 PersonalDataForm form = new PersonalDataForm(isloged);
                 Panel p1 =  (Panel)this.Parent;
                 p1.Controls.Clear();
@@ -131,13 +139,31 @@ namespace Tiroida
             }
         }
 
+
+        private void OpenAdminPanel()
+        {
+            if (this.InvokeRequired)
+            {
+                OpenAdminPanelCallBack callback = new OpenAdminPanelCallBack(OpenAdminPanel);
+                this.Invoke(callback, new object[] { });
+            }
+            else
+            {
+                adminpanel adpanel = new adminpanel();
+                Panel p1 = (Panel)this.Parent;
+                p1.Controls.Clear();
+                p1.Controls.Add(adpanel);
+            }
+        }
+
+
         private bool isgot = false;
         private void ClientTCP_OnLoginResponse(object sender, OnReceiveLoginMessageArgs e)
         {
             Console.WriteLine("Login Response received: " + e.errorcode.ToString());
             if (!isgot)
             {
-                Console.WriteLine("Yeah, here we go");
+                
                 isgot = true;
                 if (e.errorcode == 2)
                 {
@@ -147,8 +173,15 @@ namespace Tiroida
                 {
                     if (e.errorcode == 0)
                     {
-                        
-                        OpenPersonalData(true);
+                        SaveCookie();
+                        if (e.is_admin)
+                        {
+                            OpenAdminPanel();
+                        }
+                        else
+                        {
+                            OpenPersonalData(true);
+                        }
 
                     }
                     else

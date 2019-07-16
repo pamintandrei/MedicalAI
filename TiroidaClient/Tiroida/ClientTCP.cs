@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
 using System.Security.Authentication;
+using System.Windows.Forms;
 
 namespace Tiroida
 {
@@ -47,6 +48,12 @@ namespace Tiroida
         public event EventHandler<OnCodeVerifyResponseArgs> OnCodeVerifyResponse;
         public event EventHandler<OnReceiveResultArgs> OnReceiveResults;
         public event EventHandler<OnReceivePhotoResult> OnReceivePneumoniaResponse;
+        public event EventHandler<OnReceiveChangePasswordResponseArgs> OnReceiveChangePasswordResponse;
+        public event EventHandler<OnReceiveGetConfigResponseArgs> OnReceiveGetConfigResponse;
+        public event EventHandler<OnReceiveNonMedicsArgs> OnReceiveNonMedics;
+        public event EventHandler<OnReceiveNonMedicsArgs> OnReceiveMedics;
+        public event EventHandler<OnReceiveSetConfigArgs> OnReceiveSetConfig;
+        public event EventHandler<OnReceiveSetConfigArgs> OnReceiveAddMedic;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -264,7 +271,7 @@ namespace Tiroida
                         case "regresponse":
                             Console.WriteLine("Receiving register response");
                             OnRegisterResponse?.Invoke(this, new OnReceiveRegisterMessageArgs { errorcode = (int)obj["errorcode"], errormessage = (string)obj["errormessage"] });
-                            
+
                             break;
 
                         case "loginresponse":
@@ -274,20 +281,20 @@ namespace Tiroida
                             Console.WriteLine(errorcodeestring);
                             int errorcodee = Int32.Parse(errorcodeestring);
                             Console.WriteLine("Cod de eroare: " + errorcodee);
-                            
+
                             if (errorcodee == 0)
                             {
                                 this.Cookie = (string)obj["cookie"];
                                 this.isloged = true;
                             }
 
-                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"] });
+                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"], is_admin = (bool)obj["is_admin"] });
 
                             break;
 
                         case "code_verify_response":
                             Console.WriteLine("Receiving code_verify response");
-                            OnCodeVerifyResponse?.Invoke(this, new OnCodeVerifyResponseArgs { errorcode = (int)obj["errorcode"], errormessage = (string)obj["errormessage"]});
+                            OnCodeVerifyResponse?.Invoke(this, new OnCodeVerifyResponseArgs { errorcode = (int)obj["errorcode"], errormessage = (string)obj["errormessage"] });
 
 
                             break;
@@ -298,9 +305,9 @@ namespace Tiroida
 
                             if (errorcode == 0)
                             {
-                                
+
                                 OnReceiveResultArgs args = JsonConvert.DeserializeObject<OnReceiveResultArgs>(response);
-                                
+
                                 OnReceiveResults?.Invoke(this, args);
                             }
                             else
@@ -308,17 +315,88 @@ namespace Tiroida
 
                             }
 
-                            
+
 
 
                             break;
 
 
                         case "photoresult":
-                            Console.WriteLine("Rezultat: " + (string)obj["rezultat"][0][0]);
-                            OnReceivePhotoResult pneoargs = new OnReceivePhotoResult((string)obj["rezultat"][0][0],(string)obj["rezultat"][0][0]);
-                            OnReceivePneumoniaResponse.Invoke(this, pneoargs);
+                            OnReceivePhotoResult pneoargs = new OnReceivePhotoResult((string)obj["rezultat"][0][0], (string)obj["rezultat"][0][0]);
+                            OnReceivePneumoniaResponse?.Invoke(this, pneoargs);
                             break;
+
+
+                        case "changepasswordresult":
+                            OnReceiveChangePasswordResponseArgs passchangeargs = new OnReceiveChangePasswordResponseArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                            OnReceiveChangePasswordResponse?.Invoke(this, passchangeargs);
+                            break;
+
+                        case "configresult":
+                            if ((int)obj["errcode"] == 0)
+                            {
+                                OnReceiveGetConfigResponseArgs config = new OnReceiveGetConfigResponseArgs((bool)obj["register_verification"], (bool)obj["medic_registration"]);
+                                OnReceiveGetConfigResponse?.Invoke(this, config);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nu sunteti conectat cu contul de admin!", "MedicalAI");
+                            }
+                            break;
+
+                        case "nonmedicsresult":
+                            if ((int)obj["errcode"] == 0)
+                            {
+                                Console.WriteLine(response);
+                                OnReceiveNonMedicsArgs config = JsonConvert.DeserializeObject<OnReceiveNonMedicsArgs>(response);
+                                OnReceiveNonMedics?.Invoke(this, config);
+
+                            }
+
+                            break;
+
+
+                        case "medicsresult":
+                            if ((int)obj["errcode"] == 0)
+                            {
+                                Console.WriteLine(response);
+                                OnReceiveNonMedicsArgs config = JsonConvert.DeserializeObject<OnReceiveNonMedicsArgs>(response);
+                                OnReceiveMedics?.Invoke(this, config);
+                            }
+                            break;
+
+                        case "setconfigresult":
+                            if ((int)obj["errcode"] == 0)
+                            {
+                                OnReceiveSetConfigArgs config = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                                OnReceiveSetConfig?.Invoke(this, config);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid cookie");
+                            }
+
+                            break;
+
+                        case "addmedicresponse":
+                            if((int)obj["errcode"] == 0)
+                            {
+
+                                OnReceiveSetConfigArgs config = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                                OnReceiveSetConfig?.Invoke(this,config);
+                            }
+
+                            break;
+                        case "removemedicresponse":
+                            if ((int)obj["errcode"] == 0)
+                            {
+
+                                OnReceiveSetConfigArgs config = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                                OnReceiveSetConfig?.Invoke(this, config);
+                            }
+
+                            break;
+
                         default:
                             /*
                              * Some error comming from server

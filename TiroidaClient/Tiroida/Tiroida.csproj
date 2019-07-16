@@ -77,6 +77,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddMedicContent.cs" />
+    <Compile Include="adminpanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="adminpanel.Designer.cs">
+      <DependentUpon>adminpanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePasswordContent.cs" />
     <Compile Include="ClientTCP.cs" />
     <Compile Include="Codeinput.cs">
       <SubType>Form</SubType>
@@ -85,6 +93,7 @@
       <DependentUpon>Codeinput.cs</DependentUpon>
     </Compile>
     <Compile Include="CodeInputContent.cs" />
+    <Compile Include="configContent.cs" />
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="cookieobj.cs" />
     <Compile Include="Form1.cs">
@@ -109,12 +118,17 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginContent.cs" />
+    <Compile Include="medicContent.cs" />
     <Compile Include="OnCodeVerifyResponseArgs.cs" />
+    <Compile Include="OnReceiveChangePasswordResponseArgs.cs" />
+    <Compile Include="OnReceiveGetConfigResponseArgs.cs" />
     <Compile Include="OnReceiveLoginMessageArgs.cs" />
     <Compile Include="OnReceiveMessageClientEventArgs.cs" />
+    <Compile Include="OnReceiveNonMedicsArgs.cs" />
     <Compile Include="OnReceivePhotoResult.cs" />
     <Compile Include="OnReceiveRegisterMessageArgs.cs" />
     <Compile Include="OnReceiveResultArgs.cs" />
+    <Compile Include="OnReceiveSetConfigArgs.cs" />
     <Compile Include="PersonalDataForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,12 +161,22 @@
     </Compile>
     <Compile Include="ResultPatient.cs" />
     <Compile Include="ResultReqContent.cs" />
+    <Compile Include="SetConfigContent.cs" />
+    <Compile Include="viewmedics.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="viewmedics.Designer.cs">
+      <DependentUpon>viewmedics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Viewtests.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Viewtests.Designer.cs">
       <DependentUpon>Viewtests.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="adminpanel.resx">
+      <DependentUpon>adminpanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Codeinput.resx">
       <DependentUpon>Codeinput.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResponseUserControl.resx">
       <DependentUpon>ResponseUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewmedics.resx">
+      <DependentUpon>viewmedics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Viewtests.resx">
       <DependentUpon>Viewtests.cs</DependentUpon>

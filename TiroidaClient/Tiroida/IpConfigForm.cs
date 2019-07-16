@@ -22,6 +22,21 @@ namespace Tiroida
             InitializeComponent();
             SetPanelLanguage();
             this.languagechanged = false;
+            this.MinimumSize = new Size(815, 375);
+            this.MaximumSize = new Size(815, 375);
+
+
+            if (!ConnectionClass.ClientTCP.isloged)
+            {
+                this.metroTextBox3.Enabled = false;
+                this.metroTextBox4.Enabled = false;
+                this.metroTextBox5.Enabled = false;
+                this.metroLabel4.Enabled = false;
+                this.metroLabel5.Enabled = false;
+                this.metroLabel6.Enabled = false;
+            }
+
+
         }
 
         public void ReloadLanguage()
@@ -120,12 +135,63 @@ namespace Tiroida
         {
             this.metroComboBox1.Text = ConnectionClass.config.Language;
             getAndSetConfigFile();
+
+
+
+        }
+
+        private void ChangePassword()
+        {
+            if (ConnectionClass.ClientTCP.isloged && ConnectionClass.ClientTCP.isconnected && !string.IsNullOrWhiteSpace(this.metroTextBox3.Text))
+            {
+                if (this.metroTextBox4.Text.Length < 3)
+                {
+                    MessageBox.Show("Parola este prea scurta!");
+                    return;
+                }
+
+
+                if (this.metroTextBox4.Text == this.metroTextBox5.Text)
+                {
+                    ChangePasswordContent content = new ChangePasswordContent(ConnectionClass.ClientTCP.Cookie, this.metroTextBox4.Text, this.metroTextBox5.Text);
+
+                    string data_to_send = JsonConvert.SerializeObject(content);
+                    ConnectionClass.ClientTCP.SendContent(data_to_send);
+                    ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse += ClientTCP_OnReceiveChangePasswordResponse;
+                }
+                else
+                {
+                    MessageBox.Show("Parolele nu coincid", "MedicalAI");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Nu sunteti conectat sau logat");
+            }
+        }
+
+        private void ClientTCP_OnReceiveChangePasswordResponse(object sender, OnReceiveChangePasswordResponseArgs e)
+        {
+            if (e.getCode() == 1)
+            {
+                MessageBox.Show("Parola curenta incorecta", "MedicalAI");
+            }
+            else
+                if (e.getCode() == 0)
+                {
+                    MessageBox.Show("Parola a fost schimbata cu succes!", "MedicalAI");
+                }
+
+            Application.UseWaitCursor = false;
+            ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse -= ClientTCP_OnReceiveChangePasswordResponse;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            Application.UseWaitCursor = true;
             SetConfig();
-            
+            ChangePassword();
         }
     }
 }

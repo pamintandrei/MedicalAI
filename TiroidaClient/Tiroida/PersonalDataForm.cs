@@ -19,6 +19,8 @@ namespace Tiroida
         delegate void SetInterfaceCallBack(string chanse, string chanse_to_have_nothing);
         delegate int GetInfoCallBack(MetroComboBox combobox);
         private List<string> unknownbox;
+        public bool loged;
+
 
         private int GetInfoText(MetroComboBox combobox)
         {
@@ -76,9 +78,11 @@ namespace Tiroida
         {
             InitializeComponent();
             SetPanelLanguage();
+            this.loged = loged;
             if (loged)
             {
                 pictureBox2.Image = new Bitmap(Properties.Resources.logout);
+                
             }
             else
             {
@@ -424,7 +428,10 @@ namespace Tiroida
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            RemoveCookie();
+            if (this.loged)
+            {
+                RemoveCookie();
+            }
 
 
 

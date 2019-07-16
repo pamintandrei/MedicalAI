@@ -8,8 +8,15 @@ namespace Tiroida
 {
     class OnReceiveLoginMessageArgs
     {
+        public OnReceiveLoginMessageArgs()
+        {
+
+        }
+
+
         public int errorcode;
         public string errormessage;
         public string username;
+        public bool is_admin;
     }
 }
