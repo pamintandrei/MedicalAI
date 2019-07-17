@@ -431,6 +431,9 @@ def registerfunction(recvdata):
     elif(gasitinbaza('email', recvdata['email'],cur)):
         data['errorcode'] = 2
         data['errormessage'] = "Email-ul a fost deja folosit!"
+    elif(data['medic'] == True and config['medic_registration'] == False):
+        data['errcode'] = 3
+        data['errormessage'] = "Cererile pentru medici sunt inchise!"
     else:
         data['errorcode'] = 0
         data['errormessage'] = "Inregistrare cu succes!"
