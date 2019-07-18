@@ -823,7 +823,7 @@ def handler(c, a):
         if(loadedjson['action']=="tuberculoza"):
             response = getImage(loadedjson,'tuberculoza',512,'grayscale')
         if(loadedjson['action']=="hemoragie"):
-            response = getImage(loadedjson,'hemoragie',200)
+            response = getImage(loadedjson,'hemoragie',200,'grayscale')
         if(loadedjson['action']=="hyper"):
             response = getHyper(loadedjson)
         if(loadedjson['action']=="cancersan"):
