@@ -431,8 +431,8 @@ def registerfunction(recvdata):
     elif(gasitinbaza('email', recvdata['email'],cur)):
         data['errorcode'] = 2
         data['errormessage'] = "Email-ul a fost deja folosit!"
-    elif(data['medic'] == True and config['medic_registration'] == False):
-        data['errcode'] = 3
+    elif(recvdata['medic'] == True and config['medic_registration'] == False):
+        data['errorcode'] = 3
         data['errormessage'] = "Cererile pentru medici sunt inchise!"
     else:
         data['errorcode'] = 0
@@ -441,7 +441,7 @@ def registerfunction(recvdata):
         timestamp=datetime.timestamp(now)
         cookies= secrets.token_hex(16)
         secret_code = secrets.token_hex(5)
-        pusinbaza([(None,recvdata['username'],recvdata['password'],timestamp,cookies,0,recvdata['email'], secret_code,recvdata['medic'])],cur,conn)
+        pusinbaza([(None,recvdata['username'],recvdata['password'],timestamp,cookies,0,recvdata['email'], secret_code,0,recvdata['medic'])],cur,conn)
         msg="Codul de confirmare este = "+secret_code
         server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],msg)
 	
@@ -682,11 +682,24 @@ def getMedics():
     cur = conn.cursor()
     data = {}
     data['action'] = 'medicsresult'
-    cur.execute("SELECT username FROM baza WHERE admin_confirmation=1 AND medic=1")
+
+    cur.execute("SELECT username FROM baza WHERE admin_confirmation = 1 AND medic = 1")
+    informatii=cur.fetchall()
+    date=[]
+
+    for liste in informatii:
+        for elemente in liste:
+            date.append(elemente)
+        
     data['errcode'] = 0
-    data['medics'] = [dict(row) for row in cur.fetchall()]
+    data['medics'] = date
+    print(data)
+
+        
+        
     json_data = json.dumps(data)
     return json_data
+    
     
 def getNonMedics(cookie):
     conn = sqlite3.connect('bazadedate.db')
@@ -694,9 +707,17 @@ def getNonMedics(cookie):
     data = {}
     data['action'] = 'nonmedicsresult'
     if checkAdminCookie(cur, cookie):
-        cur.execute("SELECT username FROM baza WHERE admin_confirmation=0 AND medic=1")
+        cur.execute("SELECT username FROM baza WHERE admin_confirmation = 0 AND medic = 1")
+        informatii=cur.fetchall()
+        date=[]
+    
+        for liste in informatii:
+            for elemente in liste:
+                date.append(elemente)
+            
         data['errcode'] = 0
-        data['medics'] = [dict(row) for row in cur.fetchall()]
+        data['medics'] = date
+        print(data)
     else:
         data['errcode'] = 1
         
@@ -816,7 +837,7 @@ def handler(c, a):
         if(loadedjson['action'] == "changepassword"):
             response = changePassword(loadedjson["currentpassword"], loadedjson["newpassword"], loadedjson["cookie"])
         if(loadedjson['action'] == "getconfig"):
-            response = getConfig(data['cookie'])
+            response = getConfig(loadedjson['cookie'])
         if(loadedjson['action'] == "setconfig"):
             response = setConfig(loadedjson['cookie'], loadedjson['register_verification'], loadedjson['medic_registration'])
         if(loadedjson['action'] == "getmedics"):
