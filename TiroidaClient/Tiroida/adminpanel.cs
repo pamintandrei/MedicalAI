@@ -16,6 +16,7 @@ namespace Tiroida
         public adminpanel()
         {
             InitializeComponent();
+            this.Dock = DockStyle.Fill;
         }
 
         private void RemoveCookie()
@@ -58,6 +59,11 @@ namespace Tiroida
             Panel p1 = (Panel)this.Parent;
             p1.Controls.Clear();
             p1.Controls.Add(form);
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

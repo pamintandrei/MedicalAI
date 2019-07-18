@@ -66,6 +66,7 @@ namespace Tiroida
             {
                 this.metroComboBox1.Enabled = true;
                 this.metroButton2.Enabled = true;
+                this.metroComboBox1.Items.Clear();
                 foreach (string s in users)
                 {
                     this.metroComboBox1.Items.Add(s);
@@ -86,6 +87,7 @@ namespace Tiroida
             {
                 this.metroComboBox2.Enabled = true;
                 this.metroButton3.Enabled = true;
+                this.metroComboBox2.Items.Clear();
                 foreach (string s in users)
                 {
                     this.metroComboBox2.Items.Add(s);
@@ -104,11 +106,15 @@ namespace Tiroida
             this.metroButton1.Enabled = false;
             this.metroButton2.Enabled = false;
             this.metroButton3.Enabled = false;
+            this.Dock = DockStyle.Fill;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            adminpanel panel = new adminpanel();
+            Panel p1 = (Panel)this.Parent;
+            p1.Controls.Clear();
+            p1.Controls.Add(panel);
         }
 
 
@@ -197,6 +203,7 @@ namespace Tiroida
 
         private void viewmedics_Load(object sender, EventArgs e)
         {
+            
             if (ConnectionClass.ClientTCP.isconnected)
             {
                 getCurrentConfigAndSetIt();
@@ -242,6 +249,8 @@ namespace Tiroida
             {
 
                 MessageBox.Show("Operatiune cu succes!");
+                getNonMedics();
+                getMedics();
             }
             ConnectionClass.ClientTCP.OnReceiveAddMedic -= ClientTCP_OnReceiveAddMedic;
         }
@@ -277,6 +286,8 @@ namespace Tiroida
             if (e.errcode == 0)
             {
                 MessageBox.Show("Operatiune cu succes!");
+                getNonMedics();
+                getMedics();
             }
             ConnectionClass.ClientTCP.OnReceiveAddMedic -= ClientTCP_OnReceiveAddMedic1;
         }

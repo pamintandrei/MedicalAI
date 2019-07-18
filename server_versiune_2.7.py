@@ -637,12 +637,15 @@ def changePassword(currentPassword, newPassword, cookie):
         t = (currentPassword, user_id, )
         cur.execute("SELECT * FROM baza WHERE password = ? AND ID = ?", t)
         columns = cur.fetchall()
+        print(columns)
         if columns:
             newcookies= secrets.token_hex(16)
-            t2 = (newPassword,newcookies,user_id)
+            t2 = (newPassword,newcookies,user_id, )
             cur.execute("UPDATE baza SET password = ?, cookie = ? WHERE ID = ?", t2)
+            conn.commit()
             response['errcode'] = 0
             response['errmessage'] = "Parola a fost schimbata cu succes!"
+            response['cookie'] = newcookies
         else:
             response['errcode'] = -1
             response['errmessage'] = "Parola curenta introdusa gresit"

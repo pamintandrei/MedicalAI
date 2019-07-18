@@ -35,12 +35,14 @@ namespace Tiroida
         private SslStream sslStream;
         private bool rememberme;
         
+        
 
 
         public string Username;
         public string Cookie;
         public bool isconnected;
         public bool isloged;
+        public bool isadmin;
 
         public event EventHandler<OnReceiveMessageClientEventArgs> OnResponse;
         public event EventHandler<OnReceiveRegisterMessageArgs> OnRegisterResponse;
@@ -64,6 +66,7 @@ namespace Tiroida
             this.isloged = false;
             this.SERVERNAME = DEFAULTSERVERNAME;
             this.isconnected = false;
+            this.isadmin = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize)
@@ -74,6 +77,7 @@ namespace Tiroida
             this.isloged = false;
             this.SERVERNAME = "MedicalAI";
             this.isconnected = false;
+            this.isadmin = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize, bool rememberme)
@@ -85,6 +89,7 @@ namespace Tiroida
             this.SERVERNAME = "MedicalAI";
             this.rememberme = rememberme;
             this.isconnected = false;
+            this.isadmin = false;
         }
 
         public ClientTCP(string ServerIP, int ServerPort, int buffersize, string SERVERNAME)
@@ -95,6 +100,7 @@ namespace Tiroida
             this.isloged = false;
             this.SERVERNAME = SERVERNAME;
             this.isconnected = false;
+            this.isadmin = false;
         }
 
         public void SetIp(string ServerIP)
@@ -289,7 +295,7 @@ namespace Tiroida
                             }
 
                             OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"], is_admin = (bool)obj["is_admin"] });
-
+                            this.isadmin = (bool)obj["is_admin"];
                             break;
 
                         case "code_verify_response":
@@ -329,7 +335,13 @@ namespace Tiroida
 
                         case "changepasswordresult":
                             OnReceiveChangePasswordResponseArgs passchangeargs = new OnReceiveChangePasswordResponseArgs((int)obj["errcode"], (string)obj["errmessage"]);
+
+                            if ((int)obj["errcode"] == 0)
+                            {
+                                this.Cookie = (string)obj["cookie"];
+                            }
                             OnReceiveChangePasswordResponse?.Invoke(this, passchangeargs);
+                           
                             break;
 
                         case "configresult":
@@ -383,7 +395,7 @@ namespace Tiroida
                             {
 
                                 OnReceiveSetConfigArgs config = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
-                                OnReceiveSetConfig?.Invoke(this,config);
+                                OnReceiveAddMedic?.Invoke(this,config);
                             }
 
                             break;
@@ -392,7 +404,7 @@ namespace Tiroida
                             {
 
                                 OnReceiveSetConfigArgs config = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
-                                OnReceiveSetConfig?.Invoke(this, config);
+                                OnReceiveAddMedic?.Invoke(this, config);
                             }
 
                             break;

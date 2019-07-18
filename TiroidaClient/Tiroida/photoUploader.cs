@@ -62,6 +62,7 @@ namespace Tiroida
                 Panel p = (Panel)this.Parent;
                 p.Controls.Clear();
                 p.Controls.Add(response);
+                Console.WriteLine("We reached the response!");
             }
 
         }

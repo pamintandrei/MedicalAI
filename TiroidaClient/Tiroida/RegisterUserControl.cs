@@ -77,7 +77,7 @@ namespace Tiroida
 
 
             string jsonstring = JsonConvert.SerializeObject(content);
-            if (!ConnectionClass.ClientTCP.isconnected)
+            if (ConnectionClass.ClientTCP.isconnected)
             {
                 ConnectionClass.ClientTCP.OnRegisterResponse += ClientTCP_OnRegisterResponse;
                 ConnectionClass.ClientTCP.SendContent(jsonstring);
@@ -87,12 +87,13 @@ namespace Tiroida
         private bool responseget = false;
         private void ClientTCP_OnRegisterResponse(object sender, OnReceiveRegisterMessageArgs e)
         {
+            ConnectionClass.ClientTCP.OnRegisterResponse -= ClientTCP_OnRegisterResponse;
             if (!this.responseget)
             {
                 MessageBox.Show(e.errormessage, "Tiroida");
                 this.responseget = true;
             }
-            ConnectionClass.ClientTCP.OnRegisterResponse -= ClientTCP_OnRegisterResponse;
+            
             this.responseget = false;
         }
 
@@ -112,9 +113,16 @@ namespace Tiroida
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(this.metroComboBox1.Text))
+            {
+                MessageBox.Show("Va rugam selectati tipul de cont dorit", "MedicalAI");
+                return;
+            }
+
+
             if (this.metroTextBox1.Text.Length < 3)
             {
-                MessageBox.Show("Numele de utilizator este prea scurt", "Tiroida");
+                MessageBox.Show("Numele de utilizator este prea scurt", "MedicalAI");
                 return;
             }
 
@@ -123,7 +131,7 @@ namespace Tiroida
 
             if (!ValidEmail(this.metroTextBox4.Text))
             {
-                MessageBox.Show("Email invalid", "Tiroida");
+                MessageBox.Show("Email invalid", "MedicalAI");
                 return;
             }
 
@@ -132,19 +140,29 @@ namespace Tiroida
             {
                 if (this.metroButton2.Text.Length < 3)
                 {
-                    MessageBox.Show("Parola este prea scurta", "Tiroida");
+                    MessageBox.Show("Parola este prea scurta", "MedicalAI");
                     return;
                 }
 
 
+                bool medic = false;
+                if (this.metroComboBox1.SelectedIndex == 0)
+                {
+                    medic = false;
+                }
+                else
+                {
+                    medic = true;
+                }
 
-                RegisterContent content = new RegisterContent(this.metroTextBox1.Text, this.metroTextBox2.Text, this.metroTextBox4.Text);
+                Console.WriteLine("I'm gonna register man!");
+                RegisterContent content = new RegisterContent(this.metroTextBox1.Text, this.metroTextBox2.Text, this.metroTextBox4.Text, medic);
                 Thread t1 = new Thread(() => SendRegisterForm(content));
                 t1.Start();
             }
             else
             {
-                MessageBox.Show("Parola nu coincide!", "Tiroida");
+                MessageBox.Show("Parola nu coincide!", "MedicalAI");
             }
         }
 

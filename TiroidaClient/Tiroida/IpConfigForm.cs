@@ -142,49 +142,60 @@ namespace Tiroida
 
         private void ChangePassword()
         {
-            if (ConnectionClass.ClientTCP.isloged && ConnectionClass.ClientTCP.isconnected && !string.IsNullOrWhiteSpace(this.metroTextBox3.Text))
+            if (!string.IsNullOrWhiteSpace(this.metroTextBox3.Text))
             {
-                if (this.metroTextBox4.Text.Length < 3)
+                if (ConnectionClass.ClientTCP.isloged && ConnectionClass.ClientTCP.isconnected && !string.IsNullOrWhiteSpace(this.metroTextBox3.Text))
                 {
-                    MessageBox.Show("Parola este prea scurta!");
-                    return;
-                }
+                    if (this.metroTextBox4.Text.Length < 3)
+                    {
+                        MessageBox.Show("Parola este prea scurta!");
+                        return;
+                    }
 
 
-                if (this.metroTextBox4.Text == this.metroTextBox5.Text)
-                {
-                    ChangePasswordContent content = new ChangePasswordContent(ConnectionClass.ClientTCP.Cookie, this.metroTextBox4.Text, this.metroTextBox5.Text);
+                    if (this.metroTextBox4.Text == this.metroTextBox5.Text)
+                    {
+                        ChangePasswordContent content = new ChangePasswordContent(ConnectionClass.ClientTCP.Cookie, this.metroTextBox3.Text, this.metroTextBox5.Text);
 
-                    string data_to_send = JsonConvert.SerializeObject(content);
-                    ConnectionClass.ClientTCP.SendContent(data_to_send);
-                    ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse += ClientTCP_OnReceiveChangePasswordResponse;
+                        string data_to_send = JsonConvert.SerializeObject(content);
+                        ConnectionClass.ClientTCP.SendContent(data_to_send);
+                        ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse += ClientTCP_OnReceiveChangePasswordResponse;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Parolele nu coincid", "MedicalAI");
+                    }
+
                 }
                 else
                 {
-                    MessageBox.Show("Parolele nu coincid", "MedicalAI");
+                    if (ConnectionClass.ClientTCP.isloged)
+                    {
+                        MessageBox.Show("Nu sunteti conectat");
+                    }
                 }
-
-            }
-            else
-            {
-                MessageBox.Show("Nu sunteti conectat sau logat");
             }
         }
 
         private void ClientTCP_OnReceiveChangePasswordResponse(object sender, OnReceiveChangePasswordResponseArgs e)
         {
-            if (e.getCode() == 1)
+            ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse -= ClientTCP_OnReceiveChangePasswordResponse;
+            if (e.getCode() == -1)
             {
                 MessageBox.Show("Parola curenta incorecta", "MedicalAI");
             }
             else
                 if (e.getCode() == 0)
-                {
-                    MessageBox.Show("Parola a fost schimbata cu succes!", "MedicalAI");
-                }
+            {
+                MessageBox.Show("Parola a fost schimbata cu succes!", "MedicalAI");
+            }
+            else
+            {
+                MessageBox.Show("Invalid cookie session");
+            }
 
-            Application.UseWaitCursor = false;
-            ConnectionClass.ClientTCP.OnReceiveChangePasswordResponse -= ClientTCP_OnReceiveChangePasswordResponse;
+            
+            
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -192,6 +203,7 @@ namespace Tiroida
             Application.UseWaitCursor = true;
             SetConfig();
             ChangePassword();
+            Application.UseWaitCursor = false;
         }
     }
 }

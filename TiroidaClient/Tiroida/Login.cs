@@ -77,7 +77,7 @@ namespace Tiroida
 
 
             string datatosend = JsonConvert.SerializeObject(lg);
-            if (!ConnectionClass.ClientTCP.isconnected)
+            if (ConnectionClass.ClientTCP.isconnected)
             {
                 ConnectionClass.ClientTCP.SendContent(datatosend);
                 ConnectionClass.ClientTCP.OnLoginResponse += ClientTCP_OnLoginResponse;

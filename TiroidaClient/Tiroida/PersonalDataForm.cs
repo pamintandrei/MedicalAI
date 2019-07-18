@@ -434,11 +434,20 @@ namespace Tiroida
             }
 
 
-
-            Login lg = new Login();
-            Panel panel1 = (Panel)this.Parent;
-            panel1.Controls.Clear();
-            panel1.Controls.Add(lg);
+            if (!ConnectionClass.ClientTCP.isadmin)
+            {
+                Login lg = new Login();
+                Panel panel1 = (Panel)this.Parent;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(lg);
+            }
+            else
+            {
+                adminpanel lg = new adminpanel();
+                Panel panel1 = (Panel)this.Parent;
+                panel1.Controls.Clear();
+                panel1.Controls.Add(lg);
+            }
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
