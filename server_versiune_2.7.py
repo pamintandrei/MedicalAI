@@ -61,9 +61,9 @@ def gasitinbaza(column,fromuser,cur):
     else:
         return 0
         
-def found_in_photo_results(photo,cur):
-    t = (photo, )
-    cur.execute("SELECT * FROM photo_results WHERE photo = ?",t)
+def found_in_photo_results(photo,disease,cur):
+    t = (photo, disease, )
+    cur.execute("SELECT * FROM photo_results WHERE photo = ? AND disease = ? LIMIT 1",t)
     columns = cur.fetchall()
 
     if(columns):
@@ -520,7 +520,7 @@ def save_photo_frombase64(base64content):
     print(return_folder)
 
     if(os.path.exists(return_folder)):
-        return -1,file_name.hexdigest()
+        return return_folder + '\\',file_name.hexdigest(), -1
     else:
         os.mkdir(return_folder)
         
@@ -544,7 +544,7 @@ def save_photo_frombase64(base64content):
         save_path_ext = save_path + '.' + extension
         copyfile(save_path,save_path_ext)
         os.remove(save_path)
-        return return_folder + '\\', file_name.hexdigest()
+        return return_folder + '\\', file_name.hexdigest(), 0
         
         
 
@@ -563,12 +563,12 @@ def save_result_database(photo_name, result, disease, medic_id = -1):
     conn.commit()
 
 
-def get_photo_reuslt(photo_name):
+def get_photo_reuslt(photo_name, disease):
     conn = sqlite3.connect('bazadedate.db')
     cur = conn.cursor()
-    t = (photo_name, )
-    if(found_in_photo_results(photo_name,cur)):
-        cur.execute("SELECT * FROM photo_results WHERE photo=? LIMIT 1",t)
+    t = (photo_name, disease, )
+    if(found_in_photo_results(photo_name,disease,cur)):
+        cur.execute("SELECT * FROM photo_results WHERE photo=? AND disease=? LIMIT 1",t)
         info = cur.fetchall()
         return info[0][2]
     else:
@@ -581,11 +581,11 @@ a salva medicul
 '''
 def getImage(recvdata,boala,rezolutie,optiune=None):
     response_data = {}
-    path_to_photo, photo_name = save_photo_frombase64(recvdata['imageContent'])
+    path_to_photo, photo_name, error = save_photo_frombase64(recvdata['imageContent'])
     tf.keras.backend.clear_session()
     print(boala)
-    fetch_data = get_photo_reuslt(photo_name)
-    if(path_to_photo == -1):
+    fetch_data = get_photo_reuslt(photo_name, boala)
+    if(error == -1 and fetch_data != -1):
         print("am ajuns boss")
         rezultat=np.array([[]])
         rezultat.resize((1,1))
