@@ -837,6 +837,8 @@ def handler(c, a):
             response = getImage(loadedjson,'malarie',50)
         if(loadedjson['action']=="cancerpiele"):
             response = getImage(loadedjson,'cancerpiele',64)
+        if(loadedjson['action']=="parkinson"):
+            response = getImage(loadedjson,'parkinson',224)
         if(loadedjson['action'] == "changepassword"):
             response = changePassword(loadedjson["currentpassword"], loadedjson["newpassword"], loadedjson["cookie"])
         if(loadedjson['action'] == "getconfig"):
