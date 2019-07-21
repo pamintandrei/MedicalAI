@@ -867,7 +867,7 @@ def handler(c, a):
 def recvall(sock):
 	data = b''
 	while True:
-		data += sock.recv(51200)
+		data += sock.recv(102400)
 		if data.decode('UTF-8')[-5:] == "<EOF>":
 			return data
 	
