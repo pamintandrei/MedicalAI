@@ -100,7 +100,7 @@ Are aceasi structura ca si pagina de analizelor pentru hypotiroida/hypertiroida 
 
 ![Image](images/webprev.png) 
 
-![Image](image/webprev2.png)
+![Image](images/webprev2.png)
 
 
 
@@ -147,7 +147,7 @@ Serverul se poate activa folosind comanda in Linux "python server_versiune_2.7.p
 
 ## Instalarea web serverului
 Acesta se instaleaza folosind orice web server, precum nginx sau apache2.
-Dupa instalarea web serverului se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/webserver si se vor pune in folderul serverului.
+Dupa instalarea web serverului se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/webserver si se vor pune in folderul serverului. Pentru configurarea ip-ului si port-ului necesar se va modifica fisierul init/config.php
 
 ## Instalarea botului de Discord
 Pentru instalarea acestui bot se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/DiscoTiro si se va configura fisierul auth.json cu token-ul necesar, generat de pe pagina necesara https://discordapp.com/developers/applications/ .
