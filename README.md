@@ -100,7 +100,7 @@ Are aceasi structura ca si pagina de analizelor pentru hypotiroida/hypertiroida 
 
 ![Image](images/webprev.png) 
 
-[poza_web]
+![Image](image/webprev2.png)
 
 
 
