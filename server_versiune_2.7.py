@@ -21,6 +21,8 @@ AI_core_file = base_dir + '\\AI_core'
 
 config = json.load(config_file)
 global graph
+
+coada=0
 graph=tf.get_default_graph()
 
 
@@ -580,6 +582,10 @@ Functia trebuie modificata pentru
 a salva medicul
 '''
 def getImage(recvdata,boala,rezolutie,optiune=None):
+    global coada
+    while coada==1:
+        pass
+    coada=1
     response_data = {}
     path_to_photo, photo_name, error = save_photo_frombase64(recvdata['imageContent'])
     tf.keras.backend.clear_session()
@@ -620,7 +626,7 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
     cuda.select_device(0)
     cuda.close()
     save_result_database(photo_name, predict[0][0],boala)
-    
+    coada=0
     print(json_data)
     return json_data
     
