@@ -65,8 +65,7 @@ $medai->action = "analize";
 
 $data_to_send = json_encode($medai);
 
-$host = "5.13.212.61";
-$port = 5554;
+include '../init/config.php';
 $server_name = "MedicalAI";
 $context = stream_context_create(array('ssl' => array('allow_self_signed' => true, 'peer_name' => $server_name, 'verify_peer' => false)));
 
