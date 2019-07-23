@@ -92,5 +92,6 @@ namespace Tiroida
         public string healthy_chanse_table { get; set; }
         public string male { get; set; }
         public string female { get; set; }
+        public string parkinson { get; set; }
     }
 }

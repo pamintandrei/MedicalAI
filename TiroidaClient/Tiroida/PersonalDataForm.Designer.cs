@@ -411,6 +411,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel13.AutoSize = true;
+            this.metroLabel13.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel13.Location = new System.Drawing.Point(701, 0);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(344, 34);
@@ -755,6 +756,8 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
@@ -793,7 +796,6 @@
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox16, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel20, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox10, 0, 11);
-            this.tableLayoutPanel1.Controls.Add(this.metroLabel6, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel8, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox6, 1, 3);
@@ -810,6 +812,7 @@
             this.tableLayoutPanel1.Controls.Add(this.metroComboBox3, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 16);
+            this.tableLayoutPanel1.Controls.Add(this.metroLabel6, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -891,6 +894,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "PersonalDataForm";
             this.Size = new System.Drawing.Size(1048, 602);

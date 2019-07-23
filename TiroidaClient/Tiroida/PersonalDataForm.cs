@@ -89,6 +89,8 @@ namespace Tiroida
                 this.metroButton2.Enabled = false;
             }
 
+            
+            
             // AddToList("metroComboBox16", "metroComboBox17", "metroComboBox15", "metroComboBox14", "metroComboBox13");
             
         }

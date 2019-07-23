@@ -16,7 +16,7 @@ namespace Tiroida
     public partial class photoUploader : UserControl
     {
         private string imagepath;
-        delegate void changeScreenToResultCallBack(string result);
+        delegate void changeScreenToResultCallBack(string result, int proc);
 
 
         public photoUploader()
@@ -40,23 +40,26 @@ namespace Tiroida
             this.metroComboBox1.Items.Add(ls.malaria);
             this.metroComboBox1.Items.Add(ls.pneumonia);
             this.metroComboBox1.Items.Add(ls.tuberculosis);
+            this.metroComboBox1.Items.Add(ls.parkinson);
         }
 
-        private void changeScreenToResult(string result)
+        private void changeScreenToResult(string result, int proc)
         {
             if (this.InvokeRequired)
             {
                 changeScreenToResultCallBack callback = new changeScreenToResultCallBack(changeScreenToResult);
-                this.Invoke(callback, new object[] { result });
+                this.Invoke(callback, new object[] { result, proc });
             }
             else
             {
                 Application.UseWaitCursor = false;
 
                 ResponseUserControl response = new ResponseUserControl(ResponseUserControl.PHOTO);
+                
+
                 response.SetCancer(result);
                 response.SetNonCancer(result);
-
+                response.SetAnimateCancer(proc);
                 Console.WriteLine(result);
 
                 Panel p = (Panel)this.Parent;
@@ -157,6 +160,9 @@ namespace Tiroida
                 case 5:
                     return "tuberculoza";
                     break;
+                case 6:
+                    return "parkinson";
+                    break;
                 default:
                     MessageBox.Show("Please select a disease");
                     break;
@@ -207,8 +213,11 @@ namespace Tiroida
 
         private void ClientTCP_OnReceivePneumoniaResponse(object sender, OnReceivePhotoResult e)
         {
-            changeScreenToResult(e.pneumoniaChanse);
             ConnectionClass.ClientTCP.OnReceivePneumoniaResponse -= ClientTCP_OnReceivePneumoniaResponse;
+            double result = double.Parse(e.pneumoniaChanse);
+            result *= 100;
+            int procente = Convert.ToInt32(result);
+            changeScreenToResult(result.ToString(), procente);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
