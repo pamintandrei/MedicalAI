@@ -358,8 +358,8 @@ def programare(recvdata):
         if(i[2]==programare and i[0]==ID):
             return -2 
         '''-2 inseamna ca pacientul deja are pusa o programare atunci'''
-    date=[(ID,medic,programare)]
-    cur.execute("INSERT INTO programari (?,?,?)",date)
+    date=[(ID,medic,programare,0)]
+    cur.execute("INSERT INTO programari (?,?,?,?)",date)
     cur.commit()
 def confirm_programare(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
