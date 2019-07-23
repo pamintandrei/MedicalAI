@@ -44,7 +44,7 @@ namespace Tiroida
             this.circularProgressBar1.Minimum = 0;
             this.circularProgressBar1.Maximum = 100;
             this.DISEASE = THYROID;
-            SetPanelLanguage();
+            ReloadLanguage();
             //this.circularProgressBar1.Value = 100;
         }
 
@@ -56,7 +56,7 @@ namespace Tiroida
             this.circularProgressBar1.Minimum = 0;
             this.circularProgressBar1.Maximum = 100;
             this.DISEASE = DISEASE;
-            SetPanelLanguage();
+            ReloadLanguage();
         }
 
 
@@ -91,14 +91,7 @@ namespace Tiroida
         }
 
 
-        private void SetPanelLanguage()
-        {
-            if (ConnectionClass.config.Language != "Romanian")
-            {
-                ReloadLanguage();
-            }
 
-        }
 
 
 

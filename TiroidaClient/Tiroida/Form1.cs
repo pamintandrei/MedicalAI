@@ -124,15 +124,13 @@ namespace Tiroida
             string languageoption = (string)config["Language"];
             ConnectionClass.config = new configFile((string)config["IpAdress"],(int)config["port"], languageoption);
 
-            if (languageoption != "Romanian")
-            {
-                string configlanguagepath = @"languages/" + languageoption + ".json";
-                string jsonlanguageconfig =  System.IO.File.ReadAllText(configlanguagepath);
+            string configlanguagepath = @"languages/" + languageoption + ".json";
+            string jsonlanguageconfig =  System.IO.File.ReadAllText(configlanguagepath);
 
-                languageSupporter supporter = new languageSupporter(jsonlanguageconfig);
-                ConnectionClass.languagesupporter = supporter;
+            languageSupporter supporter = new languageSupporter(jsonlanguageconfig);
+            ConnectionClass.languagesupporter = supporter;
                 
-            }
+            
 
 
             ClientTCP client = new ClientTCP((string)config["IpAdress"], (int)config["port"], 10000);
