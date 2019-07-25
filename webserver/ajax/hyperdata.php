@@ -24,7 +24,7 @@ function getAllData($socket)
 }
 
 
-$data_check = array("Sex", "Age", "on_thyroxine", "query_on_thyroxine", "on_antithyroid_medication", "thyroid_surgery","query_hypothyroid", "query_hyperthyroid", "pregnant", "sick", "tumor", "lithium", "goitre", "TSH_measured","TSH","T3_measured","T3","TT4_measured", "TT4","FTI_measured","FTI","TBG_measured","TBG");
+$data_check = array("Sex", "Age", "on_thyroxine", "query_on_thyroxine", "on_antithyroid_medication", "thyroid_surgery","query_hypothyroid", "query_hyperthyroid", "pregnant", "sick", "tumor", "lithium", "goitre", "TSH_measured","TSH","T3_measured","T3","TT4_measured", "TT4","FTI_measured","FTI","TBG_measured","TBG", "psych", "hypopituitary", "Il3l_treatment");
 $verify = true;
 foreach($data_check as $key)
 {
@@ -59,9 +59,12 @@ $medai->FTI_measured = $_POST['FTI_measured'];
 $medai->FTI = $_POST['FTI'];
 $medai->TBG_measured = $_POST['TBG_measured'];
 $medai->TBG = $_POST['TBG'];
+$medai->psych = $_POST['psych'];
+$medai->hypopituitary = $_POST['hypopituitary'];
+$medai->Il3l_treatment = $_POST['Il3l_treatment'];
 $medai->patient_name = "";
 $medai->cookie = "";
-$medai->action = "analize";
+$medai->action = "hyper";
 
 $data_to_send = json_encode($medai);
 
@@ -86,7 +89,7 @@ if($socket)
 	{
 		$decoded = json_decode($recvdata,true);
 		
-		echo "Rezultat hipotiroidism " . $decoded["rezultat"][0][0] * 100 . "%";
+		echo "Rezultat hipertiroidism: " . $decoded["rezultat"][0][0] * 100 . "%";
 	}
 	
 }

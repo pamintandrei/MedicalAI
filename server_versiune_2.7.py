@@ -29,7 +29,8 @@ graph=tf.get_default_graph()
 datedeintrare=np.array([[]])
 datedeintrare.resize((2,23))
 
-
+datedeintrare2 = np.array([[]])
+datedeintrare2.resize((2,26))
 
 
 
@@ -80,6 +81,17 @@ def datesauintrebare(fiecarelinie,dparcurs):
         else:
             datedeintrare[0][dparcurs]=0
             datedeintrare[1][dparcurs]=0
+            
+            
+            
+def datesauintrebare2(fiecarelinie,dparcurs):
+        if(fiecarelinie!="?" and fiecarelinie!=None):
+            datedeintrare2[0][dparcurs]=fiecarelinie
+            datedeintrare2[1][dparcurs]=fiecarelinie
+        else:
+            datedeintrare2[0][dparcurs]=0
+            datedeintrare2[1][dparcurs]=0
+            
 def truf(fiecarelinie,dparcurs):
         if(fiecarelinie=="f" or fiecarelinie==None):
             datedeintrare[0][dparcurs]=-1
@@ -87,6 +99,15 @@ def truf(fiecarelinie,dparcurs):
         else:
             datedeintrare[0][dparcurs]=1
             datedeintrare[1][dparcurs]=1
+
+def truf2(fiecarelinie,dparcurs):
+        if(fiecarelinie=="f" or fiecarelinie==None):
+            datedeintrare2[0][dparcurs]=-1
+            datedeintrare2[1][dparcurs]=-1
+        else:
+            datedeintrare2[0][dparcurs]=1
+            datedeintrare2[1][dparcurs]=1
+
 
 def yon(fiecarelinie,dparcurs):
            
@@ -189,52 +210,52 @@ tabela de inregistrari rezultatele analizelor
 Alt lucru de implementat ar mai fi sa primim un nume pentru pacient
 '''
 def getHyper(recvdata):
-    neural_net=tf.keras.models.load_model('hyper.h5')
+    neural_net=tf.keras.models.load_model(AI_core_file + '\\hyper.h5')
 
 
     print(1)
         
-    datesauintrebare(recvdata['Age'],0)   
+    datesauintrebare2(recvdata['Age'],0)   
         
     if(recvdata['Sex']=="M"):
-        datedeintrare[0][1]=1
-        datedeintrare[1][1]=1
+        datedeintrare2[0][1]=1
+        datedeintrare2[1][1]=1
     if(recvdata['Sex']=="F"):
-        datedeintrare[0][1]=-1
-        datedeintrare[1][1]=-1
+        datedeintrare2[0][1]=-1
+        datedeintrare2[1][1]=-1
     if(recvdata['Sex']=="?" or recvdata['Sex']==None):
-        datedeintrare[0][1]=0
-        datedeintrare[1][1]=0
+        datedeintrare2[0][1]=0
+        datedeintrare2[1][1]=0
 
 
     
 
-    truf(recvdata['on_thyroxine'],2)  
-    truf(recvdata['query_on_thyroxine'],3)  
-    truf(recvdata['on_antithyroid_medication'],4)  
-    truf(recvdata['sick'],5)  
-    truf(recvdata['pregnant'],6)  
-    truf(recvdata['thyroid_surgery'],7)
-    truf(recvdata['Il3l_treatment'],8)
-    truf(recvdata['query_hypothyroid'],9)  
-    truf(recvdata['query_hyperthyroid'],10)  
-    truf(recvdata['lithium'],11)    
-    truf(recvdata['goitre'],12)  
-    truf(recvdata['tumor'],13)  
-    truf(recvdata['hypopituitary'],14)
-    truf(recvdata['psych'],15)
-    truf(recvdata['TSH_measured'],16)  
-    datesauintrebare(recvdata['TSH'],17)
-    truf(recvdata['T3_measured'],18)  
-    datesauintrebare(recvdata['T3'],19)
-    truf(recvdata['TT4_measured'],20)  
-    datesauintrebare(recvdata['TT4'],21)
-    truf(recvdata['FTI_measured'],22)  
-    datesauintrebare(recvdata['FTI'],23)
-    truf(recvdata['TBG_measured'],24)  
-    datesauintrebare(recvdata['TBG'],25)
+    truf2(recvdata['on_thyroxine'],2)  
+    truf2(recvdata['query_on_thyroxine'],3)  
+    truf2(recvdata['on_antithyroid_medication'],4)  
+    truf2(recvdata['sick'],5)  
+    truf2(recvdata['pregnant'],6)  
+    truf2(recvdata['thyroid_surgery'],7)
+    truf2(recvdata['Il3l_treatment'],8)
+    truf2(recvdata['query_hypothyroid'],9)  
+    truf2(recvdata['query_hyperthyroid'],10)  
+    truf2(recvdata['lithium'],11)    
+    truf2(recvdata['goitre'],12)  
+    truf2(recvdata['tumor'],13)  
+    truf2(recvdata['hypopituitary'],14)
+    truf2(recvdata['psych'],15)
+    truf2(recvdata['TSH_measured'],16)  
+    datesauintrebare2(recvdata['TSH'],17)
+    truf2(recvdata['T3_measured'],18)  
+    datesauintrebare2(recvdata['T3'],19)
+    truf2(recvdata['TT4_measured'],20)  
+    datesauintrebare2(recvdata['TT4'],21)
+    truf2(recvdata['FTI_measured'],22)  
+    datesauintrebare2(recvdata['FTI'],23)
+    truf2(recvdata['TBG_measured'],24)  
+    datesauintrebare2(recvdata['TBG'],25)
 
-    rezultat = neural_net.predict(datedeintrare)
+    rezultat = neural_net.predict(datedeintrare2)
     data = {}
     data['action']='response'
     rezultat=rezultat.tolist()

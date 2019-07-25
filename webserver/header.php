@@ -117,6 +117,42 @@ $base_name = basename($_SERVER['PHP_SELF']);
 	}
 	
 	
+	function generateDatahyper()
+	{
+		
+		var exportdata = "Sex=" + document.getElementById("Sex").value;
+		exportdata += "&Age=" + document.getElementById("Age").value;
+		exportdata += "&on_thyroxine=" + document.getElementById("on_thyroxine").value;
+		exportdata += "&query_on_thyroxine=" + document.getElementById("query_on_thyroxine").value;
+		exportdata += "&on_antithyroid_medication=" + document.getElementById("on_antithyroid_medication").value;
+		exportdata += "&thyroid_surgery=" + document.getElementById("thyroid_surgery").value;
+		exportdata += "&query_hypothyroid=" + document.getElementById("query_hypothyroid").value;
+		exportdata += "&query_hyperthyroid=" + document.getElementById("query_hyperthyroid").value;
+		exportdata += "&lithium=" + document.getElementById("lithium").value;
+		exportdata += "&sick=" + document.getElementById("sick").value;
+		exportdata += "&pregnant=" + getPregnant();
+		exportdata += "&tumor=" + document.getElementById("tumor").value;
+		exportdata += "&goitre=" + document.getElementById("goitre").value;
+		exportdata += "&TSH_measured=" + document.getElementById("TSH_sender").value;
+		exportdata += "&TSH=" + getValue("TSH");
+		exportdata += "&T3_measured=" + document.getElementById("T3_sender").value;
+		exportdata += "&T3=" + getValue("T3");
+		exportdata += "&TT4_measured=" + document.getElementById("TT4_sender").value;
+		exportdata += "&TT4=" + getValue("TT4");
+		exportdata += "&FTI_measured=" + document.getElementById("FTI_sender").value;
+		exportdata += "&FTI=" + getValue("FTI");
+		exportdata += "&TBG_measured=" + document.getElementById("TBG_sender").value;
+		exportdata += "&TBG=" + getValue("TBG");
+		exportdata += "&psych=" + document.getElementById("psych").value;
+		exportdata += "&hypopituitary=" + document.getElementById("hypopituitary").value;
+		exportdata += "&Il3l_treatment=" + document.getElementById("Il3l_treatment").value;
+		
+		return exportdata;
+	}
+	
+	
+	
+	
 	function sendandChangeData()
 	{
 		document.getElementById("loading").style.display = "block";
@@ -141,6 +177,29 @@ $base_name = basename($_SERVER['PHP_SELF']);
 	}
 	
 	
+	function sendandChangeDataHyper()
+	{
+		document.getElementById("loading").style.display = "block";
+		document.getElementById("datasendbutton").disabled = true;
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			
+			if(this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById("datasendbutton").disabled = false;
+				document.getElementById("loading").style.display = "none";
+				document.getElementById("response").innerHTML = this.responseText;
+			}
+		}
+		xhttp.open("POST","ajax/hyperdata.php");
+		xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhttp.send(generateDatahyper());
+		
+	}
+	
+	
+	
   
   </script>
   
@@ -159,14 +218,14 @@ $base_name = basename($_SERVER['PHP_SELF']);
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?php if($base_name === "index.php") echo 'active'; ?>">
-        <a class="nav-link" href="index.php">Hyperthiroidism <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Hypotiroidism <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item <?php if($base_name === "photoverifier.php") echo 'active'; ?>">
         <a class="nav-link" href="photoverifier.php">Verifica poza</a>
       </li>
 	  
-	  <li class="nav-item <?php if($base_name === "hypo.php") echo 'active'; ?>">
-        <a class="nav-link" href="#">Hypotiroidism</a>
+	  <li class="nav-item <?php if($base_name === "hyper.php") echo 'active'; ?>">
+        <a class="nav-link" href="hyper.php">Hipertiroidism</a>
       </li>
       
       

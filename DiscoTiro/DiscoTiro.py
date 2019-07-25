@@ -15,9 +15,11 @@ from discord.ext import commands
 
 
 with open("auth.json") as json_file:
-	config = json.load(json_file)
-	token = config["bot_token"]
-	webhook = config["bot_webhook_url"]
+    config = json.load(json_file)
+    token = config["bot_token"]
+    webhook = config["bot_webhook_url"]
+    ip_addr = config["ip_addr"]
+    port = config["port"]
 
 
 bot = commands.Bot(command_prefix="~")
@@ -28,14 +30,14 @@ async def on_ready():
     print("Bot is running and ready to use!")
 
 @bot.command(pass_context = True)
-async def analize(ctx):
+async def hypo(ctx):
 
     if(client.get_service_status() == False):
         await ctx.send("Service unavailable")
         return
 
     entirecommand = ctx.message.content
-    arguments = entirecommand.replace('~analize ', '')
+    arguments = entirecommand.replace('~hypo ', '')
     splinted = shlex.split(arguments)
     parser = argparse.ArgumentParser()
     parser.add_argument("-age")
@@ -65,11 +67,68 @@ async def analize(ctx):
 
     persdata = analizemedicale.personaldata(sex=args.sex, age=args.age, on_thyroxine=args.on_thyroxine, query_on_thyroxin=args.query_on_thyroxin, on_antythyroid_medication=args.on_antythyroid_medication, thyroid_surgery=args.thyroid_surgery, query_hypothyroid=args.query_hypothyroid, query_hyperthyroid=args.query_hyperthyroid, pregnant=args.pregnant, sick=args.sick, tumor=args.tumor, lithium=args.lithium, goitre=args.goitre, TSH_measured=args.TSH_measured, TSH=args.TSH, T3_measured=args.T3_measured, T3=args.T3, TT4_measured=args.TT4_measured, TT4=args.TT4, FTI_measured=args.FTI_measured, FTI=args.FTI, TBG_measured=args.TBG_measured, TBG=args.TBG)
     jsonstring = json.dumps(persdata.__dict__)
-    print(jsonstring)
 
     # sending data
     response = await client.SendData(jsonstring)
     await ctx.send('Sansa de hypotiroida: ' + str(response.get_rest()))
+
+
+
+@bot.command(pass_context = True)
+async def hyper(ctx):
+
+    if(client.get_service_status() == False):
+        await ctx.send("Service unavailable")
+        return
+
+    entirecommand = ctx.message.content
+    arguments = entirecommand.replace('~hyper ', '')
+    splinted = shlex.split(arguments)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-age")
+    parser.add_argument("-sex")
+    parser.add_argument("-on_thyroxine")
+    parser.add_argument("-query_on_thyroxin")
+    parser.add_argument("-on_antythyroid_medication")
+    parser.add_argument("-thyroid_surgery")
+    parser.add_argument("-query_hypothyroid")
+    parser.add_argument("-query_hyperthyroid")
+    parser.add_argument("-pregnant")
+    parser.add_argument("-sick")
+    parser.add_argument("-tumor")
+    parser.add_argument("-lithium")
+    parser.add_argument("-goitre")
+    parser.add_argument("-TSH_measured")
+    parser.add_argument("-TSH")
+    parser.add_argument("-T3_measured")
+    parser.add_argument("-T3")
+    parser.add_argument("-TT4_measured")
+    parser.add_argument("-TT4")
+    parser.add_argument("-FTI_measured")
+    parser.add_argument("-FTI")
+    parser.add_argument("-TBG_measured")
+    parser.add_argument("-TBG")
+    parser.add_argument("-hypopituitary")
+    parser.add_argument("-psych")
+    parser.add_argument("-Il3l_treatment")
+    
+    try:
+        args = parser.parse_args(splinted)
+    except:
+        await ctx.send("Format gresit, va rugam sa verificati parametrii")
+        
+    persdata = analizemedicale.hyperdata(sex=args.sex, age=args.age, on_thyroxine=args.on_thyroxine, query_on_thyroxin=args.query_on_thyroxin, on_antythyroid_medication=args.on_antythyroid_medication, thyroid_surgery=args.thyroid_surgery, query_hypothyroid=args.query_hypothyroid, query_hyperthyroid=args.query_hyperthyroid, pregnant=args.pregnant, sick=args.sick, tumor=args.tumor, lithium=args.lithium, goitre=args.goitre, TSH_measured=args.TSH_measured, TSH=args.TSH, T3_measured=args.T3_measured, T3=args.T3, TT4_measured=args.TT4_measured, TT4=args.TT4, FTI_measured=args.FTI_measured, FTI=args.FTI, TBG_measured=args.TBG_measured, TBG=args.TBG, Il3l_treatment=args.Il3l_treatment, hypopituitary = args.hypopituitary, psych = args.psych)
+    jsonstring = json.dumps(persdata.__dict__)
+    print(jsonstring)
+
+    # sending data
+    response = await client.SendData(jsonstring)
+    await ctx.send('Sansa de hipertiroida: ' + str(response.get_rest()))
+
+
+
+
+
 
 
 
@@ -139,7 +198,7 @@ def on_server_connection_lost(sender, eargs):
 print("Trying to connect the bot")
 
 
-client = Client.TcpClient('188.24.230.145', 5554)
+client = Client.TcpClient(ip_addr, port)
 client.on_connected += on_server_connected
 client.on_connection_lost += on_server_connection_lost
 p1 = threading.Thread(target=client.DoConnectionUntilConnected)
