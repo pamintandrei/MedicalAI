@@ -46,3 +46,10 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\ob
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.photoUploader.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.adminpanel.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.viewmedics.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.HypertiroidForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.PatientForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.MedicAppointment.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.MedicPanel.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.RespondAppointment.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.AppointmentPatient.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Debug\Tiroida.AppointmentResponsePatientForm.resources

@@ -160,6 +160,7 @@ namespace Tiroida
         private bool isgot = false;
         private void ClientTCP_OnLoginResponse(object sender, OnReceiveLoginMessageArgs e)
         {
+            ConnectionClass.ClientTCP.OnLoginResponse -= ClientTCP_OnLoginResponse;
             Console.WriteLine("Login Response received: " + e.errorcode.ToString());
             if (!isgot)
             {
@@ -174,25 +175,24 @@ namespace Tiroida
                     if (e.errorcode == 0)
                     {
                         SaveCookie();
-                        if (e.is_admin)
-                        {
-                            OpenAdminPanel();
-                        }
-                        else
-                        {
-                            OpenPersonalData(true);
-                        }
-
+                        OpenAdminPanel();
                     }
                     else
                     {
-                        MessageBox.Show("Nume de utilizator sau parola incorecta", "Tiroida");
+                        if (e.errorcode == 3)
+                        {
+                            MessageBox.Show("Nu ati fost inca aprobat", "Tiroida");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nume de utilizator sau parola incorecta", "Tiroida");
+                        }
                     }
                 }
                 
             }
             this.isgot = false;
-            ConnectionClass.ClientTCP.OnLoginResponse -= ClientTCP_OnLoginResponse;
+            
         }
 
         private void metroButton1_Click(object sender, EventArgs e)

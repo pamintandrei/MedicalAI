@@ -13,6 +13,7 @@ import os,sys
 import base64
 import hashlib
 import imghdr
+import time
 from shutil import copyfile
 from numba import cuda
 base_dir = os.path.dirname(os.path.realpath(__file__))
@@ -47,6 +48,30 @@ server.login(str(usrn),str(pas))
 
 
 allconnection = []
+
+
+
+
+def connectGmail():
+    global server
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.connect('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.ehlo()
+    usrn=config['username_gmail']
+    pas=config['password_gmail']
+    server.login(str(usrn),str(pas))
+
+
+def sendEmail(title, email, message):
+    try:
+        server.sendmail(title,email,message)
+    except:
+        connectGmail()
+        sendEmail(title,email,message)
+
+
 
 
 
@@ -131,7 +156,7 @@ def id_cookie(cookie):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
     data=([cookie])
-    cur.execute("SELECT * FROM baza where cookie=?",data)
+    cur.execute("SELECT * FROM baza WHERE cookie=?",data)
     toateinformatiile= cur.fetchall()
     try:
         return toateinformatiile[0][0]
@@ -156,7 +181,6 @@ print(id_cookie(''))
 def login(recvdata):
     data = {}
     data['action'] = "loginresponse"
-    data['is_admin'] = False
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
     caut=gasitinbaza('username', recvdata['username'],cur)
@@ -172,22 +196,51 @@ def login(recvdata):
 			- in cazul in care nu este verificat error va fi 2
 			'''
             confirm = confirmation(recvdata)
-			
-			
             if(confirm == 2):
-                data['error'] = '0'
-                data['cookie'] = parolabaza[0][4]
-                data['errormessage'] = "Logare cu succes!"
-                if(recvdata['username'] == 'admin'):
-                    data['is_admin'] = True
+            
+                if(parolabaza[0][9] == 1 and parolabaza[0][8] == 0):
+                    data['error'] = '3'
+                    data['errormessage'] = 'Nu aveti inca aprobarea administratorului!'
+                else:
+                    data['error'] = '0'
+                    data['cookie'] = parolabaza[0][4]
+                    data['errormessage'] = "Logare cu succes!"
+                    if(recvdata['username'] == 'admin'):
+                        data['is_admin'] = True
+                        data['is_medic'] = False
+                        data['is_patient'] = False
+                    elif(parolabaza[0][9] == 1):
+                        data['is_medic'] = True
+                        data['is_patient'] = False
+                        data['is_admin'] = False
+                    else:
+                        data['is_patient'] = True
+                        data['is_medic'] = False
+                        data['is_admin'] = False
                 
             elif(config['register_verification']):
                 data['error'] = '2'
                 data['errormessage'] = "Cont neverificat!"
             else:
-                data['error'] = '0'
-                data['cookie'] = parolabaza[0][4]
-                data['errormessage'] = "Logare cu succes!"
+                if(parolabaza[0][9] == 1 and parolabaza[0][8] == 0):
+                    data['error'] = '3'
+                    data['errormessage'] = 'Nu aveti inca aprobarea administratorului!'
+                else:
+                    data['error'] = '0'
+                    data['cookie'] = parolabaza[0][4]
+                    data['errormessage'] = "Logare cu succes!"
+                    if(recvdata['username'] == 'admin'):
+                        data['is_admin'] = True
+                        data['is_medic'] = False
+                        data['is_patient'] = False
+                    elif(parolabaza[0][9] == 1):
+                        data['is_medic'] = True
+                        data['is_patient'] = False
+                        data['is_admin'] = False
+                    else:
+                        data['is_patient'] = True
+                        data['is_medic'] = False
+                        data['is_admin'] = False           
         else:
             data['error'] = '1'
             data['errormessage'] = "Nume de utilizator sau parola incorecta!"
@@ -197,7 +250,7 @@ def login(recvdata):
 		
     data['username'] = recvdata['username']
     json_data = json.dumps(data)
-    print(data)
+    print(json_data)
     
     return json_data
 
@@ -354,55 +407,153 @@ Inserare cu parola criptata.
 return in format json cu actiunea de regresponse( register repsonse )
 '''
 
-'''
-Modificat pentru a putea folosi functia in 2 situatii:
-- pentru a verifica daca utilizatorul este confirmat
-- pentru a confirma
-'''
-def programare(recvdata):
+
+def get_medic_id(username):
+    t = (username, )
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
-    ID=recvdata['ID']
-    medic=(recvdata['cookie'])
+    cur.execute("SELECT * FROM baza WHERE username = ? AND medic = 1 AND admin_confirmation = 1 AND username != \"admin\"", t)
+    medic = cur.fetchall()
+    if(medic):
+        return medic[0][0]
+    else:
+        return -1
+    
+def get_patient_id(username):
+    t = (username, )
+    conn = sqlite3.connect(base_dir + '/bazadedate.db')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM baza WHERE username = ? AND medic = 0 AND username != \"admin\"", t)
+    patient = cur.fetchall()
+    if(patient):
+        return patient[0][0]
+    else:
+        return -1
+
+def appointment(recvdata):
+    data = {}
+    medic_username = recvdata['medic_username']
+    id_medic = get_medic_id(medic_username)
+    patient_id = id_cookie(recvdata['cookie'])
+    
+    data['action'] = 'appointment_response'
+    
+    if(id_medic >= 1 and patient_id >= 1):
+        error = programare(id_medic, patient_id, recvdata['timestamp'])
+        
+        if(error == -1):
+            data['errcode'] = -2
+            data['errmessage'] = 'Aveti deja o programare pentru aceasta ora'
+        elif(error == -2):
+            data['errcode'] = -3
+            data['errmessage'] = 'Un alt pacient a fost programat'
+        else:
+            data['errcode'] = 0
+            data['errmessage'] = 'Programarea a fost facuta'
+    else:
+        data['errcode'] = -1
+        data['errmessage'] = 'Wrong cookie'
+        
+    json_data = json.dumps(data)
+    return json_data
     
     
+
+def programare(id_medic, patient_id, timestamp):
+    t = (id_medic, )
+    conn = sqlite3.connect(base_dir + '/bazadedate.db')
+    cur = conn.cursor()
     
-    
-    
-    cur.execute("SELECT * FROM programari WHERE medic_id = ?",medic)
+    cur.execute("SELECT * FROM programari WHERE medic_id = ?",t)
     programari=cur.fetchall()
-    programare=recvdata['Date_time']
+    
     for i in programari:
-        if(i[2]==programare and i[3]==0):
-            return -1 
+    
+        if(i[3]==timestamp and i[2] == patient_id):
+            return -2
+        if(i[3]==timestamp):
+            return -1
         ''' -1 inseamna ca doctorul are deja programare atunci'''
-        if(i[2]==programare and i[0]==ID):
-            return -2 
+
         '''-2 inseamna ca pacientul deja are pusa o programare atunci'''
-    date=[(ID,medic,programare,0)]
-    cur.execute("INSERT INTO programari (?,?,?,?)",date)
-    cur.commit()
-def confirm_programare(recvdata):
+    date=(None,id_medic,patient_id,timestamp,0, "",0,)
+    cur.execute("INSERT INTO programari VALUES(?,?,?,?,?,?,?)",date)
+    conn.commit()
+    return 0
+    
+
+
+def get_email_by_username(username):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    t = (username, )
+    cur.execute("SELECT * FROM baza WHERE username = ? LIMIT 1",t)
+    info = cur.fetchall()
+    if(info):
+        return info[0][6]
+    else:
+        return -1
+        
+'''
+
+-1 - Confirmat deja
+0 - Confirmat
+-2 - Respins cu mesaj trimis
+
+'''
+
+def appointment_confirm(recvdata):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'appointment_confirm_response'
+    if gasitinbaza('cookie', recvdata['cookie'], cur) and checkMedicCookie(cur, recvdata['cookie']):
+        medic_id = id_cookie(recvdata['cookie'])
+        patient_id = get_patient_id(recvdata['username'])
+        time = recvdata['time']
+        confirmed = recvdata['confirmed']
+        message = recvdata['message']
+        error = 0
+        email = get_email_by_username(recvdata['username'])
+        if(confirmed == -1):
+            error = confirm_programare(medic_id, patient_id, time, confirmed, message, email)
+        else:
+            error = confirm_programare(medic_id, patient_id, time, confirmed, email = email)
+        if(error == -1):
+            data['errcode'] = -1
+            data['errmessage'] = 'Programare deja facuta'
+        elif(error == -2 or error == 0):
+            data['errcode'] = 0
+            data['errmessage'] = 'Operatiune reusita'
+            
+    json_response = json.dumps(data)
+    return json_response
+        
+
+def confirm_programare(medic_id, patient_id, time, confirmed, message = None, email = None):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
-    t = (recvdata['medic_id'],recvdata['Date_time'],1 )
-    cur.execute("SELECT * FROM programari WHERE medic_id = ? AND Date_time = ? AND confirmation = ?",t)
+    t = (medic_id,time,patient_id,1, )
+    cur.execute("SELECT * FROM programari WHERE medic_id = ? AND Date_time = ? AND patient_id = ? AND confirmed = ?",t)
     programari=cur.fetchall()
     if(programari):
         return -1
-    if(recvdata['raspuns']==1):
-        programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
-        cur.execute("UPDATE programari SET confirmed = 1 WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
+    if(confirmed==1):
+        converted_time = datetime.utcfromtimestamp(time).strftime("%Y-%m-%d %H:%M")
+        programare=(medic_id, time,)
+        cur.execute("UPDATE programari SET confirmed = 1 WHERE medic_id = ? AND Date_time = ?",programare)
         conn.commit()   
-        msg="Programare din data" +recvdata['Date_time']+"a fost confirmata."
-        server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],msg)
+        msg="Programare din data " +converted_time+" a fost confirmata."
+        
         return 0
     else:
-        programare=([recvdata['ID'],recvdata['medic_id'],recvdata['Date_time']])
-        cur.execute("DELETE FROM programari WHERE  ID = ? AND medic_id = ? AND Date_time = ?",programare)
+        programare=(message, medic_id, time, )
+        cur.execute("UPDATE programari SET confirmed = -1, message = ? WHERE medic_id = ? AND Date_time = ?",programare)
         conn.commit() 
-        server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],recvdata['mesaj'])
-        return 0
+        sendEmail("infoeducatietiroida@gmail",email,message)
+        
+        return -2
+        
 def takemadic(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
     cur = conn.cursor()
@@ -419,7 +570,11 @@ def makemedic(recvdata):
     conn.commit()
     return 0
     
-    
+def check_medic_confirmation(ID):
+    conn = sqlite3.connect(base_dir + '/bazadedate.db')
+    cur = conn.cursor()
+    id_row = ([ID])
+    cur.execute("SELECT * FROM baza WHERE ID = ?", id_row)
     
 def confirmation(recvdata):
     conn = sqlite3.connect(base_dir + '/bazadedate.db')
@@ -466,10 +621,13 @@ def registerfunction(recvdata):
         secret_code = secrets.token_hex(5)
         pusinbaza([(None,recvdata['username'],recvdata['password'],timestamp,cookies,0,recvdata['email'], secret_code,0,recvdata['medic'])],cur,conn)
         msg="Codul de confirmare este = "+secret_code
-        server.sendmail("infoeducatietiroida@gmail.com",recvdata['email'],msg)
+        sendEmail("infoeducatietiroida@gmail", recvdata['email'], msg)
+        
 	
     json_data = json.dumps(data)
 	
+    
+    print(json_data)
     return json_data
 
 
@@ -485,6 +643,8 @@ def doctoranalize(medic_id):
     data['action'] = 'results'
     data['error'] = 0
     jsons=json.dumps(data)
+    
+    print(jsons)
     return jsons
 
 
@@ -605,6 +765,7 @@ a salva medicul
 def getImage(recvdata,boala,rezolutie,optiune=None):
     global coada
     while coada==1:
+        time.sleep(5)
         pass
     coada=1
     response_data = {}
@@ -621,7 +782,7 @@ def getImage(recvdata,boala,rezolutie,optiune=None):
         response_data['action']='photoresult'
         
         json_data=json.dumps(response_data)
-        
+        coada = 0
         return json_data
     
     response_data['action'] = 'photoresult'
@@ -685,6 +846,45 @@ def changePassword(currentPassword, newPassword, cookie):
     return stringjson
     
     
+    
+def getappointment(recvdata):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = 'getappointments_response'
+    if gasitinbaza('cookie', recvdata['cookie'], cur) and checkMedicCookie(cur, recvdata['cookie']):
+        medic_id = id_cookie(recvdata['cookie'])
+        t = (medic_id, )
+        cur.execute("SELECT baza.username AS username, programari.Date_time AS date FROM programari LEFT JOIN baza ON baza.ID=programari.patient_id WHERE programari.confirmed = 0 AND medic_id = ? ORDER BY programari.ID", t)
+        
+        
+        result = cur.fetchall()
+        formatedresult = []
+        tempresult = {}
+        typecount = 0
+        
+        for row in result:
+            tempresult = {}
+            for type in row:
+                if(typecount == 0):
+                    tempresult['username'] = type
+                    typecount = 1
+                else:
+                    tempresult['time'] = type
+                    typecount = 0
+                    formatedresult.append(tempresult)
+                    
+        
+        data['appointments'] = formatedresult
+        
+        json_data = json.dumps(data)
+        
+        
+        print(json_data)
+        return json_data
+        
+    
+    
 def checkAdminUserDataBase():
     conn = sqlite3.connect('bazadedate.db')
     cur = conn.cursor()
@@ -694,7 +894,16 @@ def checkAdminUserDataBase():
         cookies= secrets.token_hex(16)
         secret_code = secrets.token_hex(5)
         pusinbaza([(None,'admin','admin',timestamp,cookies,1,config["username_gmail"], secret_code,1,1)],cur,conn)
-    
+
+
+def checkMedicCookie(cur,cookie):
+    t = (cookie, )
+    cur.execute("SELECT * FROM baza WHERE cookie = ? LIMIT 1", t)
+    columns = cur.fetchall()
+    if(columns[0][8] == 1 and columns[0][9]):
+        return True
+    else:
+        return False
 
 
 def checkAdminCookie(cur,cookie):
@@ -713,7 +922,7 @@ def getMedics():
     data = {}
     data['action'] = 'medicsresult'
 
-    cur.execute("SELECT username FROM baza WHERE admin_confirmation = 1 AND medic = 1")
+    cur.execute("SELECT username FROM baza WHERE admin_confirmation = 1 AND medic = 1 AND username != \"admin\" ")
     informatii=cur.fetchall()
     date=[]
 
@@ -729,6 +938,48 @@ def getMedics():
         
     json_data = json.dumps(data)
     return json_data
+    
+def getpatientappointment(recvdata):
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    data = {}
+    data['action'] = "patient_appointment_response"
+    patient_id = id_cookie(recvdata['cookie'])
+    t = (patient_id, )
+    cur.execute("SELECT baza.username AS username, programari.Date_time AS date, programari.confirmed AS confirmed FROM programari LEFT JOIN baza ON baza.ID=programari.medic_id WHERE programari.patient_id = ? AND programari.deleted != 1 ORDER BY programari.ID", t)
+    
+    
+    
+    result = cur.fetchall()
+    formatedresult = []
+    tempresult = {}
+    typecount = 0
+        
+    for row in result:
+        tempresult = {}
+        for type in row:
+            if(typecount == 0):
+                tempresult['username'] = type
+                typecount = 1
+            elif(typecount == 1):
+                tempresult['time'] = type
+                typecount = 2
+            else:
+                tempresult['confirmed'] = type
+                typecount = 0
+                formatedresult.append(tempresult)
+                
+                    
+        
+    data['appointments'] = formatedresult
+    
+    
+    json_data = json.dumps(data)
+    print(json_data)
+    
+    return json_data
+    
+    
     
     
 def getNonMedics(cookie):
@@ -825,6 +1076,46 @@ def removemedicrequest(recvdata):
     json_data = json.dumps(data)
     return json_data
     
+    
+def appointment_response(recvdata):
+    data = {}
+    data['action'] = 'appointment_patient_response'
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    
+    patient_id = id_cookie(recvdata['cookie'])
+    if(patient_id != -1):
+        medic_id = get_medic_id(recvdata['medic_username'])
+        t = (medic_id, patient_id, recvdata['date'],)
+        cur.execute("SELECT message FROM programari WHERE medic_id = ? AND patient_id = ? AND Date_time = ? AND deleted != 1", t)
+        info = cur.fetchall()
+        data['response'] = info[0][0]
+        
+    json_data = json.dumps(data)
+    print(json_data)
+    return json_data
+    
+    
+    
+def delete_appointment(recvdata):
+    data = {}
+    data['action'] = 'appointment_delete'
+    conn = sqlite3.connect('bazadedate.db')
+    cur = conn.cursor()
+    
+    patient_id = id_cookie(recvdata['cookie'])
+    if(patient_id != -1):
+        medic_id = get_medic_id(recvdata['medic_username'])
+        t=(medic_id,patient_id,recvdata['date'],)
+        cur.execute("UPDATE programari SET deleted = 1 WHERE medic_id = ? AND patient_id = ? AND Date_time = ? AND deleted = 0", t)
+        conn.commit()
+        data['errcode'] = 0
+        data['errmessage'] = 'Mesajul a fost sters'
+        
+    json_data = json.dumps(data)
+    print(json_data)
+    return json_data
+    
 def handler(c, a):
     while True:
         data = recvall(c)
@@ -880,8 +1171,18 @@ def handler(c, a):
             response = addmedicrequest(loadedjson)
         if(loadedjson['action'] == "removemedic"):
             response = removemedicrequest(loadedjson)
-        
-        
+        if(loadedjson['action'] == 'appointment'):
+            response = appointment(loadedjson)
+        if(loadedjson['action'] == 'getappointment'):
+            response = getappointment(loadedjson)
+        if(loadedjson['action'] == 'appointment_confirm'):
+            response = appointment_confirm(loadedjson)
+        if(loadedjson['action'] == 'getpatientappointment'):
+            response = getpatientappointment(loadedjson)
+        if(loadedjson['action'] == 'appointment_response'):
+            response = appointment_response(loadedjson)
+        if(loadedjson['action'] == 'delete_appointment'):
+            response = delete_appointment(loadedjson)
          
         response += "<EOF>"
 	

@@ -82,5 +82,16 @@
   "healthy_chanse_table" : "Sansa de sanatate",
   "male" : "Masculin",
   "female" : "Feminin",
-  "parkinson" : "Parkinson"
+  "parkinson" : "Parkinson",
+  "hypothyroidism_chanse" : "Sansa de hypothyroidism:",
+  "hyperthyroidism_chanse" : "Sansa de hyperthyroidism",
+  "psych" : "Pacientul sufera de psihoza?",
+  "hypopituitary" : "Pacientul sufera de hipopituitarism?",
+  "Il3l_treatment" : "Pacientul a fost tratat cu I131? (Iod)",
+  "verify_hype" : "Verifica hypertiroidismul",
+  "verify_hypo" : "Verifica hyportiroidismul",
+  "verify_medical_test" : "Verifica analize",
+  "schedule_set" : "Seteaza o programare",
+  "medic_schedule" : "Veri programarile",
+  "server_config" : "Configureaza serverul"
 }

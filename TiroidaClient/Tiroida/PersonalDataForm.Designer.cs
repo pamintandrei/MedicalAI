@@ -79,10 +79,12 @@
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -90,8 +92,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroComboBox1
@@ -118,7 +121,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(3, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel1.Size = new System.Drawing.Size(318, 34);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Sex";
             this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
@@ -131,7 +134,7 @@
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.Location = new System.Drawing.Point(3, 68);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel2.Size = new System.Drawing.Size(318, 34);
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "Varsta";
             // 
@@ -143,7 +146,7 @@
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.Location = new System.Drawing.Point(3, 136);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel3.Size = new System.Drawing.Size(318, 34);
             this.metroLabel3.TabIndex = 5;
             this.metroLabel3.Text = "Pacientul ia tratament cu thyroxina?";
             // 
@@ -205,7 +208,7 @@
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.Location = new System.Drawing.Point(3, 270);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel5.Size = new System.Drawing.Size(318, 34);
             this.metroLabel5.TabIndex = 10;
             this.metroLabel5.Text = "Pacientul ia tratament cu antitiroidiene?";
             // 
@@ -229,9 +232,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(352, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(327, 0);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel6.Size = new System.Drawing.Size(368, 34);
             this.metroLabel6.TabIndex = 12;
             this.metroLabel6.Text = "Pacientul a fost operat la tiroida?";
             // 
@@ -243,7 +246,7 @@
             this.metroComboBox5.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox5.Location = new System.Drawing.Point(352, 37);
+            this.metroComboBox5.Location = new System.Drawing.Point(327, 37);
             this.metroComboBox5.Name = "metroComboBox5";
             this.metroComboBox5.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox5.TabIndex = 13;
@@ -255,9 +258,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(352, 136);
+            this.metroLabel7.Location = new System.Drawing.Point(327, 136);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel7.Size = new System.Drawing.Size(368, 34);
             this.metroLabel7.TabIndex = 14;
             this.metroLabel7.Text = "Pacientul este suspect de hypertiroida?";
             // 
@@ -267,9 +270,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(352, 68);
+            this.metroLabel8.Location = new System.Drawing.Point(327, 68);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel8.Size = new System.Drawing.Size(368, 34);
             this.metroLabel8.TabIndex = 15;
             this.metroLabel8.Text = "Pacientul este suspect de hipotiroida?";
             // 
@@ -281,7 +284,7 @@
             this.metroComboBox6.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox6.Location = new System.Drawing.Point(352, 105);
+            this.metroComboBox6.Location = new System.Drawing.Point(327, 105);
             this.metroComboBox6.Name = "metroComboBox6";
             this.metroComboBox6.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox6.TabIndex = 16;
@@ -295,7 +298,7 @@
             this.metroComboBox7.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox7.Location = new System.Drawing.Point(352, 173);
+            this.metroComboBox7.Location = new System.Drawing.Point(327, 173);
             this.metroComboBox7.Name = "metroComboBox7";
             this.metroComboBox7.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox7.TabIndex = 17;
@@ -307,9 +310,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(352, 204);
+            this.metroLabel9.Location = new System.Drawing.Point(327, 204);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(343, 35);
+            this.metroLabel9.Size = new System.Drawing.Size(368, 35);
             this.metroLabel9.TabIndex = 18;
             this.metroLabel9.Text = "Pacientul este insarcinat?";
             // 
@@ -321,7 +324,7 @@
             this.metroComboBox8.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox8.Location = new System.Drawing.Point(352, 242);
+            this.metroComboBox8.Location = new System.Drawing.Point(327, 242);
             this.metroComboBox8.Name = "metroComboBox8";
             this.metroComboBox8.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox8.TabIndex = 19;
@@ -333,9 +336,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(352, 270);
+            this.metroLabel10.Location = new System.Drawing.Point(327, 270);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel10.Size = new System.Drawing.Size(368, 34);
             this.metroLabel10.TabIndex = 20;
             this.metroLabel10.Text = "Pacientul este racit?";
             // 
@@ -347,7 +350,7 @@
             this.metroComboBox9.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox9.Location = new System.Drawing.Point(352, 307);
+            this.metroComboBox9.Location = new System.Drawing.Point(327, 307);
             this.metroComboBox9.Name = "metroComboBox9";
             this.metroComboBox9.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox9.TabIndex = 21;
@@ -375,7 +378,7 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.Location = new System.Drawing.Point(3, 338);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel11.Size = new System.Drawing.Size(318, 34);
             this.metroLabel11.TabIndex = 23;
             this.metroLabel11.Text = "Pacientul are tumoare?";
             // 
@@ -387,7 +390,7 @@
             this.metroComboBox11.Items.AddRange(new object[] {
             "Da",
             "Nu"});
-            this.metroComboBox11.Location = new System.Drawing.Point(352, 375);
+            this.metroComboBox11.Location = new System.Drawing.Point(327, 375);
             this.metroComboBox11.Name = "metroComboBox11";
             this.metroComboBox11.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox11.TabIndex = 24;
@@ -399,9 +402,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(352, 338);
+            this.metroLabel12.Location = new System.Drawing.Point(327, 338);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel12.Size = new System.Drawing.Size(368, 34);
             this.metroLabel12.TabIndex = 25;
             this.metroLabel12.Text = "Pacientul a fost tratat cu litiu?";
             // 
@@ -627,7 +630,7 @@
             this.metroLabel21.AutoSize = true;
             this.metroLabel21.Location = new System.Drawing.Point(3, 474);
             this.metroLabel21.Name = "metroLabel21";
-            this.metroLabel21.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel21.Size = new System.Drawing.Size(318, 34);
             this.metroLabel21.TabIndex = 43;
             this.metroLabel21.Text = "Valoare FTI";
             // 
@@ -651,9 +654,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(352, 406);
+            this.metroLabel22.Location = new System.Drawing.Point(327, 406);
             this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel22.Size = new System.Drawing.Size(368, 34);
             this.metroLabel22.TabIndex = 45;
             this.metroLabel22.Text = "Pacientului i s-a verificat TBG-ul?";
             // 
@@ -666,7 +669,7 @@
             "Da",
             "Nu",
             "Necunoscut"});
-            this.metroComboBox17.Location = new System.Drawing.Point(352, 443);
+            this.metroComboBox17.Location = new System.Drawing.Point(327, 443);
             this.metroComboBox17.Name = "metroComboBox17";
             this.metroComboBox17.Size = new System.Drawing.Size(170, 25);
             this.metroComboBox17.TabIndex = 44;
@@ -679,9 +682,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel23.AutoSize = true;
-            this.metroLabel23.Location = new System.Drawing.Point(352, 474);
+            this.metroLabel23.Location = new System.Drawing.Point(327, 474);
             this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(343, 34);
+            this.metroLabel23.Size = new System.Drawing.Size(368, 34);
             this.metroLabel23.TabIndex = 47;
             this.metroLabel23.Text = "Valoare TBG";
             // 
@@ -689,7 +692,7 @@
             // 
             this.numericUpDown6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown6.DecimalPlaces = 2;
-            this.numericUpDown6.Location = new System.Drawing.Point(352, 517);
+            this.numericUpDown6.Location = new System.Drawing.Point(327, 517);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             300,
             0,
@@ -759,10 +762,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.91603F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.68702F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 16);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.metroTextBox1, 2, 15);
             this.tableLayoutPanel1.Controls.Add(this.metroButton1, 2, 16);
@@ -813,6 +815,7 @@
             this.tableLayoutPanel1.Controls.Add(this.metroLabel4, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 16);
             this.tableLayoutPanel1.Controls.Add(this.metroLabel6, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 16);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -838,21 +841,6 @@
             this.tableLayoutPanel1.TabIndex = 53;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(3, 549);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(54, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 54;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
@@ -861,11 +849,11 @@
             this.tableLayoutPanel2.Controls.Add(this.metroButton2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.metroButton3, 1, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(352, 549);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(327, 549);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(343, 50);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(368, 50);
             this.tableLayoutPanel2.TabIndex = 55;
             // 
             // metroButton2
@@ -873,7 +861,7 @@
             this.metroButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton2.Location = new System.Drawing.Point(3, 3);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(165, 44);
+            this.metroButton2.Size = new System.Drawing.Size(177, 44);
             this.metroButton2.TabIndex = 0;
             this.metroButton2.Text = "Vezi rezultate";
             this.metroButton2.UseSelectable = true;
@@ -882,13 +870,54 @@
             // metroButton3
             // 
             this.metroButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton3.Location = new System.Drawing.Point(174, 3);
+            this.metroButton3.Location = new System.Drawing.Point(186, 3);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(166, 44);
+            this.metroButton3.Size = new System.Drawing.Size(179, 44);
             this.metroButton3.TabIndex = 1;
             this.metroButton3.Text = "Verifica poza medicala";
             this.metroButton3.UseSelectable = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(66, 44);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 54;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 175F));
+            this.tableLayoutPanel3.Controls.Add(this.metroButton4, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.pictureBox2, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 549);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(318, 50);
+            this.tableLayoutPanel3.TabIndex = 56;
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton4.Location = new System.Drawing.Point(146, 3);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(169, 44);
+            this.metroButton4.TabIndex = 55;
+            this.metroButton4.Text = "Verifica hypertiroidismul";
+            this.metroButton4.UseSelectable = true;
+            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
             // 
             // PersonalDataForm
             // 
@@ -907,8 +936,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -969,5 +999,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private MetroFramework.Controls.MetroButton metroButton4;
     }
 }

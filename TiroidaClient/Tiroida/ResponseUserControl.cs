@@ -17,7 +17,8 @@ namespace Tiroida
         private int cancervalue;
 
         public const int PHOTO = 1;
-        public const int THYROID = 2;
+        public const int THYROID_HYPO = 2;
+        public const int THYROID_HYPE = 3;
 
         private int DISEASE;
 
@@ -43,7 +44,7 @@ namespace Tiroida
             this.cancervalue = 100;
             this.circularProgressBar1.Minimum = 0;
             this.circularProgressBar1.Maximum = 100;
-            this.DISEASE = THYROID;
+            this.DISEASE = THYROID_HYPO;
             ReloadLanguage();
             //this.circularProgressBar1.Value = 100;
         }
@@ -67,11 +68,9 @@ namespace Tiroida
             languagesettings lss = ConnectionClass.languagesupporter.getLanguagesettings();
             switch (this.DISEASE)
             {
-                case THYROID:
-
+                case THYROID_HYPO:
+                    this.metroLabel1.Text = lss.hypothyroidism_chanse;
                     
-                    this.metroLabel1.Text = lss.hyperthyroidism_chanse;
-                    this.metroButton2.Text = lss.back_panel;
 
                     break;
 
@@ -79,13 +78,19 @@ namespace Tiroida
 
                     
                     this.metroLabel1.Text = lss.pneo_chanse;
-                    this.metroButton2.Text = lss.back_panel;
+                    
+
+                    break;
+
+                case THYROID_HYPE:
+                    this.metroLabel1.Text = lss.hyperthyroidism_chanse;
+                    
 
                     break;
 
             }
-           
 
+            this.metroButton2.Text = lss.back_panel;
 
 
         }
@@ -121,7 +126,7 @@ namespace Tiroida
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            PersonalDataForm form = new PersonalDataForm(ConnectionClass.ClientTCP.isloged);
+            PersonalDataForm form = new PersonalDataForm(false);
             SetInterface(form);
         }
 

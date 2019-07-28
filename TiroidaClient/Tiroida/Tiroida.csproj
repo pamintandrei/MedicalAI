@@ -84,6 +84,23 @@
     <Compile Include="adminpanel.Designer.cs">
       <DependentUpon>adminpanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Appointment.cs" />
+    <Compile Include="AppointmentContent.cs" />
+    <Compile Include="AppointmentDelete.cs" />
+    <Compile Include="AppointmentMedicResponse.cs" />
+    <Compile Include="AppointmentPatient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AppointmentPatient.Designer.cs">
+      <DependentUpon>AppointmentPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentResponsePatientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentResponsePatientForm.Designer.cs">
+      <DependentUpon>AppointmentResponsePatientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentsResponse.cs" />
     <Compile Include="ChangePasswordContent.cs" />
     <Compile Include="ClientTCP.cs" />
     <Compile Include="Codeinput.cs">
@@ -103,6 +120,16 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="configFile.cs" />
+    <Compile Include="GetAppointmentContent.cs" />
+    <Compile Include="GetAppointmentResponse.cs" />
+    <Compile Include="GetPatientAppointmentContent.cs" />
+    <Compile Include="hypertiroidContent.cs" />
+    <Compile Include="HypertiroidForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HypertiroidForm.Designer.cs">
+      <DependentUpon>HypertiroidForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="IpConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,17 +145,37 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginContent.cs" />
+    <Compile Include="MedicAppointment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MedicAppointment.Designer.cs">
+      <DependentUpon>MedicAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="medicContent.cs" />
+    <Compile Include="MedicPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MedicPanel.Designer.cs">
+      <DependentUpon>MedicPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="OnCodeVerifyResponseArgs.cs" />
     <Compile Include="OnReceiveChangePasswordResponseArgs.cs" />
     <Compile Include="OnReceiveGetConfigResponseArgs.cs" />
     <Compile Include="OnReceiveLoginMessageArgs.cs" />
     <Compile Include="OnReceiveMessageClientEventArgs.cs" />
     <Compile Include="OnReceiveNonMedicsArgs.cs" />
+    <Compile Include="OnReceivePatientAppointmentsArgs.cs" />
     <Compile Include="OnReceivePhotoResult.cs" />
     <Compile Include="OnReceiveRegisterMessageArgs.cs" />
     <Compile Include="OnReceiveResultArgs.cs" />
     <Compile Include="OnReceiveSetConfigArgs.cs" />
+    <Compile Include="PatientAppointment.cs" />
+    <Compile Include="PatientForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PatientForm.Designer.cs">
+      <DependentUpon>PatientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonalDataForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +199,12 @@
     </Compile>
     <Compile Include="RegisterUserControl.Designer.cs">
       <DependentUpon>RegisterUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RespondAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RespondAppointment.Designer.cs">
+      <DependentUpon>RespondAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="ResponseUserControl.cs">
       <SubType>UserControl</SubType>
@@ -177,17 +230,35 @@
     <EmbeddedResource Include="adminpanel.resx">
       <DependentUpon>adminpanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentPatient.resx">
+      <DependentUpon>AppointmentPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentResponsePatientForm.resx">
+      <DependentUpon>AppointmentResponsePatientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Codeinput.resx">
       <DependentUpon>Codeinput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HypertiroidForm.resx">
+      <DependentUpon>HypertiroidForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IpConfigForm.resx">
       <DependentUpon>IpConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicAppointment.resx">
+      <DependentUpon>MedicAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MedicPanel.resx">
+      <DependentUpon>MedicPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientForm.resx">
+      <DependentUpon>PatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonalDataForm.resx">
       <DependentUpon>PersonalDataForm.cs</DependentUpon>
@@ -207,6 +278,9 @@
     </Compile>
     <EmbeddedResource Include="RegisterUserControl.resx">
       <DependentUpon>RegisterUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RespondAppointment.resx">
+      <DependentUpon>RespondAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResponseUserControl.resx">
       <DependentUpon>ResponseUserControl.cs</DependentUpon>

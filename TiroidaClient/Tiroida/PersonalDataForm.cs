@@ -46,7 +46,7 @@ namespace Tiroida
             else
             {
                 Application.UseWaitCursor = false;
-                ResponseUserControl usercontrol = new ResponseUserControl();
+                ResponseUserControl usercontrol = new ResponseUserControl(ResponseUserControl.THYROID_HYPO);
                 usercontrol.SetCancer(chanse);
                 usercontrol.SetNonCancer(chanse_to_have_nothing);
                 usercontrol.SetAnimateCancer((int)double.Parse(chanse_to_have_nothing));
@@ -79,16 +79,12 @@ namespace Tiroida
             InitializeComponent();
             SetPanelLanguage();
             this.loged = loged;
-            if (loged)
-            {
-                pictureBox2.Image = new Bitmap(Properties.Resources.logout);
-                
-            }
-            else
-            {
-                this.metroButton2.Enabled = false;
-            }
+            this.metroButton2.Enabled = false;
 
+            if (ConnectionClass.ClientTCP.isloged)
+            {
+                this.metroButton2.Enabled = true;
+            }
             
             
             // AddToList("metroComboBox16", "metroComboBox17", "metroComboBox15", "metroComboBox14", "metroComboBox13");
@@ -188,6 +184,7 @@ namespace Tiroida
             this.metroButton2.Text = ls.result;
             this.metroButton1.Text = ls.send_data;
             this.metroButton3.Text = ls.verify_photo;
+            this.metroButton4.Text = ls.verify_hype;
 
             changeComboBoxlang(this);
             changeSexLanguage();
@@ -410,33 +407,19 @@ namespace Tiroida
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (metroComboBox1.Text == "Masculin" || metroComboBox1.Text == "Necunoscut")
+            if (metroComboBox1.SelectedIndex == 1 || metroComboBox1.SelectedIndex == 2)
                 metroComboBox8.Enabled = false;
             else
                 metroComboBox8.Enabled = true;
         }
 
-        private void RemoveCookie()
-        {
 
-            cookieobj cookie = new cookieobj("");
-            string cookiesave = JsonConvert.SerializeObject(cookie);
-            Console.WriteLine(cookiesave);
-            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"cookie.json",false);
-            writer.Write(cookiesave);
-            writer.Close();
-        }
 
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (this.loged)
-            {
-                RemoveCookie();
-            }
 
-
-            if (!ConnectionClass.ClientTCP.isadmin)
+            if (!ConnectionClass.ClientTCP.isloged)
             {
                 Login lg = new Login();
                 Panel panel1 = (Panel)this.Parent;
@@ -488,6 +471,15 @@ namespace Tiroida
             Panel pan1 = (Panel)this.Parent;
             pan1.Controls.Clear();
             pan1.Controls.Add(vt);
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            HypertiroidForm form = new HypertiroidForm();
+
+            Panel pan1 = (Panel)this.Parent;
+            pan1.Controls.Clear();
+            pan1.Controls.Add(form);
         }
     }
 }

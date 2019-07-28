@@ -43,6 +43,8 @@ namespace Tiroida
         public bool isconnected;
         public bool isloged;
         public bool isadmin;
+        public bool ispatient;
+        public bool ismedic;
 
         public event EventHandler<OnReceiveMessageClientEventArgs> OnResponse;
         public event EventHandler<OnReceiveRegisterMessageArgs> OnRegisterResponse;
@@ -56,6 +58,9 @@ namespace Tiroida
         public event EventHandler<OnReceiveNonMedicsArgs> OnReceiveMedics;
         public event EventHandler<OnReceiveSetConfigArgs> OnReceiveSetConfig;
         public event EventHandler<OnReceiveSetConfigArgs> OnReceiveAddMedic;
+        public event EventHandler<AppointmentsResponse> OnReceiveGetAppointments;
+        public event EventHandler<OnReceivePatientAppointmentsArgs> OnReceivePatientAppointments;
+        public event EventHandler<string> OnReceiveResponseAppointment;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -292,10 +297,15 @@ namespace Tiroida
                             {
                                 this.Cookie = (string)obj["cookie"];
                                 this.isloged = true;
+                                this.isadmin = (bool)obj["is_admin"];
+                                this.ismedic = (bool)obj["is_medic"];
+                                this.ispatient = (bool)obj["is_patient"];
                             }
 
-                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"], is_admin = (bool)obj["is_admin"] });
-                            this.isadmin = (bool)obj["is_admin"];
+
+
+                            OnLoginResponse?.Invoke(this, new OnReceiveLoginMessageArgs { errorcode = errorcodee, errormessage = (string)obj["errormessage"], username = (string)obj["username"]});
+                            
                             break;
 
                         case "code_verify_response":
@@ -408,7 +418,38 @@ namespace Tiroida
                             }
 
                             break;
+                        case "appointment_response":
 
+                            OnReceiveSetConfigArgs config2 = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                            OnReceiveAddMedic?.Invoke(this, config2);
+
+                            break;
+
+                        case "getappointments_response":
+
+                            Console.WriteLine(response);
+                            AppointmentsResponse resp = JsonConvert.DeserializeObject<AppointmentsResponse>(response);
+                            OnReceiveGetAppointments?.Invoke(this,resp);
+
+                            break;
+                        case "appointment_confirm_response":
+                            OnReceiveSetConfigArgs configg = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                            OnReceiveAddMedic?.Invoke(this,configg);
+
+                            break;
+
+                        case "patient_appointment_response":
+                            OnReceivePatientAppointmentsArgs re = JsonConvert.DeserializeObject<OnReceivePatientAppointmentsArgs>(response);
+                            OnReceivePatientAppointments?.Invoke(this,re);
+                            break;
+
+                        case "appointment_patient_response":
+                            OnReceiveResponseAppointment?.Invoke(this,(string)obj["response"]);
+                            break;
+                        case "appointment_delete":
+                            OnReceiveSetConfigArgs config3 = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
+                            OnReceiveAddMedic?.Invoke(this, config3);
+                            break;
                         default:
                             /*
                              * Some error comming from server

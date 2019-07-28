@@ -17,7 +17,33 @@ namespace Tiroida
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            ReloadLanguage();
         }
+
+
+
+        public void ReloadLanguage()
+        {
+            languagesettings ls = ConnectionClass.languagesupporter.getLanguagesettings();
+            this.metroButton1.Text = ls.verify_medical_test;
+            if (ConnectionClass.ClientTCP.ispatient)
+            {
+                this.metroButton2.Text = ls.schedule_set;
+            }
+            else
+            if (ConnectionClass.ClientTCP.isadmin)
+            {
+                this.metroButton2.Text = ls.server_config;
+            }
+            else
+            if (ConnectionClass.ClientTCP.ismedic)
+            {
+                this.metroButton2.Text = ls.medic_schedule;
+            }
+        }
+
+
 
         private void RemoveCookie()
         {
@@ -55,10 +81,27 @@ namespace Tiroida
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            viewmedics form = new viewmedics();
             Panel p1 = (Panel)this.Parent;
             p1.Controls.Clear();
-            p1.Controls.Add(form);
+
+            if (ConnectionClass.ClientTCP.isadmin)
+            {
+                viewmedics form = new viewmedics();
+                p1.Controls.Add(form);
+            }
+            else
+            if (ConnectionClass.ClientTCP.ispatient)
+            {
+                PatientForm form = new PatientForm();
+                p1.Controls.Add(form);
+            }
+            else
+            if (ConnectionClass.ClientTCP.ismedic)
+            {
+                MedicPanel panel = new MedicPanel();
+                p1.Controls.Add(panel);
+            }
+                  
         }
 
         private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)

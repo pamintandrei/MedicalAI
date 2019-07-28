@@ -53,6 +53,7 @@ namespace Tiroida
         public string patient_name { get; set; }
         public string email_code { get; set; }
         public string config_ip { get; set; }
+        public string hypothyroidism_chanse { get; set; }
         public string hyperthyroidism_chanse { get; set; }
         public string back_panel { get; set; }
         public string send_photo { get; set; }
@@ -93,5 +94,16 @@ namespace Tiroida
         public string male { get; set; }
         public string female { get; set; }
         public string parkinson { get; set; }
+        public string patient_schedule { get; set; }
+        public string medic_schedule { get; set; }
+        public string Il3l_treatment { get; set; }
+        public string psych { get; set; }
+        public string hypopituitary { get; set; }
+        public string verify_hype { get; set; }
+        public string verify_hypo { get; set; }
+        public string verify_medical_test { get; set; }
+        public string schedule_set { get; set; }
+        public string server_config { get; set; }
+
     }
 }
