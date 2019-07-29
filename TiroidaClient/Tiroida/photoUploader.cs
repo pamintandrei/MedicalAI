@@ -41,6 +41,7 @@ namespace Tiroida
             this.metroComboBox1.Items.Add(ls.pneumonia);
             this.metroComboBox1.Items.Add(ls.tuberculosis);
             this.metroComboBox1.Items.Add(ls.parkinson);
+            this.metroComboBox1.Items.Add(ls.skin_cancer);
         }
 
         private void changeScreenToResult(string result, int proc)
@@ -162,6 +163,9 @@ namespace Tiroida
                     break;
                 case 6:
                     return "parkinson";
+                    break;
+                case 7:
+                    return "cancerpiele";
                     break;
                 default:
                     MessageBox.Show("Please select a disease");

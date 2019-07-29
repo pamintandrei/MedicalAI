@@ -93,5 +93,6 @@
   "verify_medical_test" : "Verify medical tests",
   "schedule_set" : "Set doctor's appointment",
   "medic_schedule" : "View appointments",
-  "server_config" : "Server configuration"
+  "server_config" : "Server configuration",
+  "skin_cancer" : "Skin cancer"
 }

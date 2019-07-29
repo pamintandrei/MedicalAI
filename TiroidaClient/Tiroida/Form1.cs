@@ -41,7 +41,7 @@ namespace Tiroida
             }
             else
             {
-                PersonalDataForm dataform = new PersonalDataForm(ConnectionClass.ClientTCP.isloged);
+                adminpanel dataform = new adminpanel();
                 this.panel1.Controls.Clear();
                 this.panel1.Controls.Add(dataform);
             }
@@ -60,17 +60,34 @@ namespace Tiroida
             }
             else
             {
+                /*
                 ConnectionClass.ClientTCP.isloged = true;
                 ConnectionClass.ClientTCP.Cookie = (string)config["cookie"];
+                */
+
+                CheckCookieContent content = new CheckCookieContent((string)config["cookie"]);
+                string data_to_send = JsonConvert.SerializeObject(content);
+                ConnectionClass.ClientTCP.SendContent(data_to_send);
+                ConnectionClass.ClientTCP.OnReceiveCheckCookie += ClientTCP_OnReceiveCheckCookie;
+
 
                 
-                SetInterface();
+                
 
             }
 
 
         }
 
+        private void ClientTCP_OnReceiveCheckCookie(object sender, OnReceiveCheckCookieArgs e)
+        {
+            ConnectionClass.ClientTCP.OnReceiveCheckCookie -= ClientTCP_OnReceiveCheckCookie;
+            if (e.errcode == 0)
+            {
+                Console.WriteLine("JaJa");
+                SetInterface();
+            }
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

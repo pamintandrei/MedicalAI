@@ -130,7 +130,8 @@
             "Malarie",
             "Pneumonie",
             "Tuberculoza",
-            "Parkinson"});
+            "Parkinson",
+            "Cancer la piele"});
             this.metroComboBox1.Location = new System.Drawing.Point(521, 3);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(121, 29);

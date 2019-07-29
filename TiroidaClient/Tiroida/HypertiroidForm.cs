@@ -442,7 +442,7 @@ namespace Tiroida
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (metroComboBox1.SelectedIndex == 1 || metroComboBox1.SelectedIndex == 2)
+            if (metroComboBox1.SelectedIndex == 0 || metroComboBox1.SelectedIndex == 2)
                 metroComboBox8.Enabled = false;
             else
                 metroComboBox8.Enabled = true;

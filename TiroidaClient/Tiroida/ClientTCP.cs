@@ -61,6 +61,7 @@ namespace Tiroida
         public event EventHandler<AppointmentsResponse> OnReceiveGetAppointments;
         public event EventHandler<OnReceivePatientAppointmentsArgs> OnReceivePatientAppointments;
         public event EventHandler<string> OnReceiveResponseAppointment;
+        public event EventHandler<OnReceiveCheckCookieArgs> OnReceiveCheckCookie;
         public event EventHandler OnConnectionLost;
 
         public ClientTCP(string ServerIP, int ServerPort)
@@ -450,6 +451,17 @@ namespace Tiroida
                             OnReceiveSetConfigArgs config3 = new OnReceiveSetConfigArgs((int)obj["errcode"], (string)obj["errmessage"]);
                             OnReceiveAddMedic?.Invoke(this, config3);
                             break;
+                        case "check_cookie_response":
+                            OnReceiveCheckCookieArgs args2 = JsonConvert.DeserializeObject<OnReceiveCheckCookieArgs>(response);
+                            if (args2.errcode == 0)
+                            {
+                                this.isadmin = args2.is_admin;
+                                this.ismedic = args2.is_medic;
+                                this.ispatient = args2.is_patient;
+                            }
+                            OnReceiveCheckCookie?.Invoke(this,args2);
+                            break;
+                        
                         default:
                             /*
                              * Some error comming from server

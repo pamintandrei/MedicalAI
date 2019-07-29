@@ -104,6 +104,6 @@ namespace Tiroida
         public string verify_medical_test { get; set; }
         public string schedule_set { get; set; }
         public string server_config { get; set; }
-
+        public string skin_cancer { get; set; }
     }
 }

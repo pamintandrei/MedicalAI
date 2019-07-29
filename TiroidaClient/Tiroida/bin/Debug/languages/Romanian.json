@@ -93,5 +93,6 @@
   "verify_medical_test" : "Verifica analize",
   "schedule_set" : "Seteaza o programare",
   "medic_schedule" : "Veri programarile",
-  "server_config" : "Configureaza serverul"
+  "server_config" : "Configureaza serverul",
+  "skin_cancer" : "Cancer la piele"
 }

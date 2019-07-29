@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="AppointmentsResponse.cs" />
     <Compile Include="ChangePasswordContent.cs" />
+    <Compile Include="CheckCookieContent.cs" />
     <Compile Include="ClientTCP.cs" />
     <Compile Include="Codeinput.cs">
       <SubType>Form</SubType>
@@ -160,6 +161,7 @@
     </Compile>
     <Compile Include="OnCodeVerifyResponseArgs.cs" />
     <Compile Include="OnReceiveChangePasswordResponseArgs.cs" />
+    <Compile Include="OnReceiveCheckCookieArgs.cs" />
     <Compile Include="OnReceiveGetConfigResponseArgs.cs" />
     <Compile Include="OnReceiveLoginMessageArgs.cs" />
     <Compile Include="OnReceiveMessageClientEventArgs.cs" />
