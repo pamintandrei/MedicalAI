@@ -14,7 +14,7 @@ with tf.device('/gpu:0'):
     path1="D:\\tiroida\\celule\\leucemie_train"
     date1 = keras_data.flow_from_directory(path1, target_size = (450, 450),batch_size=32, classes = ["normal","leucemie"], class_mode = "binary")
     path2="D:\\tiroida\\celule\\leucemie_test"
-    date2 = keras_data.flow_from_directory(path2, target_size = (450, 450),batch_size=10, classes = ["normal","leucemie"], class_mode = "binary")
+    date2 = keras_data.flow_from_directory(path2, target_size = (450, 450),batch_size=100, classes = ["normal","leucemie"], class_mode = "binary")
     tfmodel=keras.models.Sequential()
     tfmodel.add(Conv2D(filters=4,kernel_size=(3,3), padding='same',activation="relu",input_shape=(450,450,3)))    
     tfmodel.add(MaxPooling2D(pool_size=(2,2)))
@@ -22,7 +22,7 @@ with tf.device('/gpu:0'):
     tfmodel.add(Conv2D(filters=8, kernel_size=(3,3), activation="relu",padding='same'))
     tfmodel.add(BatchNormalization())
     tfmodel.add(MaxPooling2D(pool_size=(2,2)))
-    tfmodel.add(Conv2D(filters=16, kernel_size=(3,3), activation="relu",padding='same'))
+    tfmodel.add(Conv2D(filters=8, kernel_size=(3,3), activation="relu",padding='same'))
     tfmodel.add(Conv2D(filters=16, kernel_size=(3,3), activation="relu",padding='same'))
     tfmodel.add(BatchNormalization())
     tfmodel.add(MaxPooling2D(pool_size=(2,2)))

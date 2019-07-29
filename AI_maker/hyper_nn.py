@@ -96,19 +96,14 @@ def crearebazadate():
 crearebazadate()
 tfmodel = tf.keras.models.Sequential()
 tfmodel.add(tf.keras.layers.Dense(26,input_dim=26))
-tfmodel.add(tf.keras.layers.Dense(512)) 
+tfmodel.add(tf.keras.layers.Dense(16)) 
 tfmodel.add(tf.keras.layers.Activation('hard_sigmoid'))
-tfmodel.add(tf.keras.layers.Dense(512))
-tfmodel.add(tf.keras.layers.Activation('hard_sigmoid'))
-tfmodel.add(tf.keras.layers.Dense(512))
-tfmodel.add(tf.keras.layers.Activation('hard_sigmoid'))
-tfmodel.add(tf.keras.layers.Dense(512))
-tfmodel.add(tf.keras.layers.Activation('hard_sigmoid'))
-tfmodel.add(tf.keras.layers.Dense(2,activation=tf.nn.softmax))
+
+tfmodel.add(tf.keras.layers.Dense(2,activation='softmax'))
 
 
 tfmodel.compile(optimizer='Nadam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
-tfmodel.fit(lista,rezultate,epochs=7,validation_split=0.06)
+tfmodel.fit(lista,rezultate,epochs=7,validation_split=0.01)
 
 val_loss, val_acc = tfmodel.evaluate(lista,rezultate)
 print(val_loss)
@@ -121,5 +116,5 @@ model=tf.keras.models.load_model('hyper.h5')
 val_loss, val_acc = model.evaluate(lista,rezultate)
 print(val_loss)
 print(val_acc)
-
+input()
 

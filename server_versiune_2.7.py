@@ -329,9 +329,9 @@ def getHyper(recvdata):
 
 def pamantfunction(recvdata):
 
-    neural_net=tf.keras.models.load_model(AI_core_file + '\hypothyroid.h5')
+    neural_net=tf.keras.models.load_model(AI_core_file + '\\hypothyroid.h5')
 
-
+    print(recvdata)
     print(1)
         
     datesauintrebare(recvdata['Age'],0)   
@@ -550,7 +550,7 @@ def confirm_programare(medic_id, patient_id, time, confirmed, message = None, em
         programare=(message, medic_id, time, )
         cur.execute("UPDATE programari SET confirmed = -1, message = ? WHERE medic_id = ? AND Date_time = ?",programare)
         conn.commit() 
-        sendEmail("infoeducatietiroida@gmail",email,message)
+        sendEmail("infoeducatietiroida@gmail.com",email,message)
         
         return -2
         
