@@ -48,7 +48,7 @@ Tehnologia SSL a fost folosita pentru securizarea comunicarii server-client si p
 ## Bot-ului de discord
 Dupa ce a fost invitat, pentru a verifica hypotiroida/hypertiroida se va folosi comanda:
 
-` ~analize -age ? -sex ? -on_thyroxine ? -query_on_thyroxin ? -on_antythyroid_medication ? -thyroid_surgery ? -query_hypothyroid ? -query_hyperthyroid ? -pregnant ? -sick ? -tumor ? -lithium ? -goitre ? -TSH_measured ? -T3_measured ? -TT4_measured ? -FTI_measured ? -TBG_measured ? -TSH ? -T3 ? -TT4 ? -FTI ? -TBG ? `
+` ~hypo -age ? -sex ? -on_thyroxine ? -query_on_thyroxin ? -on_antythyroid_medication ? -thyroid_surgery ? -query_hypothyroid ? -query_hyperthyroid ? -pregnant ? -sick ? -tumor ? -lithium ? -goitre ? -TSH_measured ? -T3_measured ? -TT4_measured ? -FTI_measured ? -TBG_measured ? -TSH ? -T3 ? -TT4 ? -FTI ? -TBG ? `
 
 Toate semnele de întrebare trebuie înlocuite cu valori corespunzătoare,prezentate în descrierea bot-ului 
 
