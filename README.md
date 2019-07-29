@@ -172,6 +172,7 @@ https://docs.google.com/spreadsheets/d/1dxcpg4uXPbk8lugaMnV8x4NDSaJpH7PmLw5nIFl9
 90.65% - pneumonie
 96.91% - hypotiroidism
 93.15% - hypertiroidism
+100% - malarie
 
 # Fragmente de cod ce nu ne apartin
 https://github.com/HBROficial/uploadHBR/blob/master/src/js/uploadHBR.min.js
