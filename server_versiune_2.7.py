@@ -1116,6 +1116,40 @@ def delete_appointment(recvdata):
     print(json_data)
     return json_data
     
+def check_cookie(recvdata):
+    data = {}
+    data['action'] = 'check_cookie_response'
+    user_id = id_cookie(recvdata['cookie'])
+    if(user_id != -1):
+        data['errcode'] = 0
+        data['errmessage'] = 'Valid cookie'
+        conn = sqlite3.connect(base_dir + '/bazadedate.db')
+        cur = conn.cursor()
+        date=([recvdata['cookie']])
+        cur.execute("SELECT * FROM baza WHERE cookie=?",date)
+        toateinformatiile= cur.fetchall()
+        if(toateinformatiile[0][1] == 'admin'):
+            data['is_admin'] = True
+            data['is_patient'] = False
+            data['is_medic'] = False
+        if(toateinformatiile[0][9] == 0):
+            data['is_admin'] = False
+            data['is_patient'] = True
+            data['is_medic'] = False
+        if(toateinformatiile[0][9] == 1):
+            data['is_admin'] = False
+            data['is_patient'] = False
+            data['is_medic'] = True
+    else:
+        data['errcode'] = 1
+        data['errmessage'] = 'Invalid cookie'
+        
+        
+    json_data = json.dumps(data)
+    return json_data
+    
+    
+    
 def handler(c, a):
     while True:
         data = recvall(c)
@@ -1183,6 +1217,9 @@ def handler(c, a):
             response = appointment_response(loadedjson)
         if(loadedjson['action'] == 'delete_appointment'):
             response = delete_appointment(loadedjson)
+        if(loadedjson['action'] == 'check_cookie'):
+            response = check_cookie(loadedjson)
+         
          
         response += "<EOF>"
 	
