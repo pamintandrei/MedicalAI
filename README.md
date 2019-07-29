@@ -46,10 +46,9 @@ Tehnologia SSL a fost folosita pentru securizarea comunicarii server-client si p
 
 # Structura 
 ## Bot-ului de discord
-
 Dupa ce a fost invitat, pentru a verifica hypotiroida/hypertiroida se va folosi comanda:
 
-` \~analize -age? -sex? -on\_thyroxine? -query\_on\_thyroxin? -on\_antythyroid\_medication? -thyroid\_surgery? -query\_hypothyroid? -query\_hyperthyroid? -pregnant? -sick? -tumor? -lithium? -goitre? -TSH\_measured? -T3\_measured? -TT4\_measured? -FTI\_measured? -TBG\_measured? -TSH? -T3? -TT4? -FTI? -TBG? `
+` ~analize -age ? -sex ? -on_thyroxine ? -query_on_thyroxin ? -on_antythyroid_medication ? -thyroid_surgery ? -query_hypothyroid ? -query_hyperthyroid ? -pregnant ? -sick ? -tumor ? -lithium ? -goitre ? -TSH_measured ? -T3_measured ? -TT4_measured ? -FTI_measured ? -TBG_measured ? -TSH ? -T3 ? -TT4 ? -FTI ? -TBG ? `
 
 Toate semnele de întrebare trebuie înlocuite cu valori corespunzătoare,prezentate în descrierea bot-ului 
 
@@ -64,7 +63,6 @@ Pentru a verifica o poza se va trimite poza incluzand boala acesteia prin comand
 ~malaria [poza]
 ~parkinson [poza]
 
-[pozaaaa]
 
 ## Clientul de Windows
 Pentru a folosi clientul de windows trebuie descărcat proiectul de pe următorul github: https://github.com/pamintandrei/Tiroidaptinfoed/tree/master/TiroidaClient
@@ -147,10 +145,10 @@ Serverul se poate activa folosind comanda in Linux "python server_versiune_2.7.p
 
 ## Instalarea web serverului
 Acesta se instaleaza folosind orice web server, precum nginx sau apache2.
-Dupa instalarea web serverului se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/webserver si se vor pune in folderul serverului. Pentru configurarea ip-ului si port-ului necesar se va modifica fisierul init/config.php
+Dupa instalarea web serverului se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/webserver si se vor pune in folderul serverului. Pentru configurarea ip-ului si port-ului necesar se va modifica fisierul init/config.php . 
 
 ## Instalarea botului de Discord
-Pentru instalarea acestui bot se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/DiscoTiro si se va configura fisierul auth.json cu token-ul necesar, generat de pe pagina necesara https://discordapp.com/developers/applications/ .
+Pentru instalarea acestui bot se vor copia fisierele necesare de pe link-ul https://github.com/pamintandrei/MedicalAI/tree/master/DiscoTiro si se va configura fisierul auth.json cu token-ul necesar, generat de pe pagina necesara https://discordapp.com/developers/applications/ si cu adresa ip si port-ul necesar conectarii acestuia catre server. 
 
 
 ## Instalarea Clientului de Windows
@@ -163,6 +161,24 @@ Pe o scara de la 0 la 10, media de incredere in diagnosticul provizoriu pus de c
 * Numerele sunt luate pe data de 21.07.2019, Ora 9:10
 https://docs.google.com/spreadsheets/d/1dxcpg4uXPbk8lugaMnV8x4NDSaJpH7PmLw5nIFl99pg/edit#gid=1671088322
 
+# Acuratetea inteligentei artificiale
+91% - leucemie
+89.99% - tuberculoza
+90.65% - pneumonie
+93% - parkinson
+90% - hemoragie la creier
+93% - cancer la piele
+91% - cancer la san
+90.65% - pneumonie
+96.91% - hypotiroidism
+93.15% - hypertiroidism
+
+# Fragmente de cod ce nu ne apartin
+https://github.com/HBROficial/uploadHBR/blob/master/src/js/uploadHBR.min.js
+https://github.com/HBROficial/uploadHBR/blob/master/src/js/modernizr.min.js
+https://github.com/HBROficial/uploadHBR/blob/master/src/css/responsive.min.css
+https://github.com/HBROficial/uploadHBR/blob/master/src/css/style.min.css
+https://github.com/HBROficial/uploadHBR/blob/master/example/upload.php
 
 # Distributia rolurilor
 
