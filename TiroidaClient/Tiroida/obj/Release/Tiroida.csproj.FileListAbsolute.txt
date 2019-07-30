@@ -42,3 +42,13 @@ C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\ob
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.Viewtests.resources
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.csproj.GenerateResource.Cache
 C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.IpConfigForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.adminpanel.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.AppointmentPatient.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.AppointmentResponsePatientForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.HypertiroidForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.MedicAppointment.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.MedicPanel.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.PatientForm.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.photoUploader.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.RespondAppointment.resources
+C:\Users\FoxBlood\Documents\Visual Studio 2015\Projects\TiroidaClient\Tiroida\obj\Release\Tiroida.viewmedics.resources

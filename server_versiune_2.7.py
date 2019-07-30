@@ -540,11 +540,11 @@ def confirm_programare(medic_id, patient_id, time, confirmed, message = None, em
         return -1
     if(confirmed==1):
         converted_time = datetime.utcfromtimestamp(time).strftime("%Y-%m-%d %H:%M")
-        programare=(medic_id, time,)
-        cur.execute("UPDATE programari SET confirmed = 1 WHERE medic_id = ? AND Date_time = ?",programare)
-        conn.commit()   
         msg="Programare din data " +converted_time+" a fost confirmata."
-        
+        programare=(msg, medic_id, time,)
+        cur.execute("UPDATE programari SET confirmed = 1, message = ? WHERE medic_id = ? AND Date_time = ?",programare)
+        conn.commit()  
+        sendEmail("infoeducatietiroida@gmail.com", email, msg)
         return 0
     else:
         programare=(message, medic_id, time, )
@@ -855,7 +855,7 @@ def getappointment(recvdata):
     if gasitinbaza('cookie', recvdata['cookie'], cur) and checkMedicCookie(cur, recvdata['cookie']):
         medic_id = id_cookie(recvdata['cookie'])
         t = (medic_id, )
-        cur.execute("SELECT baza.username AS username, programari.Date_time AS date FROM programari LEFT JOIN baza ON baza.ID=programari.patient_id WHERE programari.confirmed = 0 AND medic_id = ? ORDER BY programari.ID", t)
+        cur.execute("SELECT baza.username AS username, programari.Date_time AS date FROM programari LEFT JOIN baza ON baza.ID=programari.patient_id WHERE programari.confirmed = 0 AND medic_id = ? AND programari.deleted != 1 ORDER BY programari.ID", t)
         
         
         result = cur.fetchall()

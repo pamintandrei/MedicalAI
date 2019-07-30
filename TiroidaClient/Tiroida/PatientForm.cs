@@ -132,6 +132,7 @@ namespace Tiroida
             string data_to_send =  JsonConvert.SerializeObject(content);
             ConnectionClass.ClientTCP.SendContent(data_to_send);
             this.flowLayoutPanel1.Controls.Clear();
+            Console.WriteLine("here we go again... working?");
             ConnectionClass.ClientTCP.OnReceivePatientAppointments += ClientTCP_OnReceivePatientAppointments;
 
         }
