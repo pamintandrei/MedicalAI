@@ -155,7 +155,7 @@ namespace Tiroida
             Console.WriteLine(config["IpAdress"]);
        
             Thread th = new Thread(new ParameterizedThreadStart(ReapetUntilConnected));
-
+            th.IsBackground = true;
             th.Start(client);
 
             client.OnResponse += Client_OnResponse;
@@ -246,6 +246,12 @@ namespace Tiroida
             }
         
             
+        }
+
+        private void Tiroida_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+            Application.Exit();
         }
     }
 }

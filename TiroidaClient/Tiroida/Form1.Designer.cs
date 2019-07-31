@@ -121,6 +121,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Tiroida";
             this.Text = "MedicalAI";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tiroida_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
