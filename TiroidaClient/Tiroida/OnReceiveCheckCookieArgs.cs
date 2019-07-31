@@ -14,5 +14,6 @@ namespace Tiroida
         public bool is_admin;
         public bool is_patient;
         public bool is_medic;
+        public string cookie;
     }
 }

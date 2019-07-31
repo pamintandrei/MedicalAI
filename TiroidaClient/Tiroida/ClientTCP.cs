@@ -458,6 +458,7 @@ namespace Tiroida
                                 this.isadmin = args2.is_admin;
                                 this.ismedic = args2.is_medic;
                                 this.ispatient = args2.is_patient;
+                                this.Cookie = args2.cookie;
                             }
                             OnReceiveCheckCookie?.Invoke(this,args2);
                             break;

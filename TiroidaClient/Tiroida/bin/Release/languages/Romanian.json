@@ -53,7 +53,7 @@
   "no_answer" : "Nu",
   "unknown_answer" : "Necunoscut",
   "breast_cancer" : "Cancer la san",
-  "internal_bleeding" : "Internal bleeding for brain",
+  "internal_bleeding" : "Hemoragie",
   "leukemia" : "Leucemie",
   "malaria" : "Malarie",
   "pneumonia" : "Pneumonie",
@@ -87,5 +87,12 @@
   "hyperthyroidism_chanse" : "Sansa de hyperthyroidism",
   "psych" : "Pacientul sufera de psihoza?",
   "hypopituitary" : "Pacientul sufera de hipopituitarism?",
-  "Il3l_treatment" : "Pacientul a fost tratat cu I131? (Iod)"
+  "Il3l_treatment" : "Pacientul a fost tratat cu I131? (Iod)",
+  "verify_hype" : "Verifica hypertiroidismul",
+  "verify_hypo" : "Verifica hyportiroidismul",
+  "verify_medical_test" : "Verifica analize",
+  "schedule_set" : "Seteaza o programare",
+  "medic_schedule" : "Veri programarile",
+  "server_config" : "Configureaza serverul",
+  "skin_cancer" : "Cancer la piele"
 }

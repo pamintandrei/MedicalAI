@@ -84,7 +84,7 @@ namespace Tiroida
             ConnectionClass.ClientTCP.OnReceiveCheckCookie -= ClientTCP_OnReceiveCheckCookie;
             if (e.errcode == 0)
             {
-                Console.WriteLine("JaJa");
+                
                 SetInterface();
             }
         }

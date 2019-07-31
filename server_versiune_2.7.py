@@ -1128,7 +1128,7 @@ def check_cookie(recvdata):
         date=([recvdata['cookie']])
         cur.execute("SELECT * FROM baza WHERE cookie=?",date)
         toateinformatiile= cur.fetchall()
-        if(toateinformatiile[0][1] == 'admin'):
+        if(toateinformatiile[0][1] == "admin"):
             data['is_admin'] = True
             data['is_patient'] = False
             data['is_medic'] = False
@@ -1136,10 +1136,12 @@ def check_cookie(recvdata):
             data['is_admin'] = False
             data['is_patient'] = True
             data['is_medic'] = False
-        if(toateinformatiile[0][9] == 1):
+        if(toateinformatiile[0][9] == 1 and toateinformatiile[0][1] != 'admin'):
             data['is_admin'] = False
             data['is_patient'] = False
             data['is_medic'] = True
+            
+        data['cookie'] = recvdata['cookie']
     else:
         data['errcode'] = 1
         data['errmessage'] = 'Invalid cookie'

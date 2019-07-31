@@ -156,6 +156,9 @@ async def leukemia(ctx):
 async def malaria(ctx):
     errcode = await send_and_receive_response('malarie', ctx)
 
+@bot.command(pass_context = True)
+async def skin_cancer(ctx):
+    errcode = await send_and_receive_response('cancerpiele', ctx)
 
 
 

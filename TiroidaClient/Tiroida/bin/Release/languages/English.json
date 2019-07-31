@@ -87,5 +87,12 @@
   "hyperthyroidism_chanse" : "Chanse of hyperthyroidism:",
   "psych" : "Does the patient have Psychosis?",
   "hypopituitary" : "Does the patient have Hypopituitarism?",
-  "Il3l_treatment" : "Does the patient takes I131 medication?"
+  "Il3l_treatment" : "Does the patient takes I131 medication?",
+  "verify_hype" : "Verify hyperthyroidism",
+  "verify_hypo" : "Verify hypothyroidism",
+  "verify_medical_test" : "Verify medical tests",
+  "schedule_set" : "Set doctor's appointment",
+  "medic_schedule" : "View appointments",
+  "server_config" : "Server configuration",
+  "skin_cancer" : "Skin cancer"
 }
